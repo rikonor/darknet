@@ -32,6 +32,11 @@ Schemas.Articles = new SimpleSchema({
   },
   views: {
     type: Number,
+    autoValue: function () {
+      if (this.isInsert) {
+        return 0;
+      }
+    },
     autoform: {
       type: "hidden"
     }
