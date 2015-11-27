@@ -1,0 +1,11 @@
+@import "shared";
+
+$backgroundColor: $BLACK;
+$textColor: $GRAY;
+
+.nav {
+  background: $backgroundColor;
+  color: $textColor;
+
+  display: flex;
+}
