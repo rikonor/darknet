@@ -1,0 +1,19 @@
+@import "shared";
+
+$backgroundColor: $DARKGRAY;
+$textColor: $WHITE;
+
+.main-layout {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .main-content {
+    flex: 1;
+
+    background: $backgroundColor;
+    color: $textColor;
+  }
+}

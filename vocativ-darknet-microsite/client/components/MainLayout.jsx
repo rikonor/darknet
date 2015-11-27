@@ -1,9 +1,11 @@
 MainLayout = React.createClass({
   render() {
     return (
-      <div>
+      <div className="main-layout">
         <Nav />
-        {this.props.content}
+        <div className="main-content">
+          {this.props.content}
+        </div>
         <Footer />
       </div>
     );

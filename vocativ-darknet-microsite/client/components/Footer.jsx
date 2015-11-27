@@ -8,9 +8,9 @@ Footer = React.createClass({
       <div className="footer">
         <div className="logo vocativ">Vocativ</div>
         <div className="menu">
-          <div className="menu-item">Home</div>
-          <div className="menu-item">About DARKnet</div>
-          <div className="menu-item">Legal</div>
+          <span className="menu-item">Home</span>
+          <span className="menu-item">About DARKnet</span>
+          <span className="menu-item">Legal</span>
         </div>
         <div className="copyright">Copyright Vocativ {this.currentYear()}</div>
       </div>

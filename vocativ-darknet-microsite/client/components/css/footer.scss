@@ -3,19 +3,11 @@
 $backgroundColor: $BLACK;
 $textColor: $GRAY;
 
-.nav {
+.footer {
   background: $backgroundColor;
   color: $textColor;
 
   display: flex;
-
-  .logos {
-    flex: 1;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .social {
-
-  }
+  flex-direction: column;
+  align-items: center;
 }
