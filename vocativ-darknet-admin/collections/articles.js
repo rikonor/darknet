@@ -23,6 +23,13 @@ Schemas.Articles = new SimpleSchema({
       rows: 5
     }
   },
+  category: {
+    type: String,
+    max: 60,
+    autoform: {
+      placeholder: "Category of article"
+    }
+  },
   image: {
     type: String,
     label: "Image URL",

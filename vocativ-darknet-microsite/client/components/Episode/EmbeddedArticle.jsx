@@ -2,8 +2,11 @@ EmbeddedArticle = React.createClass({
   render() {
     return (
       <div className="embedded-article">
-        <div className="category">Tech/Science</div>
-        <div className="description">This is a description of the article</div>
+        <div className="image">
+          <a><img src={this.props.article.image}></img></a>
+        </div>
+        <div className="category">{this.props.article.category}</div>
+        <div className="description">{this.props.article.description}</div>
       </div>
     );
   }
