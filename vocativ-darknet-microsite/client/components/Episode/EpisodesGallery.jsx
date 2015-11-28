@@ -1,7 +1,7 @@
 EpisodesGallery = React.createClass({
   render() {
     return (
-      <div className="episodes-gallery">
+      <div className="episodes-mini-gallery">
         <div className="scroll left">Left</div>
         <div className="scroll right">Right</div>
 

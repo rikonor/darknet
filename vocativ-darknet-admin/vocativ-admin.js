@@ -29,7 +29,12 @@ AdminConfig = {
         { label: '#', name: 'number' },
         { label: 'Name', name: 'name' },
         { label: 'Airing Date', name: 'airingAt' }
-      ]
+      ],
+      routes: {
+        new: { waitOn: function () { return _.map(['articles', 'videos'], function(subName) { Meteor.subscribe(subName); }); } },
+        view: { waitOn: function () { return _.map(['articles', 'videos'], function(subName) { Meteor.subscribe(subName); }); } },
+        edit: { waitOn: function () { return _.map(['articles', 'videos'], function(subName) { Meteor.subscribe(subName); }); } }
+      }
     },
     Videos: {
       tableColumns: [
@@ -46,3 +51,21 @@ AdminConfig = {
     }
   }
 };
+
+function isAdmin(userId) {
+  let user = Meteor.users.findOne(userId);
+  if (! user) return false;
+  return user.roles.__global_roles__.indexOf('admin') !== -1;
+}
+
+if (Meteor.isServer) {
+  Meteor.publish('articles', function() {
+    if (! isAdmin(this.userId)) return this.ready();
+    return Articles.find();
+  });
+
+  Meteor.publish('videos', function() {
+    if (! isAdmin(this.userId)) return this.ready();
+    return Videos.find();
+  });
+}

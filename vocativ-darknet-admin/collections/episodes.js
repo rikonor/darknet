@@ -27,6 +27,34 @@ Schemas.Episodes = new SimpleSchema({
   airingAt: {
     type: Date,
     label: 'Airing date'
+  },
+  includedArticles: {
+    type: [String],
+    autoform: {
+      type: "select-multiple",
+      options: function () {
+        return _.map(Articles.find().fetch(), function(article) {
+          return {
+            label: article.name,
+            value: article._id
+          };
+        });
+      }
+    }
+  },
+  includedVideos: {
+    type: [String],
+    autoform: {
+      type: "select-multiple",
+      options: function () {
+        return _.map(Videos.find().fetch(), function(video) {
+          return {
+            label: video.name,
+            value: video._id
+          };
+        });
+      }
+    }
   }
 });
 

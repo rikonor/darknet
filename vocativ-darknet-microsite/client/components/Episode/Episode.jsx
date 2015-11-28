@@ -23,7 +23,7 @@ Episode = React.createClass({
       return <div>Loading articles</div>;
     }
 
-    let articleIds = ["p8AA2dpxy892dS3eP", "BTh9Tp8v9iuFzfamh", "3c2326CHtBb4jEbGg"];
+    let articleIds = this.data.episode.includedArticles;
     let articles = Articles.find({_id: {$in: articleIds}});
 
     return articles.map((article) => {
@@ -36,11 +36,12 @@ Episode = React.createClass({
       return <div>Loading videos</div>;
     }
 
-    return (
-      <div className="episode-videos">
-        <EmbeddedVideo />
-      </div>
-    );
+    let videoIds = this.data.episode.includedVideos;
+    let videos = Videos.find({_id: {$in: videoIds}});
+
+    return videos.map((video) => {
+      return <EmbeddedVideo key={video._id} video={video} />;
+    });
   },
 
   render() {
@@ -51,8 +52,7 @@ Episode = React.createClass({
     return (
       <div className="episode">
         <div className="episode-info">
-          <div>Episode {this.data.episode.number}</div>
-          <div>{this.data.episode.name}</div>
+          <div>Episode {this.data.episode.number} // {this.data.episode.name}</div>
           <div>{this.data.episode.airingAt.toString()}</div>
           <div>{this.data.episode.synopsis}</div>
         </div>
@@ -61,7 +61,9 @@ Episode = React.createClass({
           {this.renderArticles()}
         </div>
 
-        {this.renderVideos()}
+        <div className="episode-videos">
+          {this.renderVideos()}
+        </div>
 
         <EpisodesGallery />
       </div>
