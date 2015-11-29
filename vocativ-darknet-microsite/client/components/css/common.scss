@@ -1,5 +1,11 @@
 @import "shared";
 
+// Fonts
+
+html > body {
+  font-family: $font-stack;
+}
+
 // Links
 
 a {
