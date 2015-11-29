@@ -26,3 +26,5 @@ admin:
 
 mongo:
   image: mongo
+  volumes:
+    - mongo:/data/db
