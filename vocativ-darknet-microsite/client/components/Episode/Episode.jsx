@@ -23,7 +23,7 @@ Episode = React.createClass({
       return <div>Loading articles</div>;
     }
 
-    let articleIds = this.data.episode.includedArticles;
+    let articleIds = this.data.episode.includedArticles || [];
     let articles = Articles.find({_id: {$in: articleIds}});
 
     return articles.map((article) => {
@@ -36,7 +36,7 @@ Episode = React.createClass({
       return <div>Loading videos</div>;
     }
 
-    let videoIds = this.data.episode.includedVideos;
+    let videoIds = this.data.episode.includedVideos || [];
     let videos = Videos.find({_id: {$in: videoIds}});
 
     return videos.map((video) => {
