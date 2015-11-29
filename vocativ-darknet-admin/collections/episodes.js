@@ -28,8 +28,16 @@ Schemas.Episodes = new SimpleSchema({
     type: Date,
     label: 'Airing date'
   },
+  image: {
+    type: String,
+    label: "Image URL",
+    autoform: {
+      placeholder: "Image URL"
+    }
+  },
   includedArticles: {
     type: [String],
+    optional: true,
     autoform: {
       type: "select-multiple",
       options: function () {
@@ -44,6 +52,7 @@ Schemas.Episodes = new SimpleSchema({
   },
   includedVideos: {
     type: [String],
+    optional: true,
     autoform: {
       type: "select-multiple",
       options: function () {
