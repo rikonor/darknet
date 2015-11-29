@@ -3,8 +3,8 @@ Nav = React.createClass({
     return (
       <div className="nav">
         <div className="logos">
-          <div className="logo vocativ">Vocativ</div>
-          <div className="logo darknet">DARKnet</div>
+          <div className="logo vocativ"><a href="http://www.vocativ.com/"><img src="/images/vocativ-logo.svg" /></a></div>
+          <div className="logo darknet"><a href="/">DARKnet</a></div>
         </div>
         <div className="social">
           <span>Facebook</span>

@@ -10,13 +10,15 @@ $textColor: $WHITE;
   flex-direction: column;
   justify-content: space-between;
 
-  .main-content {
+  .main-content-container {
     flex: 1;
 
     background: $backgroundColor;
     color: $textColor;
 
-    // max-width: $maxContentWidth;
-    // margin: 0 auto;
+    .main-content {
+      max-width: $maxContentWidth;
+      margin: 0 auto;
+    }
   }
 }
