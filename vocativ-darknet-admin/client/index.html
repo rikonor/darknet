@@ -1,3 +1,21 @@
 <head>
   <title>Vocativ DARKnet</title>
 </head>
+
+<template name="Home">
+  <div>
+    <div>Vocativ DARKnet Admin Panel</div>
+    {{> LoginForm }}
+  </div>
+</template>
+
+<template name="LoginForm">
+  <div class="login-form-container">
+    <div>Please log in</div>
+    <form class="login-form">
+      <input type="text" name="username" placeholder="Username" />
+      <input type="password" name="password" placeholder="Password" />
+      <button>Submit</button>
+    </form>
+  </div>
+</template>

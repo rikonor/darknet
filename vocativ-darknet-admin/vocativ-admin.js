@@ -1,4 +1,6 @@
 if (Meteor.isServer) {
+
+  // Bootstrap admin
   if (Meteor.users.find().count() === 0) {
     console.log("Initializing admin");
 
@@ -14,41 +16,9 @@ AdminConfig = {
   name: 'Vocativ DARKnet',
   adminEmails: ['rikonor@gmail.com'],
   collections: {
-    Tasks: {
-      tableColumns: [
-        { label: 'Owner', name: 'username' },
-        { label: 'Text', name: 'text' },
-        { label: 'Creation date', name: 'createdAt' },
-        { label: 'OwnerId', name: 'owner' },
-        { label: 'Complete', name: 'checked' },
-        { label: 'Private', name: 'private' }
-      ]
-    },
-    Episodes: {
-      tableColumns: [
-        { label: '#', name: 'number' },
-        { label: 'Name', name: 'name' },
-        { label: 'Airing Date', name: 'airingAt' }
-      ],
-      routes: {
-        new: { waitOn: function () { return _.map(['articles', 'videos'], function(subName) { Meteor.subscribe(subName); }); } },
-        view: { waitOn: function () { return _.map(['articles', 'videos'], function(subName) { Meteor.subscribe(subName); }); } },
-        edit: { waitOn: function () { return _.map(['articles', 'videos'], function(subName) { Meteor.subscribe(subName); }); } }
-      }
-    },
-    Videos: {
-      tableColumns: [
-        { label: 'Name', name: 'name' },
-        { label: 'Views', name: 'views' }
-      ]
-    },
-    Articles: {
-      tableColumns: [
-        { label: 'Name', name: 'name' },
-        { label: 'Category', name: 'category' },
-        { label: 'Views', name: 'views' }
-      ]
-    }
+    Episodes: EpisodesAdminOptions,
+    Videos: VideosAdminOptions,
+    Articles: ArticlesAdminOptions
   }
 };
 
@@ -57,6 +27,9 @@ function isAdmin(userId) {
   if (! user) return false;
   return user.roles.__global_roles__.indexOf('admin') !== -1;
 }
+
+// Override meteor-admin not publishing entities on every page
+// This is so when editing an episode, you can attach articles and videos to it
 
 if (Meteor.isServer) {
   Meteor.publish('articles', function() {
@@ -69,3 +42,8 @@ if (Meteor.isServer) {
     return Videos.find();
   });
 }
+
+// Set home route for login purposes
+Router.route('/', function () {
+  this.render('Home');
+});

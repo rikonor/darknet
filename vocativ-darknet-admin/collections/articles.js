@@ -51,3 +51,13 @@ Schemas.Articles = new SimpleSchema({
 });
 
 Articles.attachSchema(Schemas.Articles);
+
+// Admin Panel options
+
+ArticlesAdminOptions = {
+  tableColumns: [
+    { label: 'Name', name: 'name' },
+    { label: 'Category', name: 'category' },
+    { label: 'Views', name: 'views' }
+  ]
+};
