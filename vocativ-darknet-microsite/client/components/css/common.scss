@@ -4,6 +4,11 @@
 
 html > body {
   font-family: $font-stack;
+
+  // Common font-sizes
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.17rem; }
 }
 
 // Links
@@ -20,4 +25,12 @@ img {
 
   width: 100%;
   height: auto;
+}
+
+.voc-video-overlay {
+  @include pin-top-left; // Assumes parent has position: relative
+  @include bgimage;
+  background-image: url("/images/vocativ-video-icon.svg");
+  background-size: 78px;
+  @include square(100%);
 }

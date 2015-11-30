@@ -36,3 +36,30 @@
   align-items: center;
   justify-content: center;
 }
+
+// Position
+
+@mixin pin-top-left($padding: 0) {
+  position: absolute;
+  top: $padding;
+  left: $padding;
+}
+
+@mixin pin-top-right($padding: 0) {
+  position: absolute;
+  top: $padding;
+  right: $padding;
+}
+
+// Dimensioning
+
+@mixin dim($width, $height: false) {
+  width: $width;
+
+  @if $height { height: $height; }
+  @else { height: $width; }
+}
+
+@mixin square($dim) {
+  @include dim($dim);
+}

@@ -1,8 +1,7 @@
-App = React.createClass({
+Home = React.createClass({
   render() {
     return (
-      <div id="container">
-        <div>Hello</div>
+      <div className="home">
         <EpisodesLibrary />
       </div>
     );
