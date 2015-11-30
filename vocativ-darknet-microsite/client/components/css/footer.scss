@@ -3,11 +3,36 @@
 $backgroundColor: $BLACK;
 $textColor: $GRAY;
 
-.footer {
+.footer-container {
   background: $backgroundColor;
   color: $textColor;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  .footer {
+    max-width: $maxContentWidth;
+    margin: 0 auto;
+    padding: 2rem 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .logo {
+      width: 15rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .menu {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+
+      .menu-item {
+        margin: 0 1.3rem;
+      }
+    }
+
+    .copyright {
+      font-size: 1.2rem;
+    }
+  }
 }
