@@ -58,7 +58,13 @@ Episode = React.createClass({
         </div>
 
         <div className="episode-articles">
-          {this.renderArticles()}
+          <div className="header">
+            <div className="episode-name">Episode {this.data.episode.number} // {this.data.episode.name}</div>
+            <div className="vocativ-notice">Read articles related to episode {this.data.episode.number} // {this.data.episode.name} on <a href="http://www.vocativ.com">vocativ.com</a></div>
+          </div>
+          <div className="articles-list">
+            {this.renderArticles()}
+          </div>
         </div>
 
         <div className="episode-videos">

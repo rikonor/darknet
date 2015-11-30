@@ -14,3 +14,10 @@ a {
     text-decoration: none;
   }
 }
+
+img {
+  @include bgimage;
+
+  width: 100%;
+  height: auto;
+}
