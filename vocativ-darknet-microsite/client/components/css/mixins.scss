@@ -23,3 +23,16 @@
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 }
+
+// Flex alignments
+
+@mixin flex-vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

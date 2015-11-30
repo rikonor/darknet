@@ -3,21 +3,35 @@
 $backgroundColor: $BLACK;
 $textColor: $GRAY;
 
-.nav {
+.nav-container {
   background: $backgroundColor;
   color: $textColor;
 
-  display: flex;
+  .nav {
+    max-width: $maxContentWidth;
+    margin: 0 auto;
+    padding: 0.5rem 0;
 
-  .logos {
-    flex: 1;
-    display: flex;
-    justify-content: space-between;
+    @include flex-vertical-center;
 
-    font-size: 2rem;
+    .logos {
+      flex: 1;
+      @include flex-vertical-center;
+      justify-content: space-between;
+
+      font-size: 2rem;
+    }
+
+    .social {
+      @include flex-vertical-center;
+
+      .fa {
+        @include flex-center;
+        font-size: 1.8rem;
+        width: 2rem;
+        margin-left: 0.5rem;
+      }
+    }
   }
 
-  .social {
-
-  }
 }
