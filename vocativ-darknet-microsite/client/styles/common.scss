@@ -20,6 +20,8 @@ a {
   }
 }
 
+// Images
+
 img {
   @include bgimage;
 
@@ -27,10 +29,21 @@ img {
   height: auto;
 }
 
+// Video image overlay (play button)
+
 .voc-video-overlay {
   @include pin-top-left; // Assumes parent has position: relative
   @include bgimage;
   background-image: url("/images/vocativ-video-icon.svg");
   background-size: 78px;
   @include square(100%);
+}
+
+// Curtain
+
+.curtain-on {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
 }

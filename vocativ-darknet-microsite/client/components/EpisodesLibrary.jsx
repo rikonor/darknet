@@ -11,6 +11,15 @@ EpisodesLibrary = React.createClass({
   },
 
   renderEpisodes() {
+    // Mock some more episodes
+    this.data.episodes = MultiplyArray(10, this.data.episodes);
+    // And randomize their keys
+    this.data.episodes = _.map(this.data.episodes, (episode) => {
+      var newEpisode = _.clone(episode);
+      newEpisode._id = Random.id();
+      return newEpisode;
+    });
+
     return this.data.episodes.map((episode) => {
       return <LibraryEpisode key={episode._id} episode={episode} />;
     });
