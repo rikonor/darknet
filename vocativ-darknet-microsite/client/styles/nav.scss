@@ -4,13 +4,20 @@ $backgroundColor: $BLACK;
 $textColor: $GRAY;
 
 .nav-container {
-  background: $backgroundColor;
+  background: rgba($backgroundColor, 0.9);
   color: $textColor;
+
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  height: $navHeight;
 
   .nav {
     max-width: $maxContentWidth;
     margin: 0 auto;
     padding: 0.5rem 0;
+    height: 100%;
+    box-sizing: border-box;
 
     @include flex-vertical-center;
 
