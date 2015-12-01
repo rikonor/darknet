@@ -1,15 +1,17 @@
 @import "shared";
 
 $backgroundColor: $BLACK;
+$backgroundTransparency: 0.9;
 $textColor: $GRAY;
 
 .nav-container {
-  background: rgba($backgroundColor, 0.9);
+  background: rgba($backgroundColor, $backgroundTransparency);
   color: $textColor;
+  box-shadow: 0 1px 20px rgba($backgroundColor, 0.8);
 
   position: fixed;
   width: 100%;
-  z-index: 1;
+  z-index: $navZIndex;;
   height: $navHeight;
 
   .nav {

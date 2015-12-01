@@ -6,6 +6,7 @@ $textColor: $GRAY;
 .footer-container {
   background: $backgroundColor;
   color: $textColor;
+  box-shadow: 0 1px 20px rgba($backgroundColor, 0.8);
 
   .footer {
     max-width: $maxContentWidth;

@@ -53,6 +53,11 @@
 
 // Dimensioning
 
+@mixin fill-screen {
+  width: 100vw;
+  height: 100vh;
+}
+
 @mixin dim($width, $height: false) {
   width: $width;
 

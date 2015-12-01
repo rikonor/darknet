@@ -38,12 +38,3 @@ img {
   background-size: 78px;
   @include square(100%);
 }
-
-// Curtain
-
-.curtain-on {
-  position: fixed;
-  width: 100%;
-  left: 0;
-  top: 0;
-}

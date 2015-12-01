@@ -1,0 +1,14 @@
+@import "shared";
+
+$shadowColor: $BLACK;
+
+.curtain {
+  @include pin-top-left;
+  @include fill-screen;
+  z-index: $curtainZIndex;
+  box-shadow: 0 1px 20px rgba($shadowColor, 0.8);
+
+  .curtain-image img {
+    height: 100vh;
+  }
+}

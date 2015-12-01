@@ -1,6 +1,6 @@
 FlowRouter.route('/', {
   action() {
-    ReactLayout.render(MainLayout, { content: <Home /> });
+    ReactLayout.render(HomeLayout, { content: <Home /> });
   }
 });
 

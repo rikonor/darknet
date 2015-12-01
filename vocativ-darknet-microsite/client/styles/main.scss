@@ -24,3 +24,13 @@ $textColor: $WHITE;
     }
   }
 }
+
+// Curtain rules
+.main-layout.curtain-on {
+  min-height: calc(2 * 100vh);
+
+  .main-content-container {
+    @include pin-top-left;
+    position: fixed;
+  }
+}
