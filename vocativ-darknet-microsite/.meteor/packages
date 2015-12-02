@@ -23,3 +23,8 @@ fourseven:scss
 check
 fortawesome:fontawesome
 random
+meteorhacks:npm
+
+
+npm-container
+cosmos:browserify
