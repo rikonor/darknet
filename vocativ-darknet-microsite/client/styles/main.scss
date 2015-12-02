@@ -29,7 +29,7 @@ $textColor: $WHITE;
 
 // Curtain rules
 .main-layout.curtain-on {
-  min-height: calc(3 * 100vh);
+  min-height: calc(3.5 * 100vh);
 
   .main-content-container {
     @include pin-top-left;
