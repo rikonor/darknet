@@ -36,4 +36,9 @@ $scrollBackgroundColor: $BLACK;
     &.left { @include pin-top-left; }
     &.right { @include pin-top-right; }
   }
+
+  // Hide the scroll arrows when mouse is out of gallery
+  &:not(:hover) {
+    .scroll { display: none; }
+  }
 }
