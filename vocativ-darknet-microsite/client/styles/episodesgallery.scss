@@ -1,0 +1,39 @@
+@import "shared";
+
+$backgroundColor: $DARKISHGRAY;
+$scrollBackgroundColor: $BLACK;
+
+.episodes-mini-gallery {
+  background: $backgroundColor;
+
+  // Make it span the whole width of the screen
+  position: relative;
+  width: 100vw;
+  left: calc(-50vw + 50%);
+
+  .episodes {
+    padding: 1rem 0;
+
+    display: flex;
+    overflow-x: scroll;
+
+    .gallery-episode {
+      flex: 1 0 percentage(1/6);
+
+      padding-right: 1.5rem;
+      &:first-child { padding-left: 1.5rem; }
+    }
+  }
+
+  .scroll {
+    height: 100%;
+    background: rgba($scrollBackgroundColor, 0.4);
+
+    font-size: 5rem;
+    @include flex-vertical-center;
+
+    i.fa { padding: 0.75rem; }
+    &.left { @include pin-top-left; }
+    &.right { @include pin-top-right; }
+  }
+}

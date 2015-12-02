@@ -14,11 +14,21 @@ MultiplyArray = function(nCopies, arr) {
   return result;
 };
 
-// Toggle curtain
-TurnCurtainOn = function() {
-  
-};
+/*
+  mockEpisodes - Example
 
-TurnCurtainOff = function() {
+  Input: an example episode
+  Output: An array of similar episodes with random _ids
+*/
 
+mockEpisodes = function(episode) {
+  // clone episode
+  let mockedEpisodes = MultiplyArray(10, [episode]);
+
+  // randomize the keys
+  return _.map(mockedEpisodes, (episode) => {
+    var newEpisode = _.clone(episode);
+    newEpisode._id = Random.id();
+    return newEpisode;
+  });
 };

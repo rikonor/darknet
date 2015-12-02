@@ -68,3 +68,16 @@
 @mixin square($dim) {
   @include dim($dim);
 }
+
+// Selections
+@mixin all-but-first($prop, $val) {
+  &:not(:first-child) {
+    #{$prop}: $val;
+  }
+}
+
+@mixin all-but-last($prop, $val) {
+  &:not(:last-child) {
+    #{$prop}: $val;
+  }
+}
