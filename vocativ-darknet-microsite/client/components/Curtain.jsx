@@ -1,7 +1,7 @@
 Curtain = React.createClass({
   getDefaultProps() {
     return {
-      bgImage: "/images/curtain.jpg"
+      bgImage: "/images/curtain.png"
     };
   },
 
