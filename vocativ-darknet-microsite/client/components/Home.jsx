@@ -6,8 +6,12 @@ HomeLayout = React.createClass({
     };
   },
 
-  toggleCurtain() {
-    setState({curtainActive: ! this.state.curtainActive});
+  curtainOn() {
+    if (!this.state.curtainActive) this.setState({curtainActive: true});
+  },
+
+  curtainOff() {
+    if (this.state.curtainActive) this.setState({curtainActive: false});
   },
 
   render() {
@@ -19,7 +23,7 @@ HomeLayout = React.createClass({
     return (
       <div className={mainLayoutClasses}>
         <Nav />
-        <Curtain />
+        <Curtain curtainOn={this.curtainOn} curtainOff={this.curtainOff} />
         <div className="main-content-container">
           <div className="main-content">
             {this.props.content}
@@ -42,29 +46,33 @@ Home = React.createClass({
 });
 
 var Curtain = React.createClass({
-  getInitialState() {
-    // $(document.body).addClass('under');
-    //
-    // $(window).on('scroll', function(){
-    //     if(window.pageYOffset >= $('.curtain').height()){
-    //         $(document.body).removeClass('under');
-    //     }
-    //     else if(!$(document.body).hasClass('under')){
-    //         $(document.body).addClass('under');
-    //     }
-    // })
-
+  getDefaultProps() {
     return {
-      active: true,
       bgImage: "/images/curtain.jpg"
     };
   },
 
+  isCurtainVisible() {
+    return window.pageYOffset <= this.refs.curtain.clientHeight;
+  },
+
+  handleScroll() {
+    let _ = this.isCurtainVisible() ? this.props.curtainOn() : this.props.curtainOff();
+  },
+
+  componentDidMount: function() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+
+  componentWillUnmount: function() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+
   render() {
     return (
-      <div className="curtain">
+      <div className="curtain" ref="curtain">
         <div className="curtain-image">
-          <img src={this.state.bgImage}></img>
+          <img src={this.props.bgImage}></img>
         </div>
       </div>
     );

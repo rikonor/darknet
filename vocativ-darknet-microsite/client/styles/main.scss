@@ -17,6 +17,8 @@ $textColor: $WHITE;
     background: $backgroundColor;
     color: $textColor;
 
+    width: 100vw;
+
     .main-content {
       max-width: $maxContentWidth;
       margin: 0 auto;
@@ -27,10 +29,18 @@ $textColor: $WHITE;
 
 // Curtain rules
 .main-layout.curtain-on {
-  min-height: calc(2 * 100vh);
+  min-height: calc(3 * 100vh);
 
   .main-content-container {
     @include pin-top-left;
     position: fixed;
+  }
+}
+
+.main-layout:not(.curtain-on) {
+  .main-content-container {
+    .home {
+      margin-top: 100vh;
+    }
   }
 }
