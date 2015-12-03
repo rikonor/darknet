@@ -26,40 +26,49 @@ EpisodesGalleryLoader = React.createClass({
 });
 
 EpisodesGallery = React.createClass({
-  scroll(dir) {
-    const SPEED = 0.4;
-    const EASING = "ease";
+  initScrollData() {
+    this.scrollData = {};
 
-    var scrollParent = $(this.refs.episodes);
-    var targetColl = scrollParent.find(".gallery-episode");
-    var tFirst = targetColl.first();
-    var tLast = targetColl.last();
+    this.scrollData.SPEED = 0.4;
+    this.scrollData.EASING = "ease";
 
-    var currTarget = (dir === LEFT) ? tFirst : tLast;
-    this.setState({currTarget: currTarget});
+    this.scrollData.scrollParent = $(this.refs.episodes);
+    this.scrollData.targetColl = this.scrollData.scrollParent.find(".gallery-episode");
+    this.scrollData.tFirst = this.scrollData.targetColl.first();
+    this.scrollData.tLast = this.scrollData.targetColl.last();
 
     // Need to get a single speed so the distance from your target should
     // decide the duration (duration = speed)
-    var scrollParentWidth = scrollParent.width();
-    var targetWidth = tFirst.width();
-    var tFirstDist = Math.abs(tFirst.position().left);
-    var tLastDist  = Math.abs(tLast.position().left);
+    this.scrollData.scrollParentWidth = this.scrollData.scrollParent.width();
+    this.scrollData.targetWidth = this.scrollData.tFirst.width();
+  },
+
+  componentDidMount() {
+    this.initScrollData();
+  },
+
+  scroll(dir) {
+    var currTarget = (dir === LEFT) ? this.scrollData.tFirst : this.scrollData.tLast;
+    this.setState({currTarget: currTarget});
+
+    let tFirstDist = Math.abs(this.scrollData.tFirst.position().left);
+    let tLastDist  = Math.abs(this.scrollData.tLast.position().left);
 
     // Assuming constant speed let's find the duration and offset to feed `velocity`
     // This is just a simple `x = v * t` calculation
-    const DURATION = (dir === LEFT) ? (tFirstDist / SPEED) : ((tLastDist + targetWidth - scrollParentWidth) / SPEED);
+    const DURATION = (dir === LEFT) ? (tFirstDist / this.scrollData.SPEED) : ((tLastDist + this.scrollData.targetWidth - this.scrollData.scrollParentWidth) / this.scrollData.SPEED);
     // Sorry for the magic number (24) - it's the right padding for the .gallery-episode elements
-    var currOffset = ((dir === LEFT) ? 0 : (-scrollParentWidth + targetWidth + 24)) + "px";
+    var currOffset = ((dir === LEFT) ? 0 : (-this.scrollData.scrollParentWidth + this.scrollData.targetWidth + 24)) + "px";
 
     // Scrolling with Velocity (instead of jQuery.animate)
     currTarget
       .velocity("stop")
       .velocity("scroll", {
         axis: "x",
-        container: scrollParent,
+        container: this.scrollData.scrollParent,
         duration: DURATION,
         offset: currOffset,
-        easing: EASING
+        easing: this.scrollData.EASING
       });
   },
 
