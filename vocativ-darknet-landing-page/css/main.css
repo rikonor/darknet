@@ -206,6 +206,11 @@ textarea {
   align-items: center;
 }
 
+.social-buttons a:link, .social-buttons a:visited, .social-buttons a:hover, .social-buttons a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
 .social-buttons .fa {
   font-size: 2rem;
 }
