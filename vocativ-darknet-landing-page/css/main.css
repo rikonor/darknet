@@ -128,6 +128,18 @@ textarea {
   margin-bottom: 40px;
 }
 
+.top-logos .logo {
+  width: 7.5rem;
+}
+
+.top-logos img {
+  background-size: 100%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+  width: 100%;
+  height: auto;
+}
+
 /* Text Content */
 
 .text-content {
