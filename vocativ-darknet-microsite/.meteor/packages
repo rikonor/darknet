@@ -29,3 +29,4 @@ meteorhacks:npm
 npm-container
 cosmos:browserify
 meteorhacks:fast-render
+meteorhacks:kadira

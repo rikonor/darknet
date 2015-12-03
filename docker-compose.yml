@@ -9,7 +9,7 @@ microsite:
   working_dir: /app
   environment:
     - MONGO_URL=mongodb://mongo:27017/meteor
-  command: meteor run
+  command: meteor run --settings settings-dev.json
 
 admin:
   image: vocativ/meteor

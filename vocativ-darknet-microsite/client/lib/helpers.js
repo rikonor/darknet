@@ -22,6 +22,8 @@ MultiplyArray = function(nCopies, arr) {
 */
 
 mockEpisodes = function(episode) {
+  if (!episode) return [];
+
   // clone episode
   let mockedEpisodes = MultiplyArray(10, [episode]);
 
