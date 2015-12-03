@@ -27,6 +27,10 @@ Curtain = React.createClass({
         <div className="curtain-image">
           <img src={this.props.bgImage}></img>
         </div>
+        <div className="curtain-text">
+          <div className="header">Darknet</div>
+          <div className="subheader">from SHOWTIME + VOCATIV</div>
+        </div>
       </div>
     );
   }

@@ -1,6 +1,9 @@
 @import "shared";
 
 $shadowColor: $BLACK;
+$curtainTextBackgroundColor: $BLACK;
+$textColor: $BEIGE;
+$curtainTextMaxWidth: 768px;
 
 .curtain {
   @include pin-top-left;
@@ -10,5 +13,29 @@ $shadowColor: $BLACK;
 
   .curtain-image img {
     height: 100vh;
+  }
+
+  .curtain-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+
+    max-width: $curtainTextMaxWidth;
+    margin: 0 auto;
+    padding: 30px 0;
+    color: $textColor;
+    background: rgba($curtainTextBackgroundColor, 0.5);
+    box-shadow: 0 1px 20px rgba($shadowColor, 0.8);
+
+    .header {
+      font-size: 8rem;
+      @include upper;
+    }
+
+    .subheader {
+      font-size: 2rem;
+    }
   }
 }

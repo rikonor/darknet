@@ -24,6 +24,12 @@
 	background-repeat: no-repeat;
 }
 
+// Text
+
+@mixin upper {
+  text-transform: uppercase;
+}
+
 // Flex alignments
 
 @mixin flex-vertical-center {
