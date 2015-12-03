@@ -107,7 +107,10 @@ textarea {
 }
 
 .content-box {
-  max-width: 630px;
+  width: 630px;
+  max-width: 100vw;
+  box-sizing: border-box;
+
   background: rgba(68, 77, 82, 0.7);
   /* box-shadow? */
 
@@ -153,6 +156,8 @@ textarea {
 
 .signup-form {
   margin-right: 1.5rem;
+  flex: 1;
+  display: flex;
 }
 
 .signup-form input {
@@ -166,7 +171,11 @@ textarea {
 
   box-sizing: border-box;
   height: 43px;
-  width: 320px;
+  flex: 1;
+
+  /* for iOS */
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
 }
 
 .signup-form input:focus {
@@ -223,6 +232,12 @@ textarea {
   height: auto;
 }
 
+@media (max-width: 680px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+
 @media (min-width: 680px) {
   .mobile-only {
     display: none;
@@ -234,10 +249,31 @@ textarea {
     background: #2D373B;
     display: flex;
     flex-direction: column;
+    height: auto;
+  }
+
+  .content-box {
+    padding: 30px;
+    background: none;
+  }
+
+  .announcement .line-1, .announcement .line-2 {
+    display: block;
   }
 
   .form-and-social-buttons-container {
     flex-wrap: wrap;
+  }
+
+  .invite-text-with-social {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .invite-text-with-social .invite-text {
+    margin-bottom: 0;
+    margin-right: 20px;
   }
 
   .form-and-social-buttons-container .signup-form {
@@ -251,7 +287,8 @@ textarea {
   }
 
   .copyright-notice {
-
+    position: initial;
+    margin-bottom: 15px;
   }
 }
 
