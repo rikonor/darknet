@@ -87,3 +87,11 @@
     #{$prop}: $val;
   }
 }
+
+// Element decoration
+
+@mixin bottom-divider($color, $margin) {
+  padding-bottom: $margin;
+  margin-bottom: $margin;
+  border-bottom: 1px solid $color;
+}

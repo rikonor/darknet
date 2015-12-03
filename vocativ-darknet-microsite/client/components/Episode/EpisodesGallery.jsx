@@ -1,7 +1,7 @@
-var LEFT = false;
-var RIGHT = true;
+const LEFT = false;
+const RIGHT = true;
 
-EpisodesGallery = React.createClass({
+EpisodesGalleryLoader = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
@@ -13,9 +13,22 @@ EpisodesGallery = React.createClass({
     };
   },
 
+  render() {
+    if (this.data.episodesLoading) {
+      return <div>Loading</div>;
+    }
+
+    // Make some more episodes
+    this.data.episodes = mockEpisodes(this.data.episodes[0]);
+
+    return <EpisodesGallery episodes={this.data.episodes} />;
+  }
+});
+
+EpisodesGallery = React.createClass({
   scroll(dir) {
-    var SPEED = 0.4;
-    var EASING = "ease";
+    const SPEED = 0.4;
+    const EASING = "ease";
 
     var scrollParent = $(this.refs.episodes);
     var targetColl = scrollParent.find(".gallery-episode");
@@ -34,7 +47,7 @@ EpisodesGallery = React.createClass({
 
     // Assuming constant speed let's find the duration and offset to feed `velocity`
     // This is just a simple `x = v * t` calculation
-    var DURATION = (dir === LEFT) ? (tFirstDist / SPEED) : ((tLastDist + targetWidth - scrollParentWidth) / SPEED);
+    const DURATION = (dir === LEFT) ? (tFirstDist / SPEED) : ((tLastDist + targetWidth - scrollParentWidth) / SPEED);
     // Sorry for the magic number (24) - it's the right padding for the .gallery-episode elements
     var currOffset = ((dir === LEFT) ? 0 : (-scrollParentWidth + targetWidth + 24)) + "px";
 
@@ -55,18 +68,12 @@ EpisodesGallery = React.createClass({
   },
 
   renderEpisodes() {
-    this.data.episodes = mockEpisodes(this.data.episodes[0]);
-
-    return this.data.episodes.map((episode) => {
+    return this.props.episodes.map((episode) => {
       return <GalleryEpisode key={episode._id} episode={episode} />;
     });
   },
 
   render() {
-    if (this.data.episodesLoading) {
-      return <div>Loading</div>;
-    }
-
     return (
       <div className="episodes-mini-gallery">
         <div className="scroll left" onMouseEnter={this.scroll.bind(this, LEFT)} onMouseLeave={this.scrollStop}><i className="fa fa-angle-left"></i></div>

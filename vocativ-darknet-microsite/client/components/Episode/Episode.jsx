@@ -71,7 +71,7 @@ Episode = React.createClass({
           {this.renderVideos()}
         </div>
 
-        <EpisodesGallery />
+        <EpisodesGalleryLoader />
       </div>
     );
   }

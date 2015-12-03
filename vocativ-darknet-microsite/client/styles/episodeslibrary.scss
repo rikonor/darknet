@@ -1,26 +1,38 @@
+@import "shared";
+
+$headerDividerColor: $DARKISHGRAY;
+
 .episodes-library {
   .header {
-
+    @include bottom-divider($headerDividerColor, 1.5rem);
   }
 
   .episodes {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 
     .library-episode {
-      flex: 1 0 percentage(1/3);
-      max-width: percentage(1/3);
+      flex: 1 0 28%;
+      max-width: 28%;
+
+      margin-bottom: 2.5rem;
 
       .image {
         position: relative;
+        margin-bottom: 1.2rem;
       }
 
       .name {
-
+        margin: 1.2rem 0;
+        padding-left: 3px;
+        font-size: 1.2rem;
+        @include upper;
       }
 
       .synopsis {
-
+        margin-top: 1.2rem;
+        line-height: 1.4rem;
       }
     }
   }
