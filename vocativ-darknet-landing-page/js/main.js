@@ -14,3 +14,14 @@ $(".facebook-link").click(function() {
 $(".twitter-link").click(function() {
   trackClick('Twitter Link');
 });
+
+var signupForm = $(".signup-form form");
+var thankYouNote = $(".thank-you-invite");
+var inviteText = $(".invite-text");
+
+signupForm.submit(function() {
+  signupForm[0].reset();
+  signupForm.parent().hide();
+  inviteText.hide();
+  thankYouNote.removeClass("hidden");
+});

@@ -219,6 +219,13 @@ textarea {
   outline: none;
 }
 
+.thank-you-invite {
+  font-family: 'FF DIN Pro Light';
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
 /* Social buttons */
 
 .social-buttons {
