@@ -19,7 +19,7 @@ EpisodesGalleryLoader = React.createClass({
     }
 
     // Make some more episodes
-    this.data.episodes = mockEpisodes(this.data.episodes[0]);
+    // this.data.episodes = mockEpisodes(this.data.episodes[0]);
 
     return <EpisodesGallery episodes={this.data.episodes} />;
   }

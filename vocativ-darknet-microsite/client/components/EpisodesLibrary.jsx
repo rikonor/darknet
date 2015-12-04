@@ -16,7 +16,7 @@ EpisodesLibraryLoader = React.createClass({
     }
 
     // Mock some more episodes
-    this.data.episodes = mockEpisodes(this.data.episodes[0]);
+    // this.data.episodes = mockEpisodes(this.data.episodes[0]);
 
     return <EpisodesLibrary episodes={this.data.episodes} />;
   }
