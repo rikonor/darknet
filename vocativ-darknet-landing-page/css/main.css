@@ -144,19 +144,21 @@ textarea {
 
 .text-content {
   text-align: center;
+  font-family: 'FF DIN Pro Light';
 }
 
 .text-content .description {
-  margin: 40px 0;
+  margin: 30px 0;
 }
 
 .text-content .announcement {
-  margin: 40px 0;
+  margin: 30px 0;
 }
 
 .social-container .invite-text {
   text-align: center;
   margin-bottom: 20px;
+  font-family: 'FF DIN Pro Light';
 }
 
 .form-and-social-buttons-container {
@@ -183,7 +185,7 @@ textarea {
   border: none;
   background: #D7D9D9;
   color: rgba(68, 77, 82, 0.8);
-  font-weight: 200;
+  font-family: 'FF DIN Pro Light';
   padding: 0.8rem;
 
   box-sizing: border-box;
@@ -207,6 +209,7 @@ textarea {
 .signup-form button {
   background: transparent;
   border: 2px solid #D7D9D9;
+  font-family: 'FF DIN Pro Light';
 
   height: 43px;
   padding: 0 35px;
@@ -238,6 +241,7 @@ textarea {
 
 .copyright-notice {
   color: rgba(255, 255, 255, 0.8);
+  font-family: 'FF DIN Pro Light';
 
   position: absolute;
   bottom: 5px;
