@@ -38,3 +38,9 @@ img {
   background-size: 78px;
   @include square(100%);
 }
+
+// Sections
+
+.section {
+  min-height: calc(100vh - #{$navHeight});
+}

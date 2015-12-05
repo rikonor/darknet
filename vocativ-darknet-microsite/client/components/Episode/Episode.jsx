@@ -1,4 +1,4 @@
-Episode = React.createClass({
+EpisodeLoader = React.createClass({
   mixins: [ReactMeteorData],
 
   propTypes: {
@@ -18,12 +18,20 @@ Episode = React.createClass({
     };
   },
 
-  renderArticles() {
-    if (this.data.articlesLoading) {
-      return <div>Loading articles</div>;
+  render() {
+    if (this.data.episodeLoading || this.data.articlesLoading || this.data.videosLoading) {
+      return <div>Loading</div>;
     }
 
-    let articleIds = this.data.episode.includedArticles || [];
+    return (
+      <Episode episode={this.data.episode} />
+    );
+  }
+});
+
+Episode = React.createClass({
+  renderArticles() {
+    let articleIds = this.props.episode.includedArticles || [];
     let articles = Articles.find({_id: {$in: articleIds}});
 
     return articles.map((article) => {
@@ -32,11 +40,7 @@ Episode = React.createClass({
   },
 
   renderVideos() {
-    if (this.data.videosLoading) {
-      return <div>Loading videos</div>;
-    }
-
-    let videoIds = this.data.episode.includedVideos || [];
+    let videoIds = this.props.episode.includedVideos || [];
     let videos = Videos.find({_id: {$in: videoIds}});
 
     return videos.map((video) => {
@@ -45,22 +49,18 @@ Episode = React.createClass({
   },
 
   render() {
-    if (this.data.episodeLoading) {
-      return <div>Loading</div>;
-    }
-
     return (
       <div className="episode">
         <div className="episode-info">
-          <div>Episode {this.data.episode.number} // {this.data.episode.name}</div>
-          <div>{this.data.episode.airingAt.toString()}</div>
-          <div>{this.data.episode.synopsis}</div>
+          <div>Episode {this.props.episode.number} // {this.props.episode.name}</div>
+          <div>{this.props.episode.airingAt.toString()}</div>
+          <div>{this.props.episode.synopsis}</div>
         </div>
 
         <div className="episode-articles">
           <div className="header">
-            <div className="episode-name">Episode {this.data.episode.number} // {this.data.episode.name}</div>
-            <div className="vocativ-notice">Read articles related to episode {this.data.episode.number} // {this.data.episode.name} on <a href="http://www.vocativ.com">vocativ.com</a></div>
+            <div className="episode-name">Episode {this.props.episode.number} // {this.props.episode.name}</div>
+            <div className="vocativ-notice">Read articles related to episode {this.props.episode.number} // {this.props.episode.name} on <a href="http://www.vocativ.com">vocativ.com</a></div>
           </div>
           <div className="articles-list">
             {this.renderArticles()}

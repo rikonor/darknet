@@ -39,7 +39,11 @@ Home = React.createClass({
   render() {
     return (
       <div className="home">
-        <EpisodesLibraryLoader />
+        <Page>
+          <Section><DataVisualization /></Section>
+          <Section><DataVisualization /></Section>
+          <Section><EpisodesLibraryLoader /></Section>
+        </Page>
       </div>
     );
   }
