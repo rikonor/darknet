@@ -8,5 +8,12 @@ $navArrowSize: 4rem;
     position: fixed;
     bottom: 20px;
     right: 50px;
+
+    transition: all 0.75s ease-in-out;
+    &.down { transform: rotate(0deg); }
+    &.up { transform: rotate(-180deg); }
+    &.right { transform: rotate(-90deg); }
+
+    &.up, &.right { position: absolute; }
   }
 }

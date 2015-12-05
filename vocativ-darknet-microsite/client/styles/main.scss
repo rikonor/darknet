@@ -13,6 +13,7 @@ $textColor: $WHITE;
   .main-content-container {
     flex: 1;
     padding-top: $navHeight;
+    position: relative;
 
     background: $backgroundColor;
     color: $textColor;

@@ -34,3 +34,17 @@ mockEpisodes = function(episode) {
     return newEpisode;
   });
 };
+
+/*
+  isElementInView - Example
+
+  Input: A jQuery element
+  Output: true if the element is even partly in view, otherwise false
+*/
+
+isElementInView = function(el) {
+  let elTop = el.offset().top;
+  let screenBottomPosition = $(document).scrollTop() + $(window).height();
+
+  return elTop <= screenBottomPosition;
+};

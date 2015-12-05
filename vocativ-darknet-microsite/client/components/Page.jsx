@@ -17,6 +17,8 @@ Page = React.createClass({
   as well as navigate to the next page when end of current page reached
 */
 var NavArrow = React.createClass({
+  // Init
+
   componentDidMount() {
     this.scrollData = {};
 
@@ -27,10 +29,16 @@ var NavArrow = React.createClass({
     let navHeight = $(".nav-container").height();
     let mainContentPadding = Number.parseInt($(".main-content").css("padding-top"));
     this.scrollData.topOffset = (-1) * (navHeight + mainContentPadding);
+
+    // Need a reference to the throttled function
+    this.scrollData.funcRefs = { updateArrowState: _.throttle(this.updateArrowState, 250) };
+    window.addEventListener('scroll', this.scrollData.funcRefs.updateArrowState);
   },
 
   componentWillUnmount: function() {
+    // Remove all the event handlers we created
     this.detechScrollHandler();
+    window.removeEventListener('scroll', this.scrollData.funcRefs.updateArrowState);
   },
 
   attachScrollHandler() {
@@ -40,6 +48,8 @@ var NavArrow = React.createClass({
   detechScrollHandler() {
     window.removeEventListener('wheel', this.cancelScroll);
   },
+
+  // Scroll Commands
 
   cancelScroll() {
     let currTarget = this.state.currTarget;
@@ -78,7 +88,9 @@ var NavArrow = React.createClass({
   },
 
   scrollToTop() {
-    console.log("scrolling to top");
+    let nextTarget = $(".page");
+
+    this.scrollTo(nextTarget);
   },
 
   scrollToNextSection() {
@@ -100,7 +112,41 @@ var NavArrow = React.createClass({
   },
 
   handleClick() {
-    this.scrollToNextSection();
+    if (this.state.arrowState === "down")
+      return this.scrollToNextSection();
+
+    if (this.state.arrowState === "up")
+      return this.scrollToTop();
+
+    // if (this.state.arrowState === "right")
+    //   return this.goTo();
+  },
+
+  // Arrow direction and location (fixed/absolute)
+
+  changeStateRight() {
+    this.setState({arrowState: "right"});
+    $(".nav-arrow").addClass("right").removeClass("down up");
+  },
+
+  changeStateDown() {
+    this.setState({arrowState: "down"});
+    $(".nav-arrow").addClass("down").removeClass("up right");
+  },
+
+  changeStateUp() {
+    this.setState({arrowState: "up"});
+    $(".nav-arrow").addClass("up").removeClass("down right");
+  },
+
+  updateArrowState() {
+    // Check if the footer is reached
+    let footer = $(".footer-container");
+    if (isElementInView(footer)) {
+      return this.changeStateUp();
+    } else {
+      return this.changeStateDown();
+    }
   },
 
   render() {
