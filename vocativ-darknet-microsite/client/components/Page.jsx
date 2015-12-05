@@ -51,7 +51,7 @@ var NavArrow = React.createClass({
     this.detechScrollHandler();
   },
 
-  scrollTo(target) {
+  scrollTo(target, customOffset) {
     this.setState({currTarget: target});
 
     target
@@ -59,11 +59,26 @@ var NavArrow = React.createClass({
       .velocity("scroll", {
         duration: this.scrollData.DURATION,
         easing: this.scrollData.EASING,
-        offset: this.scrollData.topOffset,
+        offset: customOffset || this.scrollData.topOffset,
         complete: this.detechScrollHandler
       });
 
     this.attachScrollHandler();
+  },
+
+  scrollToBottom() {
+    let nextTarget = $(".footer-container");
+
+    // Calculate offset from the bottom
+    let footerHeight = $(".footer-container").height();
+    let screenHeight = $(window).height();
+    let bottomOffset = (-1) * (screenHeight - footerHeight);
+
+    this.scrollTo(nextTarget, bottomOffset);
+  },
+
+  scrollToTop() {
+    console.log("scrolling to top");
   },
 
   scrollToNextSection() {
@@ -74,6 +89,9 @@ var NavArrow = React.createClass({
       let targetScrollPosition = $(t).offset().top;
       return currentScroll < (targetScrollPosition + this.scrollData.topOffset);
     });
+
+    if (!nextTarget)
+      return this.scrollToBottom();
 
     // Convert to jQuery object
     nextTarget = $(nextTarget);
