@@ -1,0 +1,27 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3136358, 2015-12-04T14:50:42-0500
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: FF DIN Web Pro Light by FontFont
+ * URL: http://www.myfonts.com/fonts/fontfont/ff-din/pro-light/
+ * Copyright: 2009 Albert-Jan Pool published by FSI FontShop International GmbH
+ * Licensed pageviews: 50,000
+ *
+ *
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=3136358
+ *
+ * © 2015 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/2fdb66");
+
+
+@font-face {font-family: 'FF DIN Pro Light';src: url('webfonts/2FDB66_0_0.eot');src: url('webfonts/2FDB66_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/2FDB66_0_0.woff2') format('woff2'),url('webfonts/2FDB66_0_0.woff') format('woff'),url('webfonts/2FDB66_0_0.ttf') format('truetype');}
