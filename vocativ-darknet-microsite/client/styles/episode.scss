@@ -14,4 +14,8 @@
       }
     }
   }
+
+  .page .nav-arrow {
+    bottom: calc(20px + #{$episodeGalleryHeight});
+  }
 }

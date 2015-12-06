@@ -36,6 +36,13 @@ $textColor: $WHITE;
     @include pin-top-left;
     position: fixed;
   }
+
+  .footer-container {
+    position: fixed;
+
+    // Push it down just enough so it's not visible
+    top: calc(100vh + 1px);
+  }
 }
 
 .main-layout:not(.curtain-on) {

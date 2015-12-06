@@ -45,6 +45,10 @@ EpisodesGallery = React.createClass({
 
   componentDidMount() {
     this.initScrollData();
+
+    // Need a reference to the throttled function
+    this.scrollData.funcRefs = { updateGalleryState: _.throttle(this.updateGalleryState, 250) };
+    window.addEventListener('scroll', this.scrollData.funcRefs.updateGalleryState);
   },
 
   scroll(dir) {
@@ -74,6 +78,24 @@ EpisodesGallery = React.createClass({
 
   scrollStop() {
     this.state.currTarget.velocity("stop");
+  },
+
+  changeStateNonFixed() {
+    $(".episodes-mini-gallery").addClass("non-fixed");
+  },
+
+  changeStateFixed() {
+    $(".episodes-mini-gallery").removeClass("non-fixed");
+  },
+
+  updateGalleryState() {
+    // Check if the footer is reached
+    let footer = $(".footer-container");
+    if (isElementInView(footer)) {
+      return this.changeStateNonFixed();
+    } else {
+      return this.changeStateFixed();
+    }
   },
 
   renderEpisodes() {

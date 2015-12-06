@@ -5,11 +5,18 @@ $scrollBackgroundColor: $BLACK;
 
 .episodes-mini-gallery {
   background: $backgroundColor;
+  height: $episodeGalleryHeight;
 
   // Make it span the whole width of the screen
-  position: relative;
-  width: 100vw;
-  left: calc(-50vw + 50%);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  &.non-fixed {
+    position: absolute;
+    width: 100vw;
+    left: calc(-50vw + 50%);
+  }
 
   .episodes {
     padding: 1rem 0;
