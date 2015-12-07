@@ -51,5 +51,6 @@ VideosAdminOptions = {
   tableColumns: [
     { label: 'Name', name: 'name' },
     { label: 'Views', name: 'views' }
-  ]
+  ],
+  routes: adminRoutesWaitOnOptions(['images'])
 };

@@ -60,5 +60,6 @@ ArticlesAdminOptions = {
     { label: 'Name', name: 'name' },
     { label: 'Category', name: 'category' },
     { label: 'Views', name: 'views' }
-  ]
+  ],
+  routes: adminRoutesWaitOnOptions(['images'])
 };

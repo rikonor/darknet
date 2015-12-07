@@ -6,14 +6,16 @@ isAdmin = function(userId) {
 
 // Given a list of subscription names return all of them
 multiSubscribe = function(subscriptions) {
-  return _.map(['articles', 'videos'], function(subName) {
+  return _.map(subscriptions, function(subName) {
     Meteor.subscribe(subName);
   });
 };
 
+// Helper for meteor-admin collection options
+// Subscribe a specific route to `subscriptions`
 adminRoutesWaitOnOptions = function(subscriptions) {
   var waitOnObj = {
-    waitOn: multiSubscribe.bind(subscriptions)
+    waitOn: multiSubscribe.bind(null, subscriptions)
   };
 
   return {

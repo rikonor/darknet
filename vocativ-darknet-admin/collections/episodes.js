@@ -71,13 +71,6 @@ Episodes.attachSchema(Schemas.Episodes);
 
 // Admin Panel options
 
-var routeOptions = adminRoutesWaitOnOptions([
-  'articles',
-  'videos'
-]);
-
-console.log(routeOptions);
-
 EpisodesAdminOptions = {
   icon: 'film',
   tableColumns: [
@@ -85,5 +78,9 @@ EpisodesAdminOptions = {
     { label: 'Name', name: 'name' },
     { label: 'Airing Date', name: 'airingAt' }
   ],
-  routes: routeOptions
+  routes: adminRoutesWaitOnOptions([
+    'articles',
+    'videos',
+    'images'
+  ])
 };
