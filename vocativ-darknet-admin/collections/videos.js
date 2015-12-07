@@ -46,8 +46,8 @@ Schemas.Videos = new SimpleSchema({
 Videos.attachSchema(Schemas.Videos);
 
 // Admin Panel options
-
 VideosAdminOptions = {
+  icon: 'video-camera',
   tableColumns: [
     { label: 'Name', name: 'name' },
     { label: 'Views', name: 'views' }

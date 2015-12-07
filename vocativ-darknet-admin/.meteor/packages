@@ -27,3 +27,7 @@ twbs:bootstrap
 fortawesome:fontawesome
 aldeed:autoform
 vocativ:admin
+cfs:standard-packages
+cfs:s3
+cfs:filesystem
+vocativ:autoform-file

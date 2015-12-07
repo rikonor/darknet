@@ -72,6 +72,7 @@ Episodes.attachSchema(Schemas.Episodes);
 // Admin Panel options
 
 EpisodesAdminOptions = {
+  icon: 'film',
   tableColumns: [
     { label: '#', name: 'number' },
     { label: 'Name', name: 'name' },

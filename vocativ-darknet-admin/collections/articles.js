@@ -55,6 +55,7 @@ Articles.attachSchema(Schemas.Articles);
 // Admin Panel options
 
 ArticlesAdminOptions = {
+  icon: 'newspaper-o',
   tableColumns: [
     { label: 'Name', name: 'name' },
     { label: 'Category', name: 'category' },
