@@ -31,8 +31,11 @@ var NavArrow = React.createClass({
     this.scrollData.topOffset = (-1) * (navHeight + mainContentPadding);
 
     // Need a reference to the throttled function
-    this.scrollData.funcRefs = { updateArrowState: _.throttle(this.updateArrowState, 250) };
+    this.scrollData.funcRefs = { updateArrowState: _.throttle(this.updateArrowState, 100) };
     window.addEventListener('scroll', this.scrollData.funcRefs.updateArrowState);
+
+    // Init component state
+    this.setState({arrowState: "down"});
   },
 
   componentWillUnmount: function() {

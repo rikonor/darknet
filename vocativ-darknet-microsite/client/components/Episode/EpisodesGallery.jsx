@@ -47,7 +47,7 @@ EpisodesGallery = React.createClass({
     this.initScrollData();
 
     // Need a reference to the throttled function
-    this.scrollData.funcRefs = { updateGalleryState: _.throttle(this.updateGalleryState, 250) };
+    this.scrollData.funcRefs = { updateGalleryState: _.throttle(this.updateGalleryState, 100) };
     window.addEventListener('scroll', this.scrollData.funcRefs.updateGalleryState);
   },
 
