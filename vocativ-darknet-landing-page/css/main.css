@@ -111,7 +111,8 @@ textarea {
   max-width: 100vw;
   box-sizing: border-box;
 
-  background: rgba(68, 77, 82, 0.7);
+  /*background: rgba(68, 77, 82, 0.7);*/ /* trying the darker one for now */
+  background: rgba(41, 45, 47, 0.7);
   /* box-shadow? */
 
   color: rgba(255, 255, 255, 0.8);
