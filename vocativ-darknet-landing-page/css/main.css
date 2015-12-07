@@ -320,6 +320,10 @@ textarea {
     flex: 1;
   }
 
+  .form-and-social-buttons-container .signup-form button {
+    padding: 0 25px;
+  }
+
   .copyright-notice {
     position: initial;
     margin-bottom: 15px;
