@@ -71,6 +71,13 @@ Episodes.attachSchema(Schemas.Episodes);
 
 // Admin Panel options
 
+var routeOptions = adminRoutesWaitOnOptions([
+  'articles',
+  'videos'
+]);
+
+console.log(routeOptions);
+
 EpisodesAdminOptions = {
   icon: 'film',
   tableColumns: [
@@ -78,9 +85,5 @@ EpisodesAdminOptions = {
     { label: 'Name', name: 'name' },
     { label: 'Airing Date', name: 'airingAt' }
   ],
-  routes: {
-    new: { waitOn: function () { return _.map(['articles', 'videos'], function(subName) { Meteor.subscribe(subName); }); } },
-    view: { waitOn: function () { return _.map(['articles', 'videos'], function(subName) { Meteor.subscribe(subName); }); } },
-    edit: { waitOn: function () { return _.map(['articles', 'videos'], function(subName) { Meteor.subscribe(subName); }); } }
-  }
+  routes: routeOptions
 };
