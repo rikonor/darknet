@@ -29,6 +29,18 @@ $textColor: $BEIGE;
       justify-content: space-between;
 
       font-size: 2rem;
+
+      .logo {
+        $logoHeight: 0.8 * $navHeight;
+
+        height: $logoHeight;
+        width: 2 * $logoHeight;
+
+        a {
+          @include dim(100%);
+          @include flex-center;
+        }
+      }
     }
 
     .social {

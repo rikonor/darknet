@@ -1,11 +1,15 @@
 @import "mixins";
 
-// Fonts
+/*
+  Fonts
+*/
 
-@import url("http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900");
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:400,100,300,500,700,900");
+// FF DIN PRO Light
+@import url("//hello.myfonts.net/count/2fdb66"); // This is required for the font to work (I think)
+@font-face {font-family: 'FF DIN Pro Light';src: url('fonts/2FDB66_0_0.eot');src: url('fonts/2FDB66_0_0.eot?#iefix') format('embedded-opentype'),url('fonts/2FDB66_0_0.woff2') format('woff2'),url('fonts/2FDB66_0_0.woff') format('woff'),url('fonts/2FDB66_0_0.ttf') format('truetype');}
 
-$font-stack: 'Roboto', 'Open Sans';
+$font-stack: 'FF DIN PRO Light', 'Open Sans';
 
 // Colors
 
