@@ -37,6 +37,13 @@ Schemas.Articles = new SimpleSchema({
       placeholder: "Image URL"
     }
   },
+  imageTemp: {
+    type: String,
+    optional: true,
+    autoform: {
+      type: 'imageGallery'
+    }
+  },
   views: {
     type: Number,
     autoValue: function () {

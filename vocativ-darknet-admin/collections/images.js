@@ -14,7 +14,12 @@ Schemas.Images = new SimpleSchema({
       type: 'fileUpload',
       collection: 'ImagesRaw',
       accept: 'image/*',
-      label: 'Choose file'
+      label: 'Choose file',
+      onBeforeInsert: function(fileObj) {
+        // TODO: Sanitize filename, use whichever filename you want, etc
+        // fileObj.name = ""
+        return fileObj;
+      }
     }
   }
 });

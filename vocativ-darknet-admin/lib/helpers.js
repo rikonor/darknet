@@ -24,3 +24,22 @@ adminRoutesWaitOnOptions = function(subscriptions) {
     edit: waitOnObj
   };
 };
+
+// Helper for getting associated ids and then re-associating
+getAssociatedEntities = function(sourceObjects, idField, targetCollection) {
+  var targetIds = _.pluck(sourceObjects, idField);
+  var targets = targetCollection.find({_id: {$in: targetIds}}).fetch();
+
+  return targets;
+};
+
+// Helper for embedding an object inside of another
+embedObjects = function(parentObjects, childObjects, fieldName) {
+  return _.map(_.zip(parentObjects, childObjects), function(pair) {
+    var parent = pair[0];
+    var child = pair[1];
+
+    parent[fieldName] = child;
+    return parent;
+  });
+};
