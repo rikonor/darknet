@@ -5,7 +5,6 @@
 AutoForm.addInputType('imageGallery', {
   template: 'afImageGallery',
   valueOut: function() {
-    console.log("returning", this.val());
     return this.val();
   }
 });
@@ -18,6 +17,16 @@ AutoForm.addInputType('imageGallery', {
 Template.afImageGallery.onCreated(function() {
   this.selectedImage = new ReactiveVar(null);
   this.currentQuery = new ReactiveVar(null);
+
+  this.childImages = [];
+
+  this.addImage = function(imageTemplate) {
+    this.childImages.push(imageTemplate);
+  };
+
+  this.getAllImages = function() {
+    return this.childImages;
+  };
 
   this.setSelectedImage = function(image) {
     this.selectedImage.set(image);
@@ -76,8 +85,23 @@ Template.afImageGallery.events({
 // onCreated
 Template.afImageGalleryImage.onCreated(function(a) {
   this.gallery = this.parent();
+  this.gallery.addImage(this);
 
   this.isSelected = new ReactiveVar(false);
+
+  this.setSelecetd = function() {
+    // deselect all other images
+    var allImages = this.gallery.getAllImages();
+    _.each(allImages, function(image) {
+      image.setUnselected();
+    });
+
+    this.isSelected.set(true);
+  };
+
+  this.setUnselected = function() {
+    this.isSelected.set(false);
+  };
 });
 
 // helpers
@@ -98,6 +122,6 @@ Template.afImageGalleryImage.events({
     t.gallery.setSelectedImage(t.data);
 
     // Set the selected status
-    t.isSelected.set(true);
+    t.setSelecetd();
   }
 });
