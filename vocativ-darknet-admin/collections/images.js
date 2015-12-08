@@ -8,6 +8,7 @@ Schemas.Images = new SimpleSchema({
       placeholder: "Image name"
     }
   },
+  createdAt: Schemas.createdAt,
   image: {
     type: String,
     autoform: {

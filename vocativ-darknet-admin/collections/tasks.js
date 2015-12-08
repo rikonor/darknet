@@ -8,18 +8,7 @@ Schemas.Tasks = new SimpleSchema({
       placeholder: "What's your task?"
     }
   },
-  createdAt: {
-    type: Date,
-    label: 'Date',
-    autoValue: function () {
-      if (this.isInsert) {
-        return new Date();
-      }
-    },
-    autoform: {
-      type: "hidden"
-    }
-  },
+  createdAt: Schemas.createdAt,
   owner: {
     type: String,
     regEx: SimpleSchema.RegEx.Id,

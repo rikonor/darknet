@@ -51,7 +51,11 @@ Template.afImageGallery.helpers({
   },
 
   images: function(query) {
+    // default query
     var dbQuery = {};
+    var dbOptions = {
+      sort: { createdAt: -1 }
+    };
 
     // Search the images based on the query
     var currentQuery = Template.instance().currentQuery.get();
@@ -59,7 +63,12 @@ Template.afImageGallery.helpers({
       dbQuery.name = new RegExp(currentQuery, 'i');
     }
 
-    var images = Images.find(dbQuery).fetch();
+    if (_.isEmpty(dbQuery)) {
+      // Don't return the whole db
+      dbOptions.limit = 10;
+    }
+
+    var images = Images.find(dbQuery, dbOptions).fetch();
     var rawImages = getAssociatedEntities(images, 'image', ImagesRaw);
     images = embedObjects(images, rawImages, 'rawImage');
 
