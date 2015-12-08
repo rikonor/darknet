@@ -1,6 +1,7 @@
 Episodes = new Mongo.Collection("episodes");
 
 Schemas.Episodes = new SimpleSchema({
+  createdAt: Schemas.createdAt,
   number: {
     // Validate episode number, cant have duplicates
     type: String,

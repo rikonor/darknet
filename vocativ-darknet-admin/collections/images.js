@@ -1,6 +1,7 @@
 Images = new Meteor.Collection("images");
 
 Schemas.Images = new SimpleSchema({
+  createdAt: Schemas.createdAt,
   name: {
     type: String,
     max: 60,
@@ -8,7 +9,6 @@ Schemas.Images = new SimpleSchema({
       placeholder: "Image name"
     }
   },
-  createdAt: Schemas.createdAt,
   image: {
     type: String,
     autoform: {

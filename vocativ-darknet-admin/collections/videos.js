@@ -1,6 +1,7 @@
 Videos = new Mongo.Collection("videos");
 
 Schemas.Videos = new SimpleSchema({
+  createdAt: Schemas.createdAt,
   url: {
     type: String,
     label: "URL",

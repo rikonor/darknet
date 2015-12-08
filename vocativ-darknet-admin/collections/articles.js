@@ -1,6 +1,7 @@
 Articles = new Meteor.Collection("articles");
 
 Schemas.Articles = new SimpleSchema({
+  createdAt: Schemas.createdAt,
   url: {
     type: String,
     label: "URL",
