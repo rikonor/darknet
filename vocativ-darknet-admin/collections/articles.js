@@ -39,7 +39,7 @@ Schemas.Articles = new SimpleSchema({
   },
   imageTemp: {
     type: String,
-    optional: true,
+    // optional: true,
     autoform: {
       type: 'imageGallery'
     }

@@ -5,9 +5,8 @@
 AutoForm.addInputType('imageGallery', {
   template: 'afImageGallery',
   valueOut: function() {
-    console.log("valueOut()");
-    console.log(this);
-    return 'Hello';
+    console.log("returning", this.val());
+    return this.val();
   }
 });
 
@@ -21,24 +20,25 @@ Template.afImageGallery.onCreated(function() {
   this.currentQuery = new ReactiveVar(null);
 
   this.setSelectedImage = function(image) {
-    console.log("changing image to:", image);
     this.selectedImage.set(image);
   };
 
   this.setCurrentQuery = function(query) {
-    console.log("updating query");
     this.currentQuery.set(query);
   };
 });
 
 // helpers
 Template.afImageGallery.helpers({
-  value: function() {
-    return "hello";
+  selectedValue: function() {
+    var selectedValue = Template.instance().selectedImage.get();
+    if (selectedValue) {
+      return selectedValue._id;
+    }
   },
 
   schemaKey: function() {
-    // return this.atts['data-schema-key'];
+    return this.atts['data-schema-key'];
   },
 
   images: function(query) {
