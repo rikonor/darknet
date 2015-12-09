@@ -40,7 +40,13 @@ Home = React.createClass({
     return (
       <div className="home">
         <Page>
-          <Section><DataVisualization /></Section>
+          <Section>
+            <div className="video">
+              <div>Episode CRUSH Trailer</div>
+              <iframe width="100%" height="650" src="https://www.youtube.com/embed/pzN4WGPC4kc" frameBorder="0" allowFullScreen></iframe>
+            </div>
+          </Section>
+
           <Section><EpisodesLibraryLoader /></Section>
         </Page>
       </div>

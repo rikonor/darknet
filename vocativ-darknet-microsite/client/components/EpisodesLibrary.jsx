@@ -52,7 +52,6 @@ var LibraryEpisode = React.createClass({
       <div className="library-episode">
         <div className="image" onClick={this.handleImageClick}>
           <a href={this.getEpisodePath()}>
-            <div className="voc-video-overlay"></div>
             <img src={this.props.episode.imageUrl()}></img>
           </a>
         </div>
