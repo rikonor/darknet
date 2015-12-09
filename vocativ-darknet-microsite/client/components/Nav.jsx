@@ -8,8 +8,8 @@ Nav = React.createClass({
             <div className="logo darknet"><a href="/"><img src="/images/darknet-logo.svg" /></a></div>
           </div>
           <div className="social">
-            <i className="fa fa-facebook"></i>
-            <i className="fa fa-twitter"></i>
+            <a className="facebook" href="https://www.facebook.com/vocativ" target="_blank"><i className="fa fa-facebook"></i></a>
+            <a className="twitter" href="https://www.twitter.com/vocativ" target="_blank"><i className="fa fa-twitter"></i></a>
           </div>
         </div>
       </div>
