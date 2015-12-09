@@ -27,7 +27,12 @@ Schemas.Episodes = new SimpleSchema({
   },
   airingAt: {
     type: Date,
-    label: 'Airing date'
+    label: 'Airing date',
+    autoform: {
+      afFieldInput: {
+        type: "bootstrap-datetimepicker"
+      }
+    }
   },
   image: {
     type: String,
