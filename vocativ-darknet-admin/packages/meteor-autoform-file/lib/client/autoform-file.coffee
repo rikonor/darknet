@@ -76,11 +76,9 @@ Template.afFileUpload.helpers
 
 Template.afFileUpload.events
   'click .js-af-select-file': (e, t) ->
-    console.log "choosing file"
     t.$('.js-file').click()
 
   'change .js-file': (e, t) ->
-    console.log "file was changed"
     t._insert e.target.files[0]
 
   "dragover .js-af-select-file": (e) ->
