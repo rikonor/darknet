@@ -2,29 +2,24 @@ microsite:
   image: vocativ/meteor
   ports:
     - "3000:3000"
-  links:
-    - mongo:mongo
   volumes:
     - ./vocativ-darknet-microsite:/app
   working_dir: /app
   environment:
-    - MONGO_URL=mongodb://mongo:27017/meteor
+    - MONGO_URL=mongodb://darknet:darknet@ds063124.mongolab.com:63124/darknet
+    - AWS_ACCESS_KEY_ID=AKIAJKXPTBGJTTBF7SNA
+    - AWS_SECRET_ACCESS_KEY=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
   command: meteor run --settings settings-dev.json
 
 admin:
   image: vocativ/meteor
   ports:
     - "3001:3000"
-  links:
-    - mongo:mongo
   volumes:
     - ./vocativ-darknet-admin:/app
   working_dir: /app
   environment:
-    - MONGO_URL=mongodb://mongo:27017/meteor
+    - MONGO_URL=mongodb://darknet:darknet@ds063124.mongolab.com:63124/darknet
+    - AWS_ACCESS_KEY_ID=AKIAJKXPTBGJTTBF7SNA
+    - AWS_SECRET_ACCESS_KEY=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
   command: meteor run
-
-mongo:
-  image: mongo
-  volumes:
-    - mongo:/data/db

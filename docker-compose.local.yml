@@ -1,0 +1,30 @@
+microsite:
+  image: vocativ/meteor
+  ports:
+    - "3000:3000"
+  links:
+    - mongo:mongo
+  volumes:
+    - ./vocativ-darknet-microsite:/app
+  working_dir: /app
+  environment:
+    - MONGO_URL=mongodb://mongo:27017/meteor
+  command: meteor run --settings settings-dev.json
+
+admin:
+  image: vocativ/meteor
+  ports:
+    - "3001:3000"
+  links:
+    - mongo:mongo
+  volumes:
+    - ./vocativ-darknet-admin:/app
+  working_dir: /app
+  environment:
+    - MONGO_URL=mongodb://mongo:27017/meteor
+  command: meteor run
+
+mongo:
+  image: mongo
+  volumes:
+    - mongo:/data/db
