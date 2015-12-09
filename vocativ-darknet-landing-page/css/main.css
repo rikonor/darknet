@@ -99,7 +99,7 @@ textarea {
   width: 100vw;
   min-height: 100vh;
 
-  background: url(/img/curtain.jpg) no-repeat center center fixed;
+  background: url(../img/curtain.jpg) no-repeat center center fixed;
 
   position: relative;
   display: flex;

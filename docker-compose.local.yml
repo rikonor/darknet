@@ -7,8 +7,7 @@ microsite:
   volumes:
     - ./vocativ-darknet-microsite:/app
   working_dir: /app
-  environment:
-    - MONGO_URL=mongodb://mongo:27017/meteor
+  env_file: ./dev.env
   command: meteor run --settings settings-dev.json
 
 admin:
@@ -20,8 +19,7 @@ admin:
   volumes:
     - ./vocativ-darknet-admin:/app
   working_dir: /app
-  environment:
-    - MONGO_URL=mongodb://mongo:27017/meteor
+  env_file: ./dev.env
   command: meteor run
 
 mongo:
