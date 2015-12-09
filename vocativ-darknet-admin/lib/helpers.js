@@ -43,3 +43,37 @@ embedObjects = function(parentObjects, childObjects, fieldName) {
     return parent;
   });
 };
+
+/*
+  Helper for embedding children inside of parents
+  when the parents have the id of the child
+
+  example:
+
+  parents = [ {name: '1', childId: '5'}, {name: '2', childId: '1'}, {name: '3', childId: '6'} ]
+  children = [ {name: '1'}, {name: '5'}, {name: '6'} ]
+
+  `embedChildrenInParents(parents, 'childId', children, 'child')`
+
+  result should be:
+  parents = [
+  {name: '1', childId: '5', child: {name: '5'}},
+  {name: '2', childId: '1', child: {name: '1'}},
+  {name: '3', childId: '6', child: {name: '6'}}
+  ]
+*/
+
+embedChildrenInParents = function(parentObjects, idField, childObjects, fieldName) {
+  // Build a mapping of the children to themslves
+  var childKeys = {};
+  _.each(childObjects, (child) => {
+    childKeys[child._id] = child;
+  });
+
+  // Embed them into the parents
+  _.each(parentObjects, (parent) => {
+    parent[fieldName] = childKeys[parent[idField]];
+  });
+
+  return parentObjects;
+};
