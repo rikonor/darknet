@@ -28,8 +28,8 @@ Template.afImageGallery.onCreated(function() {
     return this.childImages;
   };
 
-  this.setSelectedImage = function(image) {
-    this.selectedImage.set(image);
+  this.setSelectedImage = function(imageId) {
+    this.selectedImage.set(imageId);
   };
 
   this.setCurrentQuery = function(query) {
@@ -42,7 +42,7 @@ Template.afImageGallery.helpers({
   selectedValue: function() {
     var selectedValue = Template.instance().selectedImage.get();
     if (selectedValue) {
-      return selectedValue._id;
+      return selectedValue;
     }
   },
 
@@ -51,17 +51,39 @@ Template.afImageGallery.helpers({
   },
 
   images: function(query) {
-    // default query
+    var gallery = Template.instance();
+
+    // default query (show the selected image and the query)
     var dbQuery = {};
-    var dbOptions = {
-      sort: { createdAt: -1 }
-    };
+
+    if (gallery.selectedImage.get()) {
+      dbQuery._id = gallery.selectedImage.get();
+    }
 
     // Search the images based on the query
-    var currentQuery = Template.instance().currentQuery.get();
+    var currentQuery = gallery.currentQuery.get();
     if (currentQuery) {
       dbQuery.name = new RegExp(currentQuery, 'i');
     }
+
+    // Even when filter is active, should still show the selected image
+    if (dbQuery._id && dbQuery.name) {
+      dbQuery = {
+        $or: [
+          { _id: dbQuery._id },
+          { name: dbQuery.name }
+        ]
+      };
+    }
+
+    // In any case, if no filter was inputted, just show everything
+    if (dbQuery._id && ! dbQuery.name) {
+      dbQuery = {};
+    }
+
+    var dbOptions = {
+      sort: { createdAt: -1 }
+    };
 
     if (_.isEmpty(dbQuery)) {
       // Don't return the whole db
@@ -70,7 +92,7 @@ Template.afImageGallery.helpers({
 
     var images = Images.find(dbQuery, dbOptions).fetch();
     var rawImages = getAssociatedEntities(images, 'image', ImagesRaw);
-    images = embedObjects(images, rawImages, 'rawImage');
+    images = embedChildrenInParents(images, 'image', rawImages, 'rawImage');
 
     return images;
   }
@@ -98,7 +120,10 @@ Template.afImageGalleryImage.onCreated(function(a) {
 
   this.isSelected = new ReactiveVar(false);
 
-  this.setSelecetd = function() {
+  this.setSelected = function() {
+    // Call setSelectedImage on parent
+    this.gallery.setSelectedImage(this.data._id);
+
     // deselect all other images
     var allImages = this.gallery.getAllImages();
     _.each(allImages, function(image) {
@@ -111,6 +136,16 @@ Template.afImageGalleryImage.onCreated(function(a) {
   this.setUnselected = function() {
     this.isSelected.set(false);
   };
+});
+
+Template.afImageGalleryImage.onRendered(function() {
+  // Check if this image is already selected
+  var t = this;
+  this.autorun(function() {
+    if (Template.parentData().value === t.data._id) {
+      t.setSelected();
+    }
+  });
 });
 
 // helpers
@@ -127,10 +162,6 @@ Template.afImageGalleryImage.helpers({
 // events
 Template.afImageGalleryImage.events({
   'click .image': function(e, t) {
-    // Call setSelectedImage on parent
-    t.gallery.setSelectedImage(t.data);
-
-    // Set the selected status
-    t.setSelecetd();
+    t.setSelected();
   }
 });
