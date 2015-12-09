@@ -9,3 +9,12 @@ if (Meteor.isServer) {
 if (Meteor.isClient) {
   Meteor.subscribe("episodes");
 }
+
+Episodes.helpers({
+  imageUrl: function() {
+    var imageId = this.image;
+    var image = Images.findOne(imageId);
+
+    return image.url();
+  }
+});

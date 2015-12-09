@@ -31,9 +31,8 @@ Schemas.Episodes = new SimpleSchema({
   },
   image: {
     type: String,
-    label: "Image URL",
     autoform: {
-      placeholder: "Image URL"
+      type: 'imageGallery'
     }
   },
   includedArticles: {
