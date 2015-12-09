@@ -48,6 +48,13 @@ Episode = React.createClass({
     });
   },
 
+  renderDataViz() {
+    let datavizId = this.props.episode.includedDataViz;
+    let dataviz = DataViz.findOne(datavizId);
+
+    return <DataVisualization dataviz={dataviz} />;
+  },
+
   render() {
     return (
       <div className="episode">
@@ -69,6 +76,12 @@ Episode = React.createClass({
               <div className="articles-list">
                 {this.renderArticles()}
               </div>
+            </div>
+          </Section>
+
+          <Section>
+            <div className="episode-dataviz">
+              {this.renderDataViz()}
             </div>
           </Section>
 

@@ -41,7 +41,6 @@ Home = React.createClass({
       <div className="home">
         <Page>
           <Section><DataVisualization /></Section>
-          <Section><DataVisualization /></Section>
           <Section><EpisodesLibraryLoader /></Section>
         </Page>
       </div>

@@ -63,6 +63,21 @@ Schemas.Episodes = new SimpleSchema({
         });
       }
     }
+  },
+  includedDataViz: {
+    type: String,
+    optional: true,
+    autoform: {
+      type: "select2",
+      options: function () {
+        return _.map(DataViz.find().fetch(), function(dataviz) {
+          return {
+            label: dataviz.name,
+            value: dataviz._id
+          };
+        });
+      }
+    }
   }
 });
 
@@ -79,6 +94,7 @@ EpisodesAdminOptions = {
   routes: adminRoutesWaitOnOptions([
     'articles',
     'videos',
+    'dataviz',
     'images'
   ])
 };
