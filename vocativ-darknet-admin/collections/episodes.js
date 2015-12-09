@@ -2,14 +2,6 @@ Episodes = new Mongo.Collection("episodes");
 
 Schemas.Episodes = new SimpleSchema({
   createdAt: Schemas.createdAt,
-  number: {
-    // Validate episode number, cant have duplicates
-    type: String,
-    label: "Episode #",
-    autoform: {
-      placeholder: "Episode #"
-    }
-  },
   name: {
     type: String,
     max: 60,
@@ -81,7 +73,6 @@ Episodes.attachSchema(Schemas.Episodes);
 EpisodesAdminOptions = {
   icon: 'film',
   tableColumns: [
-    { label: '#', name: 'number' },
     { label: 'Name', name: 'name' },
     { label: 'Airing Date', name: 'airingAt' }
   ],

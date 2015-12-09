@@ -4,9 +4,9 @@ FlowRouter.route('/', {
   }
 });
 
-FlowRouter.route('/episodes/:episodeId', {
+FlowRouter.route('/episodes/:episodeName', {
   action(params, queryParams) {
-    ReactLayout.render(MainLayout, { content: <EpisodeLoader episodeId={params.episodeId}/> });
+    ReactLayout.render(MainLayout, { content: <EpisodeLoader episodeName={params.episodeName}/> });
   }
 });
 

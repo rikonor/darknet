@@ -2,7 +2,7 @@ EpisodeLoader = React.createClass({
   mixins: [ReactMeteorData],
 
   propTypes: {
-    episodeId: React.PropTypes.string.isRequired
+    episodeName: React.PropTypes.string.isRequired
   },
 
   getMeteorData() {
@@ -14,7 +14,7 @@ EpisodeLoader = React.createClass({
       episodeLoading: ! episodeHandle.ready(),
       articlesLoading: ! articlesHandle.ready(),
       videosLoading: ! videosHandle.ready(),
-      episode: Episodes.findOne({number: this.props.episodeId})
+      episode: Episodes.findOne({name: this.props.episodeName})
     };
   },
 
@@ -54,7 +54,7 @@ Episode = React.createClass({
         <Page>
           <Section>
             <div className="episode-info">
-              <div>Episode {this.props.episode.number} // {this.props.episode.name}</div>
+              <div>Episode {this.props.episode.name}</div>
               <div>{this.props.episode.airingAt.toString()}</div>
               <div>{this.props.episode.synopsis}</div>
             </div>
@@ -63,8 +63,8 @@ Episode = React.createClass({
           <Section>
             <div className="episode-articles">
               <div className="header">
-                <div className="episode-name">Episode {this.props.episode.number} // {this.props.episode.name}</div>
-                <div className="vocativ-notice">Read articles related to episode {this.props.episode.number} // {this.props.episode.name} on <a href="http://www.vocativ.com">vocativ.com</a></div>
+                <div className="episode-name">Episode {this.props.episode.name}</div>
+                <div className="vocativ-notice">Read articles related to episode {this.props.episode.name} on <a href="http://www.vocativ.com">vocativ.com</a></div>
               </div>
               <div className="articles-list">
                 {this.renderArticles()}
@@ -74,8 +74,8 @@ Episode = React.createClass({
 
           <Section>
             <div className="header">
-              <div className="episode-name">Episode {this.props.episode.number} // {this.props.episode.name}</div>
-              <div className="vocativ-notice">View videos related to episode {this.props.episode.number} // {this.props.episode.name} on <a href="http://www.vocativ.com">vocativ.com</a></div>
+              <div className="episode-name">Episode {this.props.episode.name}</div>
+              <div className="vocativ-notice">View videos related to episode {this.props.episode.name} on <a href="http://www.vocativ.com">vocativ.com</a></div>
             </div>
             <div className="episode-videos">
               {this.renderVideos()}
