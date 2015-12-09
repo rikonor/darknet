@@ -5,6 +5,7 @@ AdminConfig = {
     Episodes: EpisodesAdminOptions,
     Videos: VideosAdminOptions,
     Articles: ArticlesAdminOptions,
+    DataViz: DataVizAdminOptions,
     Images: ImagesAdminOptions
   }
 };

@@ -11,6 +11,11 @@ Meteor.publish('videos', function() {
   return Videos.find();
 });
 
+Meteor.publish('dataviz', function() {
+  if (! isAdmin(this.userId)) return this.ready();
+  return DataViz.find();
+});
+
 Meteor.publish('imagesRaw', function() {
   if (! isAdmin(this.userId)) return this.ready();
   return ImagesRaw.find();
