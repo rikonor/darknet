@@ -33,3 +33,5 @@ cfs:filesystem
 vocativ:autoform-file
 fourseven:scss
 reactive-var
+aldeed:autoform-select2
+natestrauser:select2

@@ -39,7 +39,8 @@ Schemas.Episodes = new SimpleSchema({
     type: [String],
     optional: true,
     autoform: {
-      type: "select-multiple",
+      type: "select2",
+      afFieldInput: { multiple: true },
       options: function () {
         return _.map(Articles.find().fetch(), function(article) {
           return {
@@ -54,7 +55,8 @@ Schemas.Episodes = new SimpleSchema({
     type: [String],
     optional: true,
     autoform: {
-      type: "select-multiple",
+      type: "select2",
+      afFieldInput: { multiple: true },
       options: function () {
         return _.map(Videos.find().fetch(), function(video) {
           return {
