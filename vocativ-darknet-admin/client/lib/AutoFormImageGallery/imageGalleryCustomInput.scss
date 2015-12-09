@@ -39,20 +39,3 @@ $thumbnailImageWidth: 120px;
     }
   }
 }
-
-// TEMPORARY
-
-.af-image-gallery-input {
-  .image {
-    position: relative;
-
-    div {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      color: white;
-      font-weight: 600;
-      font-size: 1.5em;
-    }
-  }
-}

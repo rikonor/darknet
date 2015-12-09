@@ -128,7 +128,7 @@ var GalleryEpisode = React.createClass({
     return (
       <div className="gallery-episode">
         <div className="image">
-          <img src={this.props.episode.image}></img>
+          <img src={this.props.episode.imageUrl()}></img>
         </div>
         <div className="name"><a href={this.getEpisodePath()}>{this.props.episode.number}. {this.props.episode.name}</a></div>
       </div>
