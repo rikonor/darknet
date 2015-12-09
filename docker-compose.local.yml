@@ -7,7 +7,7 @@ microsite:
   volumes:
     - ./vocativ-darknet-microsite:/app
   working_dir: /app
-  env_file: ./dev.env
+  env_file: ./env_files/dev.env
   command: meteor run --settings settings-dev.json
 
 admin:
@@ -19,7 +19,7 @@ admin:
   volumes:
     - ./vocativ-darknet-admin:/app
   working_dir: /app
-  env_file: ./dev.env
+  env_file: ./env_files/dev.env
   command: meteor run
 
 mongo:
