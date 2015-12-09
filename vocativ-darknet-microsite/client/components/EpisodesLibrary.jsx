@@ -6,7 +6,7 @@ EpisodesLibraryLoader = React.createClass({
 
     return {
       episodesLoading: ! episodesHandle.ready(),
-      episodes: Episodes.find().fetch()
+      episodes: Episodes.find({}, {sort: {airingAt: -1}}).fetch()
     };
   },
 
