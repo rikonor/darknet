@@ -37,6 +37,16 @@ Template.afImageGallery.onCreated(function() {
   };
 });
 
+Template.afImageGallery.onRendered(function() {
+  // Init with preSelectedImage if it exists
+  this.autorun(function() {
+    var preSelectedImageId = Template.currentData().value;
+    if (preSelectedImageId) {
+      Template.instance().setSelectedImage(preSelectedImageId);
+    }
+  });
+});
+
 // helpers
 Template.afImageGallery.helpers({
   selectedValue: function() {
@@ -56,29 +66,18 @@ Template.afImageGallery.helpers({
     // default query (show the selected image and the query)
     var dbQuery = {};
 
-    if (gallery.selectedImage.get()) {
-      dbQuery._id = gallery.selectedImage.get();
+    var preSelectedImage;
+    var preSelectedImageId = gallery.selectedImage.get();
+    if (preSelectedImageId) {
+      preSelectedImage = Images.findOne(preSelectedImageId);
     }
+
+    console.log("preSelectedImage", preSelectedImageId, preSelectedImage);
 
     // Search the images based on the query
     var currentQuery = gallery.currentQuery.get();
     if (currentQuery) {
       dbQuery.name = new RegExp(currentQuery, 'i');
-    }
-
-    // Even when filter is active, should still show the selected image
-    if (dbQuery._id && dbQuery.name) {
-      dbQuery = {
-        $or: [
-          { _id: dbQuery._id },
-          { name: dbQuery.name }
-        ]
-      };
-    }
-
-    // In any case, if no filter was inputted, just show everything
-    if (dbQuery._id && ! dbQuery.name) {
-      dbQuery = {};
     }
 
     var dbOptions = {
@@ -91,6 +90,16 @@ Template.afImageGallery.helpers({
     }
 
     var images = Images.find(dbQuery, dbOptions).fetch();
+
+    // If preSelectedImage exists, add it at the beginning
+    if (preSelectedImage) {
+      // Remove from current location
+      images = _.reject(images, (image) => { return image._id === preSelectedImageId; });
+
+      // Append in beginning of images array (so image shows up first)
+      images = [preSelectedImage].concat(images);
+    }
+
     var rawImages = getAssociatedEntities(images, 'image', ImagesRaw);
     images = embedChildrenInParents(images, 'image', rawImages, 'rawImage');
 
