@@ -6,7 +6,7 @@ microsite:
     - ./vocativ-darknet-microsite:/app
   working_dir: /app
   env_file: ./env_files/prod.env
-  command: meteor run --settings settings-dev.json
+  command: meteor run
 
 admin:
   image: vocativ/meteor
