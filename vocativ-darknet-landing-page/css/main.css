@@ -100,6 +100,7 @@ textarea {
   min-height: 100vh;
 
   background: url(../img/curtain.jpg) no-repeat center center fixed;
+  background-size: cover;
 
   position: relative;
   display: flex;
@@ -258,7 +259,7 @@ textarea {
   font-size: 2rem;
 }
 
-.social-buttons .fa:first-child {
+.social-buttons a:first-child .fa {
   margin-right: 1rem;
 }
 
@@ -316,13 +317,21 @@ textarea {
 
   .invite-text-with-social {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   .invite-text-with-social .invite-text {
-    margin-bottom: 0;
-    margin-right: 20px;
+    width: 90%;
+    margin-bottom: 10px;
+  }
+
+  .invite-text-with-social .social-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
   }
 
   .form-and-social-buttons-container .signup-form {
