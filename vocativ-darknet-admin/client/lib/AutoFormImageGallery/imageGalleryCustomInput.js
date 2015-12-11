@@ -72,8 +72,6 @@ Template.afImageGallery.helpers({
       preSelectedImage = Images.findOne(preSelectedImageId);
     }
 
-    console.log("preSelectedImage", preSelectedImageId, preSelectedImage);
-
     // Search the images based on the query
     var currentQuery = gallery.currentQuery.get();
     if (currentQuery) {
