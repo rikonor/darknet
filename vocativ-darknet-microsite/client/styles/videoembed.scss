@@ -1,0 +1,12 @@
+@import "shared";
+
+.video-embed {
+  iframe {
+    @include dim(100%); // Fill parent
+  }
+}
+
+// Home Page specific
+.home .video-embed {
+  height: calc(100vh - 90px);
+}

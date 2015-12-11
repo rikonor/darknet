@@ -6,12 +6,19 @@ $backgroundColor: $DARKGRAY;
 $textColor: $BEIGE;
 $curtainTextMaxWidth: 768px;
 
+$curtainHideWidth: 768px;
+
 .curtain {
   @include pin-top-left;
   @include fill-screen;
   z-index: $curtainZIndex;
   box-shadow: 0 1px 20px rgba($shadowColor, 0.8);
   background: $backgroundColor;
+
+  // No curtain on small screens
+  @include bp($curtainHideWidth) {
+    display: none;
+  }
 
   .curtain-image img {
     height: 100vh;
@@ -38,6 +45,35 @@ $curtainTextMaxWidth: 768px;
 
     .subheader {
       font-size: 2rem;
+    }
+  }
+}
+
+// curtain rules that affect the main layout
+.main-layout.curtain-on {
+  min-height: calc(3.5 * 100vh);
+
+  .main-content-container {
+    @include pin-top-left;
+    position: fixed;
+  }
+
+  .footer-container {
+    position: fixed;
+
+    // Push it down just enough so it's not visible
+    top: calc(100vh + 1px);
+  }
+}
+
+.main-layout:not(.curtain-on) {
+  .main-content-container {
+    .home {
+      margin-top: 100vh;
+
+      @include bp($curtainHideWidth) {
+        margin-top: 0;
+      }
     }
   }
 }
