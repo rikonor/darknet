@@ -27,6 +27,13 @@
   }
 }
 
+@function is-px($str) {
+  $tStr: quote($str);
+  @return str-index($tStr, px);
+}
+
+// Extract breakpoint from a global $breakpoints map
+
 @mixin respond-to($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {
     @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
@@ -36,6 +43,12 @@
 
   @else if $breakpoint == "default" {
     @content;
+  }
+
+  @else if is-px($breakpoint) {
+    @media (min-width: #{$breakpoint}) {
+      @content;
+    }
   }
 
   @else {
@@ -50,14 +63,8 @@
 
 @mixin bp-options($configKey, $config, $transform: keep-same) {
   @each $configBreakpoint, $configValue in $config {
-    @if $configBreakpoint == "default" {
+    @include respond-to($configBreakpoint) {
       #{$configKey}: call($transform, $configValue);
-    }
-
-    @else {
-      @include respond-to($configBreakpoint) {
-        #{$configKey}: call($transform, $configValue);
-      }
     }
   }
 }

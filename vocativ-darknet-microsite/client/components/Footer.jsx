@@ -7,7 +7,6 @@ Footer = React.createClass({
     return (
       <div className="footer-container">
         <div className="footer">
-          <div className="logo vocativ"><a href="http://www.vocativ.com/"><img src="/images/vocativ-logo.svg" /></a></div>
           <div className="menu">
             <span className="menu-item"><a href="/">Home</a></span>
             <span className="menu-item"><a href="/about">About DARKnet</a></span>
