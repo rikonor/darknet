@@ -12,7 +12,7 @@ $textColor: $BEIGE;
   position: fixed;
   width: 100%;
   z-index: $navZIndex;;
-  height: $navHeight;
+  @include bp-options(height, $navHeights);
 
   .nav {
     max-width: $maxContentWidth;
@@ -31,10 +31,13 @@ $textColor: $BEIGE;
       font-size: 2rem;
 
       .logo {
-        $logoHeight: 0.8 * $navHeight;
-
-        height: $logoHeight;
-        width: 2 * $logoHeight;
+        @each $bp, $navHeight in $navHeights {
+          @include respond-to($bp) {
+            $logoHeight: 0.8 * $navHeight;
+            height: $logoHeight;
+            width: 2 * $logoHeight;
+          }
+        }
 
         a {
           @include dim(100%);

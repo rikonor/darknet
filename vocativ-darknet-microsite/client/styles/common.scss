@@ -42,5 +42,9 @@ img {
 // Sections
 
 .section {
-  min-height: calc(100vh - #{$navHeight});
+  @each $bp, $navHeight in $navHeights {
+    @include respond-to($bp) {
+      min-height: calc(100vh - #{$navHeight});
+    }
+  }
 }

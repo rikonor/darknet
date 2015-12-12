@@ -8,5 +8,10 @@
 
 // Home Page specific
 .home .video-embed {
-  height: calc(100vh - 90px);
+  // Dont fill the whole screen height
+  @each $bp, $navHeight in $navHeights {
+    @include respond-to($bp) {
+      height: calc(100vh - #{$navHeight} - 30px);
+    }
+  }
 }

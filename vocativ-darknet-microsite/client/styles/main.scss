@@ -12,7 +12,8 @@ $textColor: $WHITE;
 
   .main-content-container {
     flex: 1;
-    padding-top: $navHeight;
+    @include bp-options(padding-top, $navHeights);
+
     position: relative;
 
     background: $backgroundColor;
