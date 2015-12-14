@@ -71,6 +71,7 @@ Episode = React.createClass({
               <div className="videos-list">
                 {this.renderVideos()}
               </div>
+              <div className="synopsis">{this.props.episode.synopsis}</div>
             </div>
           </Section>
 

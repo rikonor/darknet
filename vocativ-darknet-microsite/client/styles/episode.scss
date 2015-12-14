@@ -1,8 +1,10 @@
 @import "shared";
 
 .episode {
-  .section {
-    min-height: initial;
+  @include bp-under(breakpoint(medium)) {
+    .section {
+      min-height: initial;
+    }
   }
 
   // Pad the episode so the last sections are not hidden by the episodes gallery
@@ -11,8 +13,10 @@
 
 .episode {
   .episode-info {
-    text-align: center;
-    font-size: 3.8vw;
+    @include bp-under(breakpoint(medium)) {
+      text-align: center;
+      font-size: 3.8vw;
+    }
 
     .name {
       font-size: 2em;
@@ -23,27 +27,28 @@
     .synopsis {
       font-size: 1.3em;
       line-height: 1.3em;
+
+      @include respond-to(medium) {
+        display: none;
+      }
     }
   }
 
   .episode-articles, .episode-videos {
-    .header {
-      font-size: 7vw;
-      text-align: center;
-      line-height: 1.2em;
-
-      margin-bottom: 0.5em;
-
-      .episode-name {
-        text-transform: uppercase;
-      }
-    }
-
     .articles-list, .videos-list {
       display: flex;
       flex-wrap: wrap;
 
       .embedded-article, .embedded-video {
+        // Grid settings
+        @include respond-to(medium) {
+          flex: 1 0 calc(#{percentage(1/3)} - 1em);
+          margin-right: 1em;
+          &:nth-child(3n) {
+            margin-right: 0;
+          }
+        }
+
         .image {
           position: relative;
           margin-bottom: 0.5em;
@@ -64,6 +69,28 @@
     }
   }
 
+  .episode-articles {
+    .header {
+      font-size: 1.5em;
+
+      @include bp-under(breakpoint(medium)) {
+        font-size: 7vw;
+        text-align: center;
+      }
+
+      line-height: 1.2em;
+
+      @include bp-options(margin-bottom, (
+        default: 0.5em,
+        medium: 1em
+      ));
+
+      .episode-name {
+        text-transform: uppercase;
+      }
+    }
+  }
+
   .episode-videos {
     .videos-list {
       .embedded-video {
@@ -72,6 +99,18 @@
           text-transform: uppercase;
           line-height: 1.2em;
         }
+      }
+    }
+
+    .synopsis {
+      max-width: 0.7 * $maxContentWidth;
+      margin: auto;
+
+      font-size: 1.1em;
+      line-height: 1.3em;
+
+      @include bp-under(breakpoint(medium)) {
+        display: none;
       }
     }
   }
