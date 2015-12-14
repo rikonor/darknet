@@ -64,6 +64,21 @@ Schemas.Episodes = new SimpleSchema({
       }
     }
   },
+  trailer: {
+    type: String,
+    optional: true,
+    autoform: {
+      type: "select2",
+      options: function () {
+        return _.map(Videos.find().fetch(), function(video) {
+          return {
+            label: video.name,
+            value: video._id
+          };
+        });
+      }
+    }
+  },
   includedDataViz: {
     type: String,
     optional: true,

@@ -5,6 +5,16 @@ $shadowColor: $BLACK;
 .video-embed {
   box-shadow: 0 1px 20px rgba($shadowColor, 0.8);
 
+  .image {
+    @include dim(100%);
+
+    img {
+      @include dim(100%);
+    }
+  }
+}
+
+.video-embed-lightbox {
   iframe {
     @include dim(100%); // Fill parent
   }

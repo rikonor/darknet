@@ -55,6 +55,13 @@ Episode = React.createClass({
     return <DataVisualization dataviz={dataviz} />;
   },
 
+  renderTrailer() {
+    let trailerId = this.props.episode.trailer;
+    let trailer = Videos.findOne(trailer);
+
+    return <VideoEmbed video={trailer} />;
+  },
+
   render() {
     return (
       <div className="episode">

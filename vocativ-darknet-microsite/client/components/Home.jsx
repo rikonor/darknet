@@ -35,13 +35,36 @@ HomeLayout = React.createClass({
   }
 });
 
+HomeLoader = React.createClass({
+  mixins: [ReactMeteorData],
+
+  getMeteorData() {
+    let videosHandle = Meteor.subscribe('videos');
+
+    return {
+      videosLoading: ! videosHandle.ready(),
+      trailer: Videos.findOne('TQWGzyQgQJq9bQmTW')
+    };
+  },
+
+  render() {
+    if (this.data.videosLoading) {
+      return <div>Loading</div>;
+    }
+
+    return (
+      <Home trailer={this.data.trailer} />
+    );
+  }
+});
+
 Home = React.createClass({
   render() {
     return (
       <div className="home">
         <Page>
           <Section>
-            <VideoEmbed youtubeId="pzN4WGPC4kc" />
+            <VideoEmbed video={this.props.trailer} />
 
             <div className="intro">
               <div className="intro-header">

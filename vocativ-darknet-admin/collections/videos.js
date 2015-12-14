@@ -2,11 +2,12 @@ Videos = new Mongo.Collection("videos");
 
 Schemas.Videos = new SimpleSchema({
   createdAt: Schemas.createdAt,
-  url: {
+  youtubeId: {
     type: String,
-    label: "URL",
+    optional: true,
+    label: "YouTube ID",
     autoform: {
-      placeholder: "Link to video"
+      placeholder: "YouTube ID"
     }
   },
   name: {
