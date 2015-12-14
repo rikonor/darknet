@@ -61,9 +61,8 @@ Episode = React.createClass({
         <Page>
           <Section>
             <div className="episode-info">
-              <div>Episode {this.props.episode.name}</div>
-              <div>{this.props.episode.airingAt.toString()}</div>
-              <div>{this.props.episode.synopsis}</div>
+              <div className="name">Episode <span className="name-actual">{this.props.episode.name}</span></div>
+              <div className="synopsis">{this.props.episode.synopsis}</div>
             </div>
           </Section>
 

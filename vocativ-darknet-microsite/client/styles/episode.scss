@@ -1,6 +1,22 @@
 @import "shared";
 
 .episode {
+  .episode-info {
+    text-align: center;
+    font-size: 3.8vw;
+
+    .name {
+      font-size: 2em;
+      .name-actual { text-transform: uppercase; }
+      margin: 0.5em 0;
+    }
+
+    .synopsis {
+      font-size: 1.3em;
+      line-height: 1.3em;
+    }
+  }
+
   .episode-articles {
     .articles-list {
       display: flex;
