@@ -29,11 +29,11 @@ $introHeaderDividerColor: $DARKISHGRAY;
     }
 
     margin: 1rem 0;
-    font-size: 5vw;
-    text-align: center;
 
     .intro-header {
       @include bottom-divider($introHeaderDividerColor, 1em);
+      font-size: 5vw;
+      text-align: center;
 
       .header { font-size: 3.5em; }
       .subheader { font-size: 1.2em; }
@@ -42,6 +42,10 @@ $introHeaderDividerColor: $DARKISHGRAY;
     .intro-description {
       font-size: 1em;
       line-height: 1.2em;
+
+      .description-1, .description-2 {
+        margin-bottom: 2em;
+      }
     }
   }
 }

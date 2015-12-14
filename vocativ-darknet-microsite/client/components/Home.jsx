@@ -71,7 +71,11 @@ Home = React.createClass({
                 <div className="header">DARK NET</div>
                 <div className="subheader">from SHOWTIME + VOCATIV</div>
               </div>
-              <div className="intro-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+              <div className="intro-description">
+                <div className="description-1">DARK NET is an eight-part docuseries that explores the netherworld where virtual and physical lives collide in ways surprising, disturbing, and seemingly inevitable. DARK NET reveals the perspective of a digitally connected world where our every action is collected and stored. Each episode sheds light on themes such as bio-hacking, cyberkidnapping, digital warfare, online cults, the webcam sex trade and more.</div>
+                <div className="description-2">We're taking you inside the deep web, where 80% of the internet lies beyond the reach of regular search engines.</div>
+                <div classname="description-airdate">Episodes air on Thursdays at 11 pm ET Watch full episodes on showtime.com</div>
+              </div>
             </div>
           </Section>
 
