@@ -67,13 +67,9 @@ Episode = React.createClass({
           </Section>
 
           <Section>
-            <div className="episode-articles">
-              <div className="header">
-                <div className="episode-name">Episode {this.props.episode.name}</div>
-                <div className="vocativ-notice">Read articles related to episode {this.props.episode.name} on <a href="http://www.vocativ.com">vocativ.com</a></div>
-              </div>
-              <div className="articles-list">
-                {this.renderArticles()}
+            <div className="episode-videos">
+              <div className="videos-list">
+                {this.renderVideos()}
               </div>
             </div>
           </Section>
@@ -85,12 +81,13 @@ Episode = React.createClass({
           </Section>
 
           <Section>
-            <div className="header">
-              <div className="episode-name">Episode {this.props.episode.name}</div>
-              <div className="vocativ-notice">View videos related to episode {this.props.episode.name} on <a href="http://www.vocativ.com">vocativ.com</a></div>
-            </div>
-            <div className="episode-videos">
-              {this.renderVideos()}
+            <div className="episode-articles">
+              <div className="header">
+                <div className="vocativ-notice">Read articles related to episode <span className="episode-name">{this.props.episode.name}</span> on <a href="http://www.vocativ.com">vocativ.com</a></div>
+              </div>
+              <div className="articles-list">
+                {this.renderArticles()}
+              </div>
             </div>
           </Section>
 

@@ -1,6 +1,7 @@
 @import "shared";
 
 $backgroundColor: $DARKISHGRAY;
+$shadowColor: $BLACK;
 $scrollBackgroundColor: $BLACK;
 $scrollBreakpoint: breakpoint(medium);
 
@@ -8,6 +9,8 @@ $scrollZIndex: 1;
 
 .episodes-mini-gallery {
   background: $backgroundColor;
+  box-shadow: 0 -5px 20px rgba($shadowColor, 0.8);
+
   @include bp-options(height, $episodesGalleryHeights);
 
   // Make it span the whole width of the screen
@@ -35,7 +38,10 @@ $scrollZIndex: 1;
     }
 
     .gallery-episode {
-      flex: 1 0 130px;
+      @include bp-options(flex, (
+        default: 1 0 110px,
+        medium: 1 0 130px
+      ));
 
       display: flex;
       flex-direction: column;

@@ -1,6 +1,15 @@
 @import "shared";
 
 .episode {
+  .section {
+    min-height: initial;
+  }
+
+  // Pad the episode so the last sections are not hidden by the episodes gallery
+  @include bp-options(padding-bottom, $episodesGalleryHeights)
+}
+
+.episode {
   .episode-info {
     text-align: center;
     font-size: 3.8vw;
@@ -17,16 +26,52 @@
     }
   }
 
-  .episode-articles {
-    .articles-list {
+  .episode-articles, .episode-videos {
+    .header {
+      font-size: 7vw;
+      text-align: center;
+      line-height: 1.2em;
+
+      margin-bottom: 0.5em;
+
+      .episode-name {
+        text-transform: uppercase;
+      }
+    }
+
+    .articles-list, .videos-list {
       display: flex;
       flex-wrap: wrap;
 
-      .embedded-article {
-        flex: 1 0 percentage(1/3);
-        max-width: percentage(1/3);
+      .embedded-article, .embedded-video {
+        .image {
+          position: relative;
+          margin-bottom: 0.5em;
+        }
 
-        .category { color: $GRAY; }
+        .category {
+          margin-bottom: 0.5em;
+          color: $GRAY;
+          text-transform: uppercase;
+        }
+
+        .description {
+          line-height: 1.2em;
+        }
+
+        margin-bottom: 2em;
+      }
+    }
+  }
+
+  .episode-videos {
+    .videos-list {
+      .embedded-video {
+        .name {
+          color: $GRAY;
+          text-transform: uppercase;
+          line-height: 1.2em;
+        }
       }
     }
   }

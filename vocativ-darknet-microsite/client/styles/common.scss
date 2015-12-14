@@ -43,9 +43,11 @@ img {
 
 .section {
   position: relative;
+  padding-bottom: 1em;
 
   @include bp-under(breakpoint(medium)) {
-    padding: 0 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   @each $bp, $navHeight in $navHeights {

@@ -1,6 +1,7 @@
 @import "shared";
 
 $navArrowSize: 4rem;
+$navArrowShadow: $BLACK;
 
 .page {
   .nav-arrow {
@@ -18,6 +19,8 @@ $navArrowSize: 4rem;
       right: 50%;
       bottom: 10px;
     }
+
+    text-shadow: 1px 0px 3px rgba($navArrowShadow, 0.5);
 
     // Transitions
     transition: all 0.75s ease-in-out;
