@@ -21,7 +21,7 @@ $textColor: $GRAY;
     .menu {
       @include bp-options(font-size, (
         default: 1rem,
-        small: 1.5rem
+        512px: 1.5rem
       ));
       font-weight: 600;
       margin-bottom: 1.5rem;
@@ -35,6 +35,15 @@ $textColor: $GRAY;
         a {
           text-align: center;
         }
+      }
+    }
+
+    @include respond-to(medium) {
+      flex-direction: row;
+
+      .menu {
+        flex: 1;
+        margin-bottom: 0;
       }
     }
 
