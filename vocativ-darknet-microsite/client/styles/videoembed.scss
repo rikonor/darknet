@@ -1,17 +1,11 @@
 @import "shared";
 
+$shadowColor: $BLACK;
+
 .video-embed {
+  box-shadow: 0 1px 20px rgba($shadowColor, 0.8);
+
   iframe {
     @include dim(100%); // Fill parent
-  }
-}
-
-// Home Page specific
-.home .video-embed {
-  // Dont fill the whole screen height
-  @each $bp, $navHeight in $navHeights {
-    @include respond-to($bp) {
-      height: calc(100vh - #{$navHeight} - 30px);
-    }
   }
 }

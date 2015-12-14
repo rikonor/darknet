@@ -1,3 +1,5 @@
+@import "shared";
+
 $navArrowSize: 4rem;
 
 .page {
@@ -6,9 +8,18 @@ $navArrowSize: 4rem;
     cursor: pointer;
 
     position: fixed;
+    width: 0.65em;
     bottom: 20px;
     right: 50px;
 
+    @include bp-under(breakpoint(medium)) {
+      font-size: 2.5rem;
+      margin-right: -0.325em;
+      right: 50%;
+      bottom: 10px;
+    }
+
+    // Transitions
     transition: all 0.75s ease-in-out;
     &.down { transform: rotate(0deg); }
     &.up { transform: rotate(-180deg); }

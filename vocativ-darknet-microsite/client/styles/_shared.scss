@@ -31,13 +31,9 @@ $WHITE: #FFFFFF;
   * both are presumably `portrait` view
 */
 
-$phoneWidth: 412px;
-$tabletWidth: 768px;
-
 $breakpoints: (
-  small: 767px,
-  medium: 992px,
-  large: 1200px
+  small: 412px,
+  medium: 768px
 );
 
 $maxContentWidth: 1024px;

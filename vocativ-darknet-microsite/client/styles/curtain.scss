@@ -4,9 +4,9 @@ $shadowColor: $BLACK;
 $curtainTextBackgroundColor: $BLACK;
 $backgroundColor: $DARKGRAY;
 $textColor: $BEIGE;
-$curtainTextMaxWidth: 768px;
 
-$curtainHideWidth: 768px;
+$curtainTextMaxWidth: 767px;
+$curtainHideWidth: 767px;
 
 .curtain {
   @include pin-top-left;

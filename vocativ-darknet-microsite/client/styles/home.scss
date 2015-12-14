@@ -1,0 +1,47 @@
+@import "shared";
+
+$introHeaderDividerColor: $DARKISHGRAY;
+
+.home {
+  .video-embed {
+    height: 35vh;
+
+    @include bp-under(breakpoint(medium)) {
+      position: relative;
+      width: 100vw;
+      top: -1rem;
+      left: -1rem;
+    }
+
+    @include bp-above(breakpoint(medium)) {
+      @each $bp, $navHeight in $navHeights {
+        @include respond-to($bp) {
+          height: calc(100vh - #{$navHeight} - 30px);
+        }
+      }
+    }
+  }
+
+  // This is only shown on mobile
+  .intro {
+    @include respond-to(medium) {
+      display: none;
+    }
+
+    margin: 1rem 0;
+    font-size: 5vw;
+    text-align: center;
+
+    .intro-header {
+      @include bottom-divider($introHeaderDividerColor, 1em);
+
+      .header { font-size: 3.5em; }
+      .subheader { font-size: 1.2em; }
+    }
+
+    .intro-description {
+      font-size: 1em;
+      line-height: 1.2em;
+    }
+  }
+}

@@ -42,6 +42,12 @@ img {
 // Sections
 
 .section {
+  position: relative;
+
+  @include bp-under(breakpoint(medium)) {
+    padding: 0 1rem;
+  }
+
   @each $bp, $navHeight in $navHeights {
     @include respond-to($bp) {
       min-height: calc(100vh - #{$navHeight});

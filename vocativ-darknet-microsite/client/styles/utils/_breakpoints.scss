@@ -2,6 +2,12 @@
   Breakpoints
 */
 
+@function breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @return map-get($breakpoints, $breakpoint);
+  }
+}
+
 @mixin bp-under($width) {
   @media only screen and (max-width: $width) {
     @content;
