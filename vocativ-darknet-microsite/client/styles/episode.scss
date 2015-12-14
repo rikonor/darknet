@@ -16,6 +16,11 @@
   }
 
   .page .nav-arrow {
-    bottom: calc(20px + #{$episodeGalleryHeight});
+    // Position nav-arrow right above the episodes gallery
+    @each $bp, $episodesGalleryHeight in $episodesGalleryHeights {
+      @include respond-to($bp) {
+        bottom: calc(10px + #{$episodesGalleryHeight});
+      }
+    }
   }
 }

@@ -2,11 +2,13 @@
 
 $backgroundColor: $DARKISHGRAY;
 $scrollBackgroundColor: $BLACK;
-$scrollBreakpoint: 768px;
+$scrollBreakpoint: breakpoint(medium);
+
+$scrollZIndex: 1;
 
 .episodes-mini-gallery {
   background: $backgroundColor;
-  height: $episodeGalleryHeight;
+  @include bp-options(height, $episodesGalleryHeights);
 
   // Make it span the whole width of the screen
   position: fixed;
@@ -20,7 +22,9 @@ $scrollBreakpoint: 768px;
   }
 
   .episodes {
-    padding: 1rem 0;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 1rem 0 0.5rem;
 
     display: flex;
     overflow-x: hidden;
@@ -31,7 +35,18 @@ $scrollBreakpoint: 768px;
     }
 
     .gallery-episode {
-      flex: 1 0 percentage(1/6);
+      flex: 1 0 130px;
+
+      display: flex;
+      flex-direction: column;
+
+      .image {
+        margin-bottom: 0.3rem;
+      }
+
+      .name {
+        text-transform: uppercase;
+      }
 
       padding-right: 1.5rem;
       &:first-child { padding-left: 1.5rem; }
@@ -48,6 +63,8 @@ $scrollBreakpoint: 768px;
     i.fa { padding: 0.75rem; }
     &.left { @include pin-top-left; }
     &.right { @include pin-top-right; }
+
+    z-index: $scrollZIndex;
 
     // Hide the scroll arrows when you can scroll by touch-drag
     @include bp($scrollBreakpoint) {

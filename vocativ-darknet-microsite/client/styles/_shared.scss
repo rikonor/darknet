@@ -40,10 +40,15 @@ $maxContentWidth: 1024px;
 
 $navHeights: (
   default: 45px,
-  small: 60px
+  medium: 60px
 );
 
-$episodeGalleryHeight: 210px;
+$episodesGalleryHeight: 130px;
+
+$episodesGalleryHeights: (
+  default: 150px,
+  medium: 150px
+);
 
 // zIndexes
 

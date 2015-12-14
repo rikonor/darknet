@@ -19,7 +19,7 @@ $textColor: $BEIGE;
     margin: 0 auto;
     @include bp-options(padding, (
       default: 0.5rem 0.5rem,
-      small: 0.5rem 0
+      medium: 0.5rem 0
     ));
     height: 100%;
     box-sizing: border-box;
