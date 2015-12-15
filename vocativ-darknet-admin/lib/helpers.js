@@ -77,3 +77,10 @@ embedChildrenInParents = function(parentObjects, idField, childObjects, fieldNam
 
   return parentObjects;
 };
+
+// String capitalize
+strCapitalize = function(str) {
+  if (str) {
+    return str.toUpperCase().slice(0, 1) + str.slice(1);
+  }
+};

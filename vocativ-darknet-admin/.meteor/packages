@@ -33,7 +33,7 @@ cfs:filesystem
 vocativ:autoform-file
 fourseven:scss
 reactive-var
-aldeed:autoform-select2
 natestrauser:select2
 tsega:bootstrap3-datetimepicker@=3.1.3_3
 aldeed:autoform-bs-datetimepicker
+aldeed:autoform-select2
