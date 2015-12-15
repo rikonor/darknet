@@ -1,10 +1,12 @@
 @import "shared";
 
+$containerBackgroundColor: $GRAY;
 $backgroundColor: $BLACK;
 $shadowColor: $BLACK;
 $closeColor: $WHITE;
 
 .lightbox-container {
+  background: rgba($containerBackgroundColor, 0.5);
   z-index: $lightboxZIndex;
   position: fixed;
   left: 0; right: 0; top: 0; bottom: 0;
