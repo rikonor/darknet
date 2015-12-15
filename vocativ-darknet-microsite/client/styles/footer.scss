@@ -44,6 +44,10 @@ $textColor: $GRAY;
       .menu {
         flex: 1;
         margin-bottom: 0;
+
+        .menu-item:first-child {
+          margin-left: 0;
+        }
       }
     }
 

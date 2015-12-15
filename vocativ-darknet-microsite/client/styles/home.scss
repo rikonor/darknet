@@ -24,10 +24,6 @@ $introHeaderDividerColor: $DARKISHGRAY;
 
   // This is only shown on mobile
   .intro {
-    @include respond-to(medium) {
-      display: none;
-    }
-
     margin: 1rem 0;
 
     .intro-header {
@@ -41,10 +37,27 @@ $introHeaderDividerColor: $DARKISHGRAY;
 
     .intro-description {
       font-size: 1em;
-      line-height: 1.2em;
+      line-height: 1.3em;
 
-      .description-1, .description-2 {
-        margin-bottom: 2em;
+      .description-header {
+        display: none;
+      }
+
+      .description-header, .description-1, .description-2 {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    @include respond-to(medium) {
+      .intro-header {
+        display: none;
+      }
+
+      .intro-description .description-header {
+        display: block;
+        margin-top: 1em;
+        font-size: 2em;
+        font-weight: bold;
       }
     }
   }
