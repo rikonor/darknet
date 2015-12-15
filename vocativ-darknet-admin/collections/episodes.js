@@ -32,38 +32,6 @@ Schemas.Episodes = new SimpleSchema({
       type: 'imageGallery'
     }
   },
-  includedArticles: {
-    type: [String],
-    optional: true,
-    autoform: {
-      type: "select2",
-      afFieldInput: { multiple: true },
-      options: function () {
-        return _.map(Articles.find().fetch(), function(article) {
-          return {
-            label: article.name,
-            value: article._id
-          };
-        });
-      }
-    }
-  },
-  includedVideos: {
-    type: [String],
-    optional: true,
-    autoform: {
-      type: "select2",
-      afFieldInput: { multiple: true },
-      options: function () {
-        return _.map(Videos.find().fetch(), function(video) {
-          return {
-            label: video.name,
-            value: video._id
-          };
-        });
-      }
-    }
-  },
   trailer: {
     type: String,
     optional: true,
@@ -79,61 +47,30 @@ Schemas.Episodes = new SimpleSchema({
       }
     }
   },
-  includedDataViz: {
-    type: String,
-    optional: true,
-    autoform: {
-      type: "select2",
-      options: function () {
-        return _.map(DataViz.find().fetch(), function(dataviz) {
-          return {
-            label: dataviz.name,
-            value: dataviz._id
-          };
-        });
-      }
-    }
+  sections: {
+    type: Array,
+    optional: true
   },
-  section1Content: {
+  "sections.$": {
+    type: Object,
+  },
+  "sections.$.content": {
     type: [String],
     optional: true,
+    label: "Section content",
+    custom: validateSection,
     autoform: {
       type: "select2",
       afFieldInput: { multiple: true },
-      options: function() {
-        function adjust(coll, type) {
-          return _.map(coll.find().fetch(), function(value) {
-            let res = { type, value };
-            return res;
-          });
-        }
-
-        let videos = adjust(Videos, "video");
-        let articles = adjust(Articles, "article");
-        let datavizs = adjust(DataViz, "dataviz");
-
-        let options = videos.concat(articles).concat(datavizs);
-
-        return _.map(options, function(option) {
-          let capType = strCapitalize(option.type);
-
-          // The select box can only accept strings
-          // So convert whatever value you want to a string
-          let value = {
-            type: option.type,
-            _id: option.value._id
-          };
-
-          value = JSON.stringify(value);
-
-          return {
-            label: `[${capType}] ${option.value.name}`,
-            value: value
-          };
-        });
-      }
+      options: fetchSectionOptions,
     }
   }
+});
+
+// Custom error messages
+SimpleSchema.messages({
+  "numOfItemsExceeded": "Section can't contain more then 6 items",
+  "cantMixDatavizAndOther": "Can't mix DataViz with other items"
 });
 
 Episodes.attachSchema(Schemas.Episodes);
