@@ -16,8 +16,8 @@ $shadowColor: $BLACK;
   }
 }
 
-.video-embed-lightbox {
-  iframe {
+.lightbox {
+  .video-embed iframe {
     @include dim(100%); // Fill parent
   }
 }
