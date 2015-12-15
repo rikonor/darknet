@@ -9,7 +9,7 @@ EpisodesGalleryLoader = React.createClass({
 
     return {
       episodesLoading: ! episodesHandle.ready(),
-      episodes: Episodes.find({}, {sort: {airingAt: -1}}).fetch()
+      episodes: Episodes.find({}, {sort: {airingAt: 1}}).fetch()
     };
   },
 
@@ -19,7 +19,7 @@ EpisodesGalleryLoader = React.createClass({
     }
 
     // Make some more episodes
-    this.data.episodes = mockEpisodes(this.data.episodes[0]);
+    // this.data.episodes = mockEpisodes(this.data.episodes[0]);
 
     return <EpisodesGallery episodes={this.data.episodes} />;
   }
@@ -125,8 +125,13 @@ var GalleryEpisode = React.createClass({
   },
 
   render() {
+    let galleryEpisodeClasses = classNames({
+      'gallery-episode': true,
+      'coming-soon': ! this.props.episode.hasAired()
+    });
+
     return (
-      <div className="gallery-episode">
+      <div className={galleryEpisodeClasses}>
         <div className="image">
           <img src={this.props.episode.imageUrl()}></img>
         </div>

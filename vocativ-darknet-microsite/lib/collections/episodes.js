@@ -16,5 +16,8 @@ Episodes.helpers({
     var image = Images.findOne(imageId);
 
     return image.url();
+  },
+  hasAired: function() {
+    return this.airingAt <= (new Date());
   }
 });

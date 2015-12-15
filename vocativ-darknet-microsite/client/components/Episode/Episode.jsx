@@ -52,14 +52,18 @@ Episode = React.createClass({
     let datavizId = this.props.episode.includedDataViz;
     let dataviz = DataViz.findOne(datavizId);
 
-    return <DataVisualization dataviz={dataviz} />;
+    if (dataviz) {
+      return <DataVisualization dataviz={dataviz} />;
+    }
   },
 
   renderTrailer() {
     let trailerId = this.props.episode.trailer;
     let trailer = Videos.findOne(trailer);
 
-    return <VideoEmbed video={trailer} />;
+    if (trailer) {
+      return <VideoEmbed video={trailer} />;
+    }
   },
 
   render() {
