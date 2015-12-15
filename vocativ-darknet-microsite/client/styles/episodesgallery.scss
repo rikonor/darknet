@@ -12,6 +12,7 @@ $scrollZIndex: 1;
   box-shadow: 0 -5px 20px rgba($shadowColor, 0.8);
 
   @include bp-options(height, $episodesGalleryHeights);
+  width: 100%;
 
   // Make it span the whole width of the screen
   position: fixed;
@@ -26,7 +27,7 @@ $scrollZIndex: 1;
 
   .episodes {
     box-sizing: border-box;
-    height: 100%;
+    @include fill-parent;
     padding: 1rem 0 0.5rem;
 
     display: flex;
@@ -38,16 +39,22 @@ $scrollZIndex: 1;
     }
 
     .gallery-episode {
-      @include bp-options(flex, (
-        default: 1 0 110px,
-        medium: 1 0 130px
-      ));
+      height: 100%;
+      max-width: 12rem;
+      flex: 1 0 130px;
 
       display: flex;
       flex-direction: column;
 
       .image {
-        margin-bottom: 0.3rem;
+        $mgImageMrgBottom: 0.5rem;
+        margin-bottom: $mgImageMrgBottom;
+        height: calc(100% - #{$mgImageMrgBottom} - 1em);
+
+        img {
+          @include fill-parent;
+          object-fit: cover;
+        }
       }
 
       .name {

@@ -56,6 +56,10 @@
   @include dim($dim);
 }
 
+@mixin fill-parent {
+	@include dim(100%);
+}
+
 // Selections
 @mixin all-but-first($prop, $val) {
   &:not(:first-child) {
