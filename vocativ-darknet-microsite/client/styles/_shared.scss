@@ -33,7 +33,8 @@ $WHITE: #FFFFFF;
 
 $breakpoints: (
   small: 412px,
-  medium: 768px
+  medium: 768px,
+  large: 1024px
 );
 
 $maxContentWidth: 1024px;
@@ -42,8 +43,6 @@ $navHeights: (
   default: 45px,
   medium: 60px
 );
-
-$episodesGalleryHeight: 130px;
 
 $episodesGalleryHeights: (
   default: 130px,

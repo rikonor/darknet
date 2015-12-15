@@ -2,23 +2,60 @@
 
 $headerDividerColor: $DARKISHGRAY;
 
+$containerWidth: $maxContentWidth;
+$gutterWidth: 62px;
+$numOfRowItems: 3;
+$imageAspectRatio: 3 / 2;
+
+// Calculate size
+$imageWidth: ($containerWidth - ($numOfRowItems - 1) * $gutterWidth) / $numOfRowItems;
+$imageHeight: $imageWidth / $imageAspectRatio;
+
 .episodes-library {
+  width: 100%;
+
   .header {
     @include bottom-divider($headerDividerColor, 1.5rem);
   }
 
   .episodes {
+    width: 100%;
+
+    // on mobile - one episode per row (that's the default settings)
+    // on tablet - two episodes per row
+    @include bp-under(breakpoint(large)) {
+      max-width: 2 * $imageWidth + $gutterWidth;
+      margin: auto;
+    }
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 
     .library-episode {
-      margin-bottom: 2.5rem;
+      flex: 1 0 100%;
+
+      @include respond-to(medium) {
+        max-width: $imageWidth;
+      }
+
       position: relative;
+      display: flex;
+      flex-direction: column;
+
+      margin-bottom: 2.5rem;
 
       .image {
         position: relative;
-        margin-bottom: 1.2rem;
+        // width: $imageWidth;
+        height: $imageHeight;
+
+        margin-bottom: 0.5rem;
+
+        img {
+          @include fill-parent;
+          object-fit: cover;
+        }
 
         .coming-soon-text {
           display: none;
@@ -26,14 +63,13 @@ $headerDividerColor: $DARKISHGRAY;
       }
 
       .name {
-        margin: 1.2rem 0;
-        padding-left: 3px;
+        margin: 0.5rem 0;
         font-size: 1.2rem;
         @include upper;
       }
 
       .synopsis {
-        margin-top: 1.2rem;
+        margin-top: 0.5rem;
         line-height: 1.4rem;
       }
 
