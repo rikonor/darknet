@@ -54,6 +54,14 @@ Schemas.Episodes = new SimpleSchema({
   "sections.$": {
     type: Object,
   },
+  "sections.$.name": {
+    type: String,
+    optional: true
+  },
+  "sections.$.description": {
+    type: String,
+    optional: true
+  },
   "sections.$.content": {
     type: [String],
     optional: true,
