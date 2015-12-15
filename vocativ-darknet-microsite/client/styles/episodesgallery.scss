@@ -41,12 +41,18 @@ $scrollZIndex: 1;
     .gallery-episode {
       height: 100%;
       max-width: 12rem;
-      flex: 1 0 130px;
+
+      @include bp-options(flex, (
+        default: 1 0 130px,
+        medium: 1 0 170px
+      ))
 
       display: flex;
       flex-direction: column;
 
       .image {
+        position: relative;
+
         $mgImageMrgBottom: 0.5rem;
         margin-bottom: $mgImageMrgBottom;
         height: calc(100% - #{$mgImageMrgBottom} - 1em);
@@ -54,6 +60,10 @@ $scrollZIndex: 1;
         img {
           @include fill-parent;
           object-fit: cover;
+        }
+
+        .coming-soon-text {
+          display: none;
         }
       }
 
@@ -63,6 +73,24 @@ $scrollZIndex: 1;
 
       padding-right: 1.5rem;
       &:first-child { padding-left: 1.5rem; }
+
+      // Coming soon overlay text
+      &.coming-soon {
+        .image {
+          opacity: 0.5;
+
+          .coming-soon-text {
+            @include dim(100%);
+            @include pin-top-left;
+            @include flex-center;
+
+            @include bp-options(font-size, (
+              default: 1em,
+              medium: 1.2em
+            ))
+          }
+        }
+      }
     }
   }
 
