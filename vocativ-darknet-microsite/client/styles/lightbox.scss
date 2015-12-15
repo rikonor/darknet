@@ -5,22 +5,23 @@ $shadowColor: $BLACK;
 $closeColor: $WHITE;
 
 .lightbox-container {
-  z-index: 3;
+  z-index: $lightboxZIndex;
   position: fixed;
   left: 0; right: 0; top: 0; bottom: 0;
 
   @include flex-center;
 
+  .close {
+    @include pin-top-right(1.5rem);
+    font-size: 2rem;
+    cursor: pointer;
+    color: $closeColor;
+    text-shadow: 1px 0px 3px rgba($shadowColor, 0.5);
+  }
+
   .lightbox {
     position: relative;
     background: $backgroundColor;
-
-    .close {
-      @include pin-top-right(1.5rem);
-      font-size: 2rem;
-      cursor: pointer;
-      color: $closeColor;
-    }
 
     @include dim(80%, 90%);
     box-shadow: 0 1px 20px rgba($shadowColor, 0.8);

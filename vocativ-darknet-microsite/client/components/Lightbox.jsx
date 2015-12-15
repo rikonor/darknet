@@ -16,11 +16,11 @@ Lightbox = React.createClass({
   render() {
     return (
       <div className="lightbox-container" onClick={this.handleClose}>
-        <div className="lightbox">
-          <div className="close" onClick={this.handleClose}>
-            <i className="fa fa-times"></i>
-          </div>
+        <div className="close" onClick={this.handleClose}>
+          <i className="fa fa-times"></i>
+        </div>
 
+        <div className="lightbox">
           {this.props.children}
         </div>
       </div>
