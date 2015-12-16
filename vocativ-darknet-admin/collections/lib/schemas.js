@@ -1,5 +1,59 @@
 Schemas = {};
 
+Schemas.title = function(placeholder) {
+  return {
+    type: String,
+    max: 43,
+    autoform: {
+      placeholder: placeholder
+    }
+  };
+};
+
+Schemas.description = function(placeholder) {
+  return {
+    type: String,
+    max: 90,
+    autoform: {
+      placeholder: placeholder,
+      rows: 5
+    }
+  };
+};
+
+Schemas.image = function(label) {
+  return {
+    type: String,
+    label: label,
+    autoform: {
+      type: 'imageGallery'
+    }
+  };
+};
+
+Schemas.date = function(label, placeholder) {
+  return {
+    type: Date,
+    label: label,
+    autoform: {
+      placeholder: placeholder,
+      afFieldInput: {
+        type: "bootstrap-datetimepicker"
+      }
+    }
+  };
+};
+
+Schemas.url = function(placeholder) {
+  return {
+    type: String,
+    label: "URL",
+    autoform: {
+      placeholder: placeholder
+    }
+  };
+};
+
 Schemas.createdAt = {
   type: Date,
   label: 'Date',

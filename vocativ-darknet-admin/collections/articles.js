@@ -2,52 +2,10 @@ Articles = new Meteor.Collection("articles");
 
 Schemas.Articles = new SimpleSchema({
   createdAt: Schemas.createdAt,
-  url: {
-    type: String,
-    label: "URL",
-    autoform: {
-      placeholder: "Link to article"
-    }
-  },
-  name: {
-    type: String,
-    max: 60,
-    autoform: {
-      placeholder: "Article name"
-    }
-  },
-  description: {
-    type: String,
-    max: 300,
-    autoform: {
-      placeholder: "Video description",
-      rows: 5
-    }
-  },
-  category: {
-    type: String,
-    max: 60,
-    autoform: {
-      placeholder: "Category of article"
-    }
-  },
-  image: {
-    type: String,
-    autoform: {
-      type: 'imageGallery'
-    }
-  },
-  views: {
-    type: Number,
-    autoValue: function () {
-      if (this.isInsert) {
-        return 0;
-      }
-    },
-    autoform: {
-      type: "hidden"
-    }
-  }
+  url: Schemas.url("Link to Article"),
+  title: Schemas.title("Article Title"),
+  description: Schemas.description("Article Description"),
+  image: Schemas.image("Article Cover Image")
 });
 
 Articles.attachSchema(Schemas.Articles);
@@ -57,9 +15,7 @@ Articles.attachSchema(Schemas.Articles);
 ArticlesAdminOptions = {
   icon: 'newspaper-o',
   tableColumns: [
-    { label: 'Name', name: 'name' },
-    { label: 'Category', name: 'category' },
-    { label: 'Views', name: 'views' }
+    { label: 'Name', name: 'name' }
   ],
   routes: adminRoutesWaitOnOptions(['images'])
 };

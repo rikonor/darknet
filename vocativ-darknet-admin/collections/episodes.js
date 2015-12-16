@@ -2,39 +2,15 @@ Episodes = new Mongo.Collection("episodes");
 
 Schemas.Episodes = new SimpleSchema({
   createdAt: Schemas.createdAt,
-  name: {
-    type: String,
-    max: 60,
-    autoform: {
-      placeholder: "Episode name"
-    }
-  },
-  synopsis: {
-    type: String,
-    max: 300,
-    autoform: {
-      placeholder: "What is this episode about?",
-      rows: 5
-    }
-  },
-  airingAt: {
-    type: Date,
-    label: 'Airing date',
-    autoform: {
-      afFieldInput: {
-        type: "bootstrap-datetimepicker"
-      }
-    }
-  },
-  image: {
-    type: String,
-    autoform: {
-      type: 'imageGallery'
-    }
-  },
+  title: Schemas.title("Episode Title"),
+  description: Schemas.description("Episode Description"),
+  airingAt: Schemas.date("Airing Date", "When does the episode air?"),
+  visibleAt: Schemas.date("Visible Date", "When should the episode become visible to visitors?"),
+  image: Schemas.image("Episode Cover Image"),
   trailer: {
     type: String,
     optional: true,
+    label: "Trailer [Optional]",
     autoform: {
       type: "select2",
       options: function () {
@@ -49,23 +25,28 @@ Schemas.Episodes = new SimpleSchema({
   },
   sections: {
     type: Array,
-    optional: true
+    optional: true,
+    maxCount: 6
   },
   "sections.$": {
     type: Object,
   },
-  "sections.$.name": {
+  "sections.$.header": {
     type: String,
-    optional: true
+    max: 43,
+    optional: true,
+    label: "Section Header [Optional]"
   },
   "sections.$.description": {
     type: String,
-    optional: true
+    max: 200,
+    optional: true,
+    label: "Section Description [Optional]"
   },
   "sections.$.content": {
     type: [String],
     optional: true,
-    label: "Section content",
+    label: "Section Content",
     custom: validateSection,
     autoform: {
       type: "select2",
