@@ -79,5 +79,13 @@ $headerDividerColor: $DARKISHGRAY;
         }
       }
     }
+
+    .grid-filler {
+      flex: 1 0 100%;
+
+      @include respond-to(medium) {
+        max-width: $gridImageWidth;
+      }
+    }
   }
 }

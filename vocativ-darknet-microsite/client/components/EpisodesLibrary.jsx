@@ -30,11 +30,17 @@ EpisodesLibrary = React.createClass({
   },
 
   render() {
+    // Notice the grid filler
+
     return (
       <div className="episodes-library">
         <div className="header"><h1>Episodes</h1></div>
         <div className="episodes">
           {this.renderEpisodes()}
+
+          <GridFiller />
+          <GridFiller />
+          <GridFiller />
         </div>
       </div>
     );
@@ -57,7 +63,7 @@ var LibraryEpisode = React.createClass({
           </a>
         </div>
         <div className="name"><a href={this.props.episode.path()}>{this.props.episode.title}</a></div>
-        <div className="synopsis">{this.props.episode.description}</div>
+        <div className="synopsis">{this.props.episode.shortDescription}</div>
       </div>
     );
   }
