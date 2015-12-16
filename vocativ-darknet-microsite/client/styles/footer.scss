@@ -20,7 +20,8 @@ $textColor: $GRAY;
 
     .menu {
       @include bp-options(font-size, (
-        default: 1rem,
+        default: 0.75rem,
+        375px: 0.95rem,
         512px: 1.5rem
       ));
       font-weight: 600;
