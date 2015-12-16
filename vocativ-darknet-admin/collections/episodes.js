@@ -71,7 +71,8 @@ EpisodesAdminOptions = {
   icon: 'film',
   tableColumns: [
     { label: 'Title', name: 'title' },
-    { label: 'Airing Date', name: 'airingAt' }
+    { label: 'Airing Date', name: 'airingAt' },
+    { label: 'Visible Date', name: 'visibleAt' }
   ],
   routes: adminRoutesWaitOnOptions([
     'articles',
