@@ -15,6 +15,16 @@ Schemas.description = function(placeholder) {
     type: String,
     max: 90,
     autoform: {
+      placeholder: placeholder
+    }
+  };
+};
+
+Schemas.longDescription = function(placeholder, maxLength) {
+  return {
+    type: String,
+    max: maxLength || 200,
+    autoform: {
       placeholder: placeholder,
       rows: 5
     }

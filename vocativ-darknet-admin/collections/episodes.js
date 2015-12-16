@@ -3,7 +3,8 @@ Episodes = new Mongo.Collection("episodes");
 Schemas.Episodes = new SimpleSchema({
   createdAt: Schemas.createdAt,
   title: Schemas.title("Episode Title"),
-  description: Schemas.description("Episode Description"),
+  shortDescription: Schemas.description("Short Episode Description"),
+  longDescription: Schemas.longDescription("Long Episode Description"),
   airingAt: Schemas.date("Airing Date", "When does the episode air?"),
   visibleAt: Schemas.date("Visible Date", "When should the episode become visible to visitors?"),
   image: Schemas.image("Episode Cover Image"),
