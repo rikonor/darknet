@@ -11,6 +11,19 @@ if (Meteor.isClient) {
 }
 
 Episodes.helpers({
+  path: function() {
+    let pathBase = "/episodes";
+    return pathBase + "/" + this.title;
+  },
+  getNext() {
+    let dbQuery = {
+      airingAt: {
+        $gt: this.airingAt
+      }
+    };
+
+    return Episodes.findOne(dbQuery);
+  },
   imageUrl: function() {
     var imageId = this.image;
     var image = Images.findOne(imageId);

@@ -72,9 +72,15 @@ Episode = React.createClass({
   },
 
   render() {
+    let nextEpisode = this.props.episode.getNext();
+    let nextPage = nextEpisode && {
+      title: nextEpisode.title,
+      href: nextEpisode.path()
+    };
+
     return (
       <div className="episode">
-        <Page>
+        <Page nextPage={nextPage}>
           <Section>
             <div className="episode-info">
               <div className="title">Episode <span className="title-actual">{this.props.episode.title}</span></div>

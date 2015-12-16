@@ -119,11 +119,6 @@ EpisodesGallery = React.createClass({
 });
 
 var GalleryEpisode = React.createClass({
-  getEpisodePath() {
-    let pathBase = "/episodes";
-    return pathBase + "/" + this.props.episode.title;
-  },
-
   render() {
     let galleryEpisodeClasses = classNames({
       'gallery-episode': true,
@@ -136,7 +131,7 @@ var GalleryEpisode = React.createClass({
           <img src={this.props.episode.imageUrl()}></img>
           <div className="coming-soon-text"><span>COMING SOON</span></div>
         </div>
-        <div className="name"><a href={this.getEpisodePath()}>{this.props.episode.title}</a></div>
+        <div className="name"><a href={this.props.episode.path()}>{this.props.episode.title}</a></div>
       </div>
     );
   }

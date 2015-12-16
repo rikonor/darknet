@@ -4,7 +4,7 @@ Page = React.createClass({
       <div className="page">
         {this.props.children}
 
-        <NavArrow />
+        <NavArrow next={this.props.nextPage} />
       </div>
     );
   }
@@ -122,8 +122,8 @@ var NavArrow = React.createClass({
     if (this.state.arrowState === "up")
       return this.scrollToTop();
 
-    // if (this.state.arrowState === "right")
-    //   return this.goTo();
+    if (this.state.arrowState === "right")
+      return FlowRouter.go(this.props.next.href);
   },
 
   // Arrow direction and location (fixed/absolute)
@@ -146,14 +146,23 @@ var NavArrow = React.createClass({
   updateArrowState() {
     // Check if the footer is reached
     let footer = $(".footer-container");
-    if (isElementInView(footer)) {
-      return this.changeStateUp();
-    } else {
+    if (! isElementInView(footer)) {
       return this.changeStateDown();
     }
+
+    if (this.props.next) {
+      return this.changeStateRight();
+    }
+
+    return this.changeStateUp();
   },
 
   render() {
+    let nextPage;
+    if (this.props.next) {
+      nextPage = <div>Next: {this.props.next.title}</div>;
+    }
+
     return (
       <div className="nav-arrow" onClick={this.handleClick}>
         <i className="fa fa-angle-double-down"></i>

@@ -5,46 +5,26 @@
 // Desktop - 3 items per row
 
 .grid {
+  width: 100%;
+
+  @include bp-under(breakpoint(large)) {
+    max-width: 2 * $gridImageWidth + $gridGutterWidth;
+    margin: auto;
+  }
+
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 
   .grid-item {
     width: 100%;
 
+    @include respond-to(medium) {
+      max-width: $gridImageWidth;
+    }
+
     @include all-but-last {
       margin-bottom: 2em;
-    }
-
-    @include respond-to(medium) {
-      flex: 1 0 calc(#{percentage(1/3)} - 1em);
-      margin-right: 1em;
-      &:nth-child(3n) {
-        margin-right: 0;
-      }
-    }
-
-    .image {
-
-    }
-
-    .title {
-
-    }
-
-    .description {
-
-    }
-  }
-
-  &.2-row {
-    .grid-item {
-
-    }
-  }
-
-  &.3-row {
-    .grid-item {
-
     }
   }
 }

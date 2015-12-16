@@ -54,3 +54,14 @@ $episodesGalleryHeights: (
 $curtainZIndex: 1;
 $navZIndex: 2;
 $lightboxZIndex: 3;
+
+// grid settings
+
+$gridContainerWidth: $maxContentWidth;
+$gridGutterWidth: 62px;
+$gridDefaultNumOfRowItems: 3;
+$gridImageAspectRatio: 3 / 2;
+
+// Calculate grid image size
+$gridImageWidth: ($gridContainerWidth - ($gridDefaultNumOfRowItems - 1) * $gridGutterWidth) / $gridDefaultNumOfRowItems;
+$gridImageHeight: $gridImageWidth / $gridImageAspectRatio;

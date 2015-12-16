@@ -42,11 +42,6 @@ EpisodesLibrary = React.createClass({
 });
 
 var LibraryEpisode = React.createClass({
-  getEpisodePath() {
-    let pathBase = "/episodes";
-    return pathBase + "/" + this.props.episode.title;
-  },
-
   render() {
     let libraryEpisodeClasses = classNames({
       'library-episode': true,
@@ -56,12 +51,12 @@ var LibraryEpisode = React.createClass({
     return (
       <div className={libraryEpisodeClasses}>
         <div className="image" onClick={this.handleImageClick}>
-          <a href={this.getEpisodePath()}>
+          <a href={this.props.episode.path()}>
             <img src={this.props.episode.imageUrl()}></img>
             <div className="coming-soon-text"><span>COMING SOON</span></div>
           </a>
         </div>
-        <div className="name"><a href={this.getEpisodePath()}>{this.props.episode.title}</a></div>
+        <div className="name"><a href={this.props.episode.path()}>{this.props.episode.title}</a></div>
         <div className="synopsis">{this.props.episode.description}</div>
       </div>
     );

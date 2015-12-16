@@ -2,15 +2,6 @@
 
 $headerDividerColor: $DARKISHGRAY;
 
-$containerWidth: $maxContentWidth;
-$gutterWidth: 62px;
-$numOfRowItems: 3;
-$imageAspectRatio: 3 / 2;
-
-// Calculate size
-$imageWidth: ($containerWidth - ($numOfRowItems - 1) * $gutterWidth) / $numOfRowItems;
-$imageHeight: $imageWidth / $imageAspectRatio;
-
 .episodes-library {
   width: 100%;
 
@@ -24,7 +15,7 @@ $imageHeight: $imageWidth / $imageAspectRatio;
     // on mobile - one episode per row (that's the default settings)
     // on tablet - two episodes per row
     @include bp-under(breakpoint(large)) {
-      max-width: 2 * $imageWidth + $gutterWidth;
+      max-width: 2 * $gridImageWidth + $gridGutterWidth;
       margin: auto;
     }
 
@@ -36,7 +27,7 @@ $imageHeight: $imageWidth / $imageAspectRatio;
       flex: 1 0 100%;
 
       @include respond-to(medium) {
-        max-width: $imageWidth;
+        max-width: $gridImageWidth;
       }
 
       position: relative;
@@ -48,7 +39,7 @@ $imageHeight: $imageWidth / $imageAspectRatio;
       .image {
         position: relative;
         // width: $imageWidth;
-        height: $imageHeight;
+        height: $gridImageHeight;
 
         margin-bottom: 0.5rem;
 

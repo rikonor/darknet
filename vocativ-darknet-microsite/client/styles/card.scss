@@ -1,17 +1,18 @@
 @import "shared";
 
 .card {
-  div {
-    @include all-but-last {
-      margin-bottom: 0.5em;
+  .image {
+    position: relative;
+    height: $gridImageHeight !important;
+
+    img {
+      @include fill-parent;
+      object-fit: cover;
     }
   }
 
-  .image {
-
-  }
-
   .title {
+    margin-top: 0.5em;
     color: $GRAY;
     line-height: 1.2em;
   }

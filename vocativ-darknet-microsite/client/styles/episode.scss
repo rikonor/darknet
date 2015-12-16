@@ -1,10 +1,8 @@
 @import "shared";
 
 .episode {
-  @include bp-under(breakpoint(medium)) {
-    .section {
-      min-height: initial;
-    }
+  .section:first-child {
+    min-height: initial;
   }
 
   // Pad the episode so the last sections are not hidden by the episodes gallery
@@ -27,18 +25,11 @@
     .description {
       font-size: 1.3em;
       line-height: 1.3em;
-
-      @include respond-to(medium) {
-        display: none;
-      }
     }
   }
 
   .episode-articles, .episode-videos {
     .articles-list, .videos-list {
-      display: flex;
-      flex-wrap: wrap;
-
       .embedded-article, .embedded-video {
         // Grid settings
         @include respond-to(medium) {
@@ -48,63 +39,6 @@
             margin-right: 0;
           }
         }
-
-        .image {
-          position: relative;
-          margin-bottom: 0.5em;
-        }
-
-        .description {
-          line-height: 1.2em;
-        }
-
-        margin-bottom: 2em;
-      }
-    }
-  }
-
-  .episode-articles {
-    .header {
-      font-size: 1.5em;
-
-      @include bp-under(breakpoint(medium)) {
-        font-size: 7vw;
-        text-align: center;
-      }
-
-      line-height: 1.2em;
-
-      @include bp-options(margin-bottom, (
-        default: 0.5em,
-        medium: 1em
-      ));
-
-      .episode-name {
-        text-transform: uppercase;
-      }
-    }
-  }
-
-  .episode-videos {
-    .videos-list {
-      .embedded-video {
-        .name {
-          color: $GRAY;
-          text-transform: uppercase;
-          line-height: 1.2em;
-        }
-      }
-    }
-
-    .synopsis {
-      max-width: 0.7 * $maxContentWidth;
-      margin: auto;
-
-      font-size: 1.1em;
-      line-height: 1.3em;
-
-      @include bp-under(breakpoint(medium)) {
-        display: none;
       }
     }
   }
