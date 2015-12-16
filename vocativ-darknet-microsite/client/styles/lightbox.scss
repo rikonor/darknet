@@ -27,5 +27,16 @@ $closeColor: $WHITE;
 
     @include dim(80%, 90%);
     box-shadow: 0 1px 20px rgba($shadowColor, 0.8);
+
+    // On mobile
+    @include bp-under(breakpoint(medium)) {
+      @include portrait {
+        @include dim(100%, 50%);
+      }
+
+      @include landscape {
+        @include dim(80%, 100%);
+      }
+    }
   }
 }
