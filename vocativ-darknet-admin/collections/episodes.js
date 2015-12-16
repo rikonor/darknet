@@ -4,7 +4,7 @@ Schemas.Episodes = new SimpleSchema({
   createdAt: Schemas.createdAt,
   title: Schemas.title("Episode Title"),
   shortDescription: Schemas.description("Short Episode Description"),
-  longDescription: Schemas.longDescription("Long Episode Description"),
+  longDescription: Schemas.longDescription("Long Episode Description", 800),
   airingAt: Schemas.date("Airing Date", "When does the episode air?"),
   visibleAt: Schemas.date("Visible Date", "When should the episode become visible to visitors?"),
   image: Schemas.image("Episode Cover Image"),
