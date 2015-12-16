@@ -20,7 +20,7 @@ Videos.attachSchema(Schemas.Videos);
 VideosAdminOptions = {
   icon: 'video-camera',
   tableColumns: [
-    { label: 'Name', name: 'name' }
+    { label: 'Title', name: 'title' }
   ],
   routes: adminRoutesWaitOnOptions(['images'])
 };

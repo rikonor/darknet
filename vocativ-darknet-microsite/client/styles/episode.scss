@@ -18,13 +18,13 @@
       font-size: 3.8vw;
     }
 
-    .name {
+    .title {
       font-size: 2em;
-      .name-actual { text-transform: uppercase; }
+      .title-actual { text-transform: uppercase; }
       margin: 0.5em 0;
     }
 
-    .synopsis {
+    .description {
       font-size: 1.3em;
       line-height: 1.3em;
 
@@ -52,12 +52,6 @@
         .image {
           position: relative;
           margin-bottom: 0.5em;
-        }
-
-        .category {
-          margin-bottom: 0.5em;
-          color: $GRAY;
-          text-transform: uppercase;
         }
 
         .description {

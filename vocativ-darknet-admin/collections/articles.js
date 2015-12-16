@@ -15,7 +15,7 @@ Articles.attachSchema(Schemas.Articles);
 ArticlesAdminOptions = {
   icon: 'newspaper-o',
   tableColumns: [
-    { label: 'Name', name: 'name' }
+    { label: 'Title', name: 'title' }
   ],
   routes: adminRoutesWaitOnOptions(['images'])
 };

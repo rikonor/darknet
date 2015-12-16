@@ -122,7 +122,7 @@ fetchSectionOptions = function() {
     value = JSON.stringify(value);
 
     return {
-      label: `[${capType}] ${option.value.name}`,
+      label: `[${capType}] ${option.value.title}`,
       value: value
     };
   });

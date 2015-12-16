@@ -43,10 +43,9 @@ VideoEmbed = React.createClass({
 
     return (
       <div className="video-embed" onClick={this.handleClick}>
-        <div className="image">
+        <Image imageUrl={this.props.video.imageUrl()}>
           <div className="voc-video-overlay"></div>
-          <img src={this.props.video.imageUrl()}></img>
-        </div>
+        </Image>
         {youtubeEmbed}
       </div>
     );

@@ -14,7 +14,7 @@ DataViz.attachSchema(Schemas.DataViz);
 DataVizAdminOptions = {
   icon: 'bar-chart',
   tableColumns: [
-    { label: 'Name', name: 'name' }
+    { label: 'Title', name: 'title' }
   ],
   routes: adminRoutesWaitOnOptions(['images'])
 };

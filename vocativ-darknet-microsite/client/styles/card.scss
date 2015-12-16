@@ -1,0 +1,18 @@
+@import "shared";
+
+.card {
+  div {
+    @include all-but-last {
+      margin-bottom: 0.5em;
+    }
+  }
+
+  .image {
+
+  }
+
+  .title {
+    color: $GRAY;
+    line-height: 1.2em;
+  }
+}

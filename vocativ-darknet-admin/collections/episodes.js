@@ -16,7 +16,7 @@ Schemas.Episodes = new SimpleSchema({
       options: function () {
         return _.map(Videos.find().fetch(), function(video) {
           return {
-            label: video.name,
+            label: video.title,
             value: video._id
           };
         });
@@ -69,7 +69,7 @@ Episodes.attachSchema(Schemas.Episodes);
 EpisodesAdminOptions = {
   icon: 'film',
   tableColumns: [
-    { label: 'Name', name: 'name' },
+    { label: 'Title', name: 'title' },
     { label: 'Airing Date', name: 'airingAt' }
   ],
   routes: adminRoutesWaitOnOptions([

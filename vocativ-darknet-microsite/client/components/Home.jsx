@@ -43,7 +43,7 @@ HomeLoader = React.createClass({
 
     return {
       videosLoading: ! videosHandle.ready(),
-      trailer: Videos.findOne('TQWGzyQgQJq9bQmTW')
+      trailer: Videos.findOne('u8pENopLu89THthqj')
     };
   },
 
@@ -65,26 +65,36 @@ Home = React.createClass({
         <Page>
           <Section>
             <VideoEmbed video={this.props.trailer} />
-
-            <div className="intro">
-              <div className="intro-header">
-                <div className="header">DARK NET</div>
-                <div className="subheader">from SHOWTIME + VOCATIV</div>
-              </div>
-              <div className="intro-description">
-                <div className="description-header">This is DARKnet</div>
-                <div className="description-1">DARK NET is an eight-part docuseries that explores the netherworld where virtual and physical lives collide in ways surprising, disturbing, and seemingly inevitable. DARK NET reveals the perspective of a digitally connected world where our every action is collected and stored. Each episode sheds light on themes such as bio-hacking, cyberkidnapping, digital warfare, online cults, the webcam sex trade and more.</div>
-                <div className="description-2">We're taking you inside the deep web, where 80% of the internet lies beyond the reach of regular search engines.</div>
-                <div className="description-airdate">
-                  <p>Episodes air on Thursdays at 11 pm ET</p>
-                  <p>Watch full episodes on showtime.com</p>
-                </div>
-              </div>
-            </div>
+            <HomeIntro />
           </Section>
 
           <Section><EpisodesLibraryLoader /></Section>
         </Page>
+      </div>
+    );
+  }
+});
+
+var HomeIntro = React.createClass({
+  render() {
+    let description1 = "DARK NET is an eight-part docuseries that explores the netherworld where virtual and physical lives collide in ways surprising, disturbing, and seemingly inevitable. DARK NET reveals the perspective of a digitally connected world where our every action is collected and stored. Each episode sheds light on themes such as bio-hacking, cyberkidnapping, digital warfare, online cults, the webcam sex trade and more.";
+    let description2 = "We're taking you inside the deep web, where 80% of the internet lies beyond the reach of regular search engines.";
+
+    return (
+      <div className="intro">
+        <div className="intro-header">
+          <div className="header">DARK NET</div>
+          <div className="subheader">from SHOWTIME + VOCATIV</div>
+        </div>
+        <div className="intro-description">
+          <div className="description-header">This is DARKnet</div>
+          <div className="description-1">{description1}</div>
+          <div className="description-2">{description2}</div>
+          <div className="description-airdate">
+            <p>Episodes air on Thursdays at 11 pm ET</p>
+            <p>Watch full episodes on showtime.com</p>
+          </div>
+        </div>
       </div>
     );
   }

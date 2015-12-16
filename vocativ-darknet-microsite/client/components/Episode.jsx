@@ -1,0 +1,92 @@
+EpisodeLoader = React.createClass({
+  mixins: [ReactMeteorData],
+
+  propTypes: {
+    episodeName: React.PropTypes.string.isRequired
+  },
+
+  getMeteorData() {
+    let episodeHandle = Meteor.subscribe('episodes');
+
+    return {
+      episodeLoading: ! episodeHandle.ready(),
+      episode: Episodes.findOne({title: this.props.episodeName})
+    };
+  },
+
+  render() {
+    if (this.data.episodeLoading) {
+      return <div>Loading</div>;
+    }
+
+    return (
+      <Episode episode={this.data.episode} />
+    );
+  }
+});
+
+Episode = React.createClass({
+  renderSectionItem(sectionItem, i) {
+    switch(sectionItem.type) {
+      case 'video':
+        item = <VideoCard video={sectionItem.value} />;
+        break;
+
+      case 'article':
+        item = <ArticleCard article={sectionItem.value} />;
+        break;
+
+      case 'dataviz':
+        item = <DataVisualization dataviz={sectionItem.value} />;
+        break;
+    }
+
+    return (
+      <GridItem key={i}>
+        {item}
+      </GridItem>
+    );
+  },
+
+  renderSection(section, i) {
+    // Temporarily taken out of the section
+    let sectionTop = (
+      <div>
+        <div className="header">{section.header}</div>
+        <div className="description">{section.description}</div>
+      </div>
+    );
+
+    return (
+      <Section key={i}>
+        <Grid>
+          {_.map(section.content, this.renderSectionItem)}
+        </Grid>
+      </Section>
+    );
+  },
+
+  renderSections() {
+    let sectionsContent = this.props.episode.sectionsContent();
+    return _.map(sectionsContent, this.renderSection);
+  },
+
+  render() {
+    return (
+      <div className="episode">
+        <Page>
+          <Section>
+            <div className="episode-info">
+              <div className="title">Episode <span className="title-actual">{this.props.episode.title}</span></div>
+              <div className="description">{this.props.episode.description}</div>
+            </div>
+          </Section>
+
+          {this.renderSections()}
+
+          <EpisodesGalleryLoader />
+        </Page>
+      </div>
+    );
+  }
+});
