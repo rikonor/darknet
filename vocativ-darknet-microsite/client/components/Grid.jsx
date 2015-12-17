@@ -11,8 +11,8 @@ Grid = React.createClass({
 
     let numOfChildren = this.props.children.length;
 
-    // Multiple of 4 -> 2 per row
-    if (numOfChildren % 4 === 0) {
+    // If there are 4, then 2 per row
+    if (numOfChildren === 4) {
       return 2;
     }
 
@@ -37,8 +37,8 @@ Grid = React.createClass({
   },
 
   renderFillers() {
-    return _.map(_.range(this.getRequiredNumberOfFillers()), () => {
-      return <GridFiller />;
+    return _.map(_.range(this.getRequiredNumberOfFillers()), (i) => {
+      return <GridFiller key={i} />;
     });
   },
 

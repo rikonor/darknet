@@ -3,34 +3,13 @@
 $headerDividerColor: $DARKISHGRAY;
 
 .episodes-library {
-  width: 100%;
-
   .header {
     @include bottom-divider($headerDividerColor, 1.5rem);
   }
 
   .episodes {
-    width: 100%;
-
-    // on mobile - one episode per row (that's the default settings)
-    // on tablet - two episodes per row
-    @include bp-under(breakpoint(large)) {
-      max-width: 2 * $gridImageWidth + $gridGutterWidth;
-      margin: auto;
-    }
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
     .library-episode {
-      flex: 1 0 100%;
 
-      @include respond-to(medium) {
-        max-width: $gridImageWidth;
-      }
-
-      position: relative;
       display: flex;
       flex-direction: column;
 
@@ -38,7 +17,6 @@ $headerDividerColor: $DARKISHGRAY;
 
       .image {
         position: relative;
-        // width: $imageWidth;
         height: $gridImageHeight;
 
         margin-bottom: 0.5rem;
@@ -77,14 +55,6 @@ $headerDividerColor: $DARKISHGRAY;
             font-size: 2.5em;
           }
         }
-      }
-    }
-
-    .grid-filler {
-      flex: 1 0 100%;
-
-      @include respond-to(medium) {
-        max-width: $gridImageWidth;
       }
     }
   }

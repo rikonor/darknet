@@ -25,7 +25,11 @@ EpisodesLibraryLoader = React.createClass({
 EpisodesLibrary = React.createClass({
   renderEpisodes() {
     return this.props.episodes.map((episode) => {
-      return <LibraryEpisode key={episode._id} episode={episode} />;
+      return (
+        <GridItem key={episode._id}>
+          <LibraryEpisode episode={episode} />
+        </GridItem>
+      );
     });
   },
 
@@ -36,11 +40,9 @@ EpisodesLibrary = React.createClass({
       <div className="episodes-library">
         <div className="header"><h1>Episodes</h1></div>
         <div className="episodes">
-          {this.renderEpisodes()}
-
-          <GridFiller />
-          <GridFiller />
-          <GridFiller />
+          <Grid>
+            {this.renderEpisodes()}
+          </Grid>
         </div>
       </div>
     );

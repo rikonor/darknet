@@ -68,7 +68,9 @@ Home = React.createClass({
             <HomeIntro />
           </Section>
 
-          <Section><EpisodesLibraryLoader /></Section>
+          <Section>
+            <EpisodesLibraryLoader />
+          </Section>
         </Page>
       </div>
     );
