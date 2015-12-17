@@ -4,13 +4,13 @@
 // Tablet - 2 items per row
 // Desktop - 3 items per row
 
+%row-2 {
+  max-width: 2 * $gridImageWidth + $gridGutterWidth;
+  margin: auto;
+}
+
 .grid {
   width: 100%;
-
-  @include bp-under(breakpoint(large)) {
-    max-width: 2 * $gridImageWidth + $gridGutterWidth;
-    margin: auto;
-  }
 
   display: flex;
   flex-wrap: wrap;
@@ -26,5 +26,24 @@
     @include all-but-last {
       margin-bottom: 2em;
     }
+  }
+
+  .grid-filler {
+    @extend .grid-item;
+  }
+
+  &.one-row {
+    max-width: $gridImageWidth;
+    margin: auto;
+  }
+
+  &.two-row {
+    max-width: 2 * $gridImageWidth + $gridGutterWidth;
+    margin: auto;
+  }
+
+  @include bp-under(breakpoint(large)) {
+    max-width: 2 * $gridImageWidth + $gridGutterWidth;
+    margin: auto;
   }
 }

@@ -1,10 +1,23 @@
 Grid = React.createClass({
   numOfItemsPerRow() {
     // How many items appear on each row should be based on the amount of children
-    // Unless this is overriden by the childrenPerRow property
+    // Unless this is overriden by the itemsPerRow property
+    let itemsPerRow = this.props.itemsPerRow;
+
+    // Allowed values are [2, 3]
+    if (itemsPerRow && [2, 3].indexOf(itemsPerRow) !== -1) {
+      return itemsPerRow;
+    }
 
     let numOfChildren = this.props.children.length;
 
+    // Multiple of 4 -> 2 per row
+    if (numOfChildren % 4 === 0) {
+      return 2;
+    }
+
+    // Otherwise -> 3 per row
+    return 3;
   },
 
   numOfChildrenToClass() {
@@ -13,9 +26,23 @@ Grid = React.createClass({
     // Should be 2-per line? or 3-per line?
   },
 
-  render() {
-    console.log(this.numOfItemsPerRow());
+  getRequiredNumberOfFillers() {
+    let numOfItemsPerRow = this.numOfItemsPerRow();
+    let numOfChildren = this.props.children.length;
 
+    let numOfRows = Math.ceil(numOfChildren / numOfItemsPerRow);
+    let numOfFillers = (numOfRows * numOfItemsPerRow) - numOfChildren;
+
+    return numOfFillers;
+  },
+
+  renderFillers() {
+    return _.map(_.range(this.getRequiredNumberOfFillers()), () => {
+      return <GridFiller />;
+    });
+  },
+
+  render() {
     let classNames = {
       'grid': true
     };
@@ -25,6 +52,7 @@ Grid = React.createClass({
     return (
       <div className="grid">
         {this.props.children}
+        {this.renderFillers()}
       </div>
     );
   }
