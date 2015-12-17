@@ -31,7 +31,7 @@ Curtain = React.createClass({
           <div className="header">
             <span className="header-text" data-text="DARK NET">DARK NET</span>
           </div>
-          <div className="subheader">from SHOWTIME + VOCATIV</div>
+          <div className="subheader">from SHOWTIME + VOCATIV FILMS</div>
         </div>
       </div>
     );

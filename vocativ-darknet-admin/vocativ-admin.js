@@ -1,5 +1,5 @@
 AdminConfig = {
-  name: 'Vocativ DARKnet',
+  name: 'Vocativ DARK NET',
   adminEmails: ['rikonor@gmail.com'],
   collections: {
     Episodes: EpisodesAdminOptions,

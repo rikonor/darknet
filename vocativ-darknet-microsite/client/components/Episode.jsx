@@ -83,7 +83,7 @@ Episode = React.createClass({
         <Page nextPage={nextPage}>
           <Section>
             <div className="episode-info">
-              <div className="title">Episode <span className="title-actual">{this.props.episode.title}</span></div>
+              <div className="title"><span className="title-actual">{this.props.episode.title}</span></div>
               <div className="description">{this.props.episode.longDescription}</div>
             </div>
           </Section>
