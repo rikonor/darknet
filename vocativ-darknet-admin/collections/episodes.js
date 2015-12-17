@@ -40,7 +40,7 @@ Schemas.Episodes = new SimpleSchema({
   },
   "sections.$.description": {
     type: String,
-    max: 200,
+    max: 800,
     optional: true,
     label: "Section Description [Optional]"
   },
