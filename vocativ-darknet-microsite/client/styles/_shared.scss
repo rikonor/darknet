@@ -66,3 +66,6 @@ $gridImageAspectRatio: 3 / 2;
 // Calculate grid image size
 $gridImageWidth: ($gridContainerWidth - ($gridDefaultNumOfRowItems - 1) * $gridGutterWidth) / $gridDefaultNumOfRowItems;
 $gridImageHeight: $gridImageWidth / $gridImageAspectRatio;
+
+$gridOnePerRowWidth: $gridImageWidth;
+$gridTwoPerRowWidth: 2 * $gridImageWidth + $gridGutterWidth;

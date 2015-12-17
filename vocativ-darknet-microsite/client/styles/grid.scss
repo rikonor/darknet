@@ -4,11 +4,6 @@
 // Tablet - 2 items per row
 // Desktop - 3 items per row
 
-%row-2 {
-  max-width: 2 * $gridImageWidth + $gridGutterWidth;
-  margin: auto;
-}
-
 .grid {
   width: 100%;
 
@@ -32,18 +27,18 @@
     @extend .grid-item;
   }
 
-  &.one-per-row {
-    max-width: $gridImageWidth;
+  @include bp-under(breakpoint(large)) {
+    max-width: $gridTwoPerRowWidth;
     margin: auto;
   }
 
   &.two-per-row {
-    max-width: 2 * $gridImageWidth + $gridGutterWidth;
+    max-width: $gridTwoPerRowWidth;
     margin: auto;
   }
 
-  @include bp-under(breakpoint(large)) {
-    max-width: 2 * $gridImageWidth + $gridGutterWidth;
+  &.one-per-row {
+    max-width: $gridOnePerRowWidth;
     margin: auto;
   }
 }

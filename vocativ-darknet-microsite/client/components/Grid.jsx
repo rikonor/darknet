@@ -23,11 +23,36 @@ Grid = React.createClass({
     return 3;
   },
 
+  widthOfChildren() {
+    // You can force the width each child will take
+    // with the widthOfChildren property
+
+    let widthOfChildren = this.props.widthOfChildren;
+    let itemsPerRow = this.numOfItemsPerRow();
+
+    if (! widthOfChildren) {
+      return 1;
+    }
+
+    // If itemsPerRow doesn't divide widthOfChildren
+    // then each child should be one column wide
+    if (itemsPerRow % widthOfChildren !== 0) {
+      console.log(`Grid item can't be ${widthOfChildren} columns wide when a row contains ${itemsPerRow} items. Defaulting to 1.`);
+      return 1;
+    }
+
+    // Only allowed values are 1, 2, 3
+    if ([1, 2, 3].includes(widthOfChildren)) {
+      return widthOfChildren;
+    }
+
+    // By default each child should be one column wide
+    return 1;
+  },
+
   numOfChildrenToClass() {
     let numOfChildren = React.Children.count(this.props.children);
     let numOfItemsPerRow = this.numOfItemsPerRow(numOfChildren);
-
-    console.log("1", numOfChildren, numOfItemsPerRow);
 
     switch(numOfItemsPerRow) {
       case 1:
@@ -39,10 +64,26 @@ Grid = React.createClass({
     }
   },
 
+  widthOfChildrenToClass() {
+    let widthOfChildren = this.widthOfChildren();
+
+    switch(widthOfChildren) {
+      case 1:
+        return 'one-column';
+      case 2:
+        return 'two-column';
+      case 3:
+        return 'three-column';
+    }
+  },
+
   getRequiredNumberOfFillers() {
     let numOfChildren = React.Children.count(this.props.children);
     let numOfItemsPerRow = this.numOfItemsPerRow(numOfChildren);
+    let widthOfChildren = this.widthOfChildren();
 
+    // Get number of required fillers based on how many items will be missing
+    // from a full grid
     let numOfRows = Math.ceil(numOfChildren / numOfItemsPerRow);
     let numOfFillers = (numOfRows * numOfItemsPerRow) - numOfChildren;
 
