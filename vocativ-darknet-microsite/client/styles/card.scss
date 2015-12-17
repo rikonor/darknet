@@ -17,3 +17,11 @@
     line-height: 1.2em;
   }
 }
+
+.grid.two-per-row {
+  .grid-item.two-column {
+    .card .image {
+      height: 2 * $gridImageHeight !important;
+    }
+  }
+}

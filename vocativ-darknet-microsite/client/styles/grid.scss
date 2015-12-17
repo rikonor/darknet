@@ -32,9 +32,19 @@
     margin: auto;
   }
 
+  &.three-per-row {
+    .grid-item.two-column {
+      // Figure out what to do with dataviz
+    }
+  }
+
   &.two-per-row {
     max-width: $gridTwoPerRowWidth;
     margin: auto;
+
+    .grid-item.two-column {
+      max-width: 100%;
+    }
   }
 
   &.one-per-row {
