@@ -96,6 +96,7 @@ var HomeIntro = React.createClass({
             <p>Episodes air on Thursdays at 11 pm ET</p>
             <p>Watch full episodes on showtime.com</p>
           </div>
+          <div className="logo showtime"><a href="http://www.showtime.com/"><img src="/images/showtime-logo.svg" /></a></div>
         </div>
       </div>
     );

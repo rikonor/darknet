@@ -39,12 +39,34 @@ $introHeaderDividerColor: $DARKISHGRAY;
       font-size: 1em;
       line-height: 1.3em;
 
+      display: flex;
+      flex-wrap: wrap;
+
       .description-header {
         display: none;
       }
 
       .description-header, .description-1, .description-2 {
         margin-bottom: 1.5rem;
+      }
+
+      .description-airdate {
+        @include bp-under(breakpoint(medium)) {
+          width: 100%;
+        }
+      }
+
+      .logo {
+        width: 8em;
+        @include bp-under(breakpoint(medium)) { margin-top: 2em; }
+        @include respond-to(medium) { margin-left: 1em; }
+
+        position: relative;
+
+        img {
+          position: relative;
+          top: -5px;
+        }
       }
     }
 
