@@ -42,6 +42,10 @@ $scrollZIndex: 1;
       height: 100%;
       max-width: 12rem;
 
+      a {
+        @include fill-parent;
+      }
+
       @include bp-options(flex, (
         default: 1 0 130px,
         medium: 1 0 170px

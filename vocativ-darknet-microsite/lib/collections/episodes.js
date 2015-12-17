@@ -33,6 +33,9 @@ Episodes.helpers({
   hasAired: function() {
     return this.airingAt <= (new Date());
   },
+  isViewable: function() {
+    return this.visibleAt <= (new Date());
+  },
   sectionsContent: function() {
     const typeCollMap = {
       'article': Articles,

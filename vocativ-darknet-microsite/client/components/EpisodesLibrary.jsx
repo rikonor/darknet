@@ -53,7 +53,7 @@ var LibraryEpisode = React.createClass({
   render() {
     let libraryEpisodeClasses = classNames({
       'library-episode': true,
-      'coming-soon': ! this.props.episode.hasAired()
+      'coming-soon': ! this.props.episode.isViewable()
     });
 
     return (
