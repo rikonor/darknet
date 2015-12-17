@@ -18,10 +18,12 @@
   }
 }
 
-.grid.two-per-row {
-  .grid-item.two-column {
-    .card .image {
-      height: 2 * $gridImageHeight !important;
+@include respond-to(medium) {
+  .grid.two-per-row {
+    .grid-item.two-column {
+      .card .image {
+        height: 2 * $gridImageHeight !important;
+      }
     }
   }
 }
