@@ -1,5 +1,5 @@
 Grid = React.createClass({
-  numOfItemsPerRow() {
+  numOfItemsPerRow(numOfChildren) {
     // How many items appear on each row should be based on the amount of children
     // Unless this is overriden by the itemsPerRow property
     let itemsPerRow = this.props.itemsPerRow;
@@ -8,8 +8,6 @@ Grid = React.createClass({
     if (itemsPerRow && [2, 3].indexOf(itemsPerRow) !== -1) {
       return itemsPerRow;
     }
-
-    let numOfChildren = this.props.children.length;
 
     // If there are 4, then 2 per row
     if (numOfChildren === 4) {
@@ -27,8 +25,8 @@ Grid = React.createClass({
   },
 
   getRequiredNumberOfFillers() {
-    let numOfItemsPerRow = this.numOfItemsPerRow();
     let numOfChildren = this.props.children.length;
+    let numOfItemsPerRow = this.numOfItemsPerRow(numOfChildren);
 
     let numOfRows = Math.ceil(numOfChildren / numOfItemsPerRow);
     let numOfFillers = (numOfRows * numOfItemsPerRow) - numOfChildren;

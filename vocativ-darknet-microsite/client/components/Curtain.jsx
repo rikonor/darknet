@@ -29,7 +29,7 @@ Curtain = React.createClass({
         </div>
         <div className="curtain-text">
           <div className="header">
-            <span className="header-text" data-text="DARKNET">DARKNET</span>
+            <span className="header-text" data-text="DARK NET">DARK NET</span>
           </div>
           <div className="subheader">from SHOWTIME + VOCATIV</div>
         </div>
