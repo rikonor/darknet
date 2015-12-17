@@ -64,8 +64,12 @@ Home = React.createClass({
       <div className="home">
         <Page>
           <Section>
-            <VideoEmbed video={this.props.trailer} />
             <HomeIntro />
+            <Grid>
+              <GridItem>
+                <VideoCard video={this.props.trailer} />
+              </GridItem>
+            </Grid>
           </Section>
 
           <Section>

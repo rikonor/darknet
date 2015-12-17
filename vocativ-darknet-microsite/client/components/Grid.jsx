@@ -5,12 +5,17 @@ Grid = React.createClass({
     let itemsPerRow = this.props.itemsPerRow;
 
     // Allowed values are [2, 3]
-    if (itemsPerRow && [2, 3].indexOf(itemsPerRow) !== -1) {
+    if (itemsPerRow && [2, 3].includes(itemsPerRow)) {
       return itemsPerRow;
     }
 
-    // If there are 4, then 2 per row
-    if (numOfChildren === 4) {
+    // If it's just 1, then 1 per row
+    if ([1].includes(numOfChildren)) {
+      return 1;
+    }
+
+    // If there are 2 or 4, then 2 per row
+    if ([2, 4].includes(numOfChildren)) {
       return 2;
     }
 
@@ -19,13 +24,23 @@ Grid = React.createClass({
   },
 
   numOfChildrenToClass() {
-    let numOfChildren = this.props.children.length;
+    let numOfChildren = React.Children.count(this.props.children);
+    let numOfItemsPerRow = this.numOfItemsPerRow(numOfChildren);
 
-    // Should be 2-per line? or 3-per line?
+    console.log("1", numOfChildren, numOfItemsPerRow);
+
+    switch(numOfItemsPerRow) {
+      case 1:
+        return 'one-per-row';
+      case 2:
+        return 'two-per-row';
+      default:
+        return 'three-per-row';
+    }
   },
 
   getRequiredNumberOfFillers() {
-    let numOfChildren = this.props.children.length;
+    let numOfChildren = React.Children.count(this.props.children);
     let numOfItemsPerRow = this.numOfItemsPerRow(numOfChildren);
 
     let numOfRows = Math.ceil(numOfChildren / numOfItemsPerRow);
@@ -41,14 +56,12 @@ Grid = React.createClass({
   },
 
   render() {
-    let classNames = {
-      'grid': true
-    };
-    // classNames[numOfChildrenToClass()] = true;
+    let gridClasses = "grid";
+    gridClasses += ` ${this.numOfChildrenToClass()}`;
 
     // Grid Children should only be GridItems
     return (
-      <div className="grid">
+      <div className={gridClasses}>
         {this.props.children}
         {this.renderFillers()}
       </div>

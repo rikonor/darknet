@@ -32,12 +32,12 @@
     @extend .grid-item;
   }
 
-  &.one-row {
+  &.one-per-row {
     max-width: $gridImageWidth;
     margin: auto;
   }
 
-  &.two-row {
+  &.two-per-row {
     max-width: 2 * $gridImageWidth + $gridGutterWidth;
     margin: auto;
   }
