@@ -19,7 +19,7 @@ $headerDividerColor: $DARKISHGRAY;
         position: relative;
         height: $gridImageHeight;
 
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
 
         img {
           @include fill-parent;
@@ -32,13 +32,12 @@ $headerDividerColor: $DARKISHGRAY;
       }
 
       .name {
-        margin: 0.5rem 0;
+        margin-bottom: 0.5rem;
         font-size: 1.2rem;
         @include upper;
       }
 
       .synopsis {
-        margin-top: 0.5rem;
         line-height: 1.4rem;
       }
 
