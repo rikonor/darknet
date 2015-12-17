@@ -1,3 +1,5 @@
+$dutyCycle: 20; // Duty Cycle in percentage
+
 @mixin textGlitch($name, $intensity, $textColor, $background, $highlightColor1, $highlightColor2, $width, $height) {
 
   color: $textColor;
@@ -10,13 +12,15 @@
     @for $i from 1 through 2 {
       @keyframes #{$name}-anim-#{$i} {
         @for $i from 0 through $steps {
-          #{percentage($i*(1/$steps))} {
-            clip: rect(
-              random($height)+px,
-              $width+px,
-              random($height)+px,
-              0
-            );
+          $currentPercent: percentage($i * (1 / $steps));
+
+          #{$currentPercent} {
+            @if $currentPercent < $dutyCycle {
+              clip: rect(random($height)+px, $width+px, random($height)+px, 0);
+            }
+            @else {
+              clip: rect(0, 0, 0, 0);
+            }
           }
         }
       }
@@ -35,11 +39,11 @@
   &:after {
     left: 2px;
     text-shadow: -1px 0 $highlightColor1;
-    animation: #{$name}-anim-1 2s infinite linear alternate-reverse;
+    animation: #{$name}-anim-1 2s infinite step-start alternate-reverse;
   }
   &:before {
     left: -2px;
     text-shadow: 2px 0 $highlightColor2;
-    animation: #{$name}-anim-2 3s infinite linear alternate-reverse;
+    animation: #{$name}-anim-2 3s infinite step-start alternate-reverse;
   }
 }
