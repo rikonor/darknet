@@ -50,7 +50,7 @@
     // Position nav-arrow right above the episodes gallery
     @each $bp, $episodesGalleryHeight in $episodesGalleryHeights {
       @include respond-to($bp) {
-        bottom: calc(10px + #{$episodesGalleryHeight});
+        bottom: calc(15px + #{$episodesGalleryHeight});
       }
     }
   }
