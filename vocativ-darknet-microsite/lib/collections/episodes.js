@@ -7,7 +7,7 @@ if (Meteor.isServer) {
 }
 
 if (Meteor.isClient) {
-  Meteor.subscribe("episodes");
+  subsManager.subscribe("episodes");
 }
 
 Episodes.helpers({

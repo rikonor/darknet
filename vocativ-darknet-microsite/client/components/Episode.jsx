@@ -6,7 +6,7 @@ EpisodeLoader = React.createClass({
   },
 
   getMeteorData() {
-    let episodeHandle = Meteor.subscribe('episodes');
+    let episodeHandle = subsManager.subscribe('episodes');
 
     return {
       episodeLoading: ! episodeHandle.ready(),

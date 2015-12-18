@@ -2,7 +2,7 @@ EpisodesLibraryLoader = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
-    let episodesHandle = Meteor.subscribe('episodes');
+    let episodesHandle = subsManager.subscribe('episodes');
 
     return {
       episodesLoading: ! episodesHandle.ready(),

@@ -7,7 +7,7 @@ if (Meteor.isServer) {
 }
 
 if (Meteor.isClient) {
-  Meteor.subscribe("dataviz");
+  subsManager.subscribe("dataviz");
 }
 
 DataViz.helpers({

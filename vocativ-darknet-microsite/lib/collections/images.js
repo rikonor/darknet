@@ -7,7 +7,7 @@ if (Meteor.isServer) {
 }
 
 if (Meteor.isClient) {
-  Meteor.subscribe("images");
+  subsManager.subscribe("images");
 }
 
 Images.helpers({

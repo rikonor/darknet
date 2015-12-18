@@ -39,7 +39,7 @@ HomeLoader = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
-    let videosHandle = Meteor.subscribe('videos');
+    let videosHandle = subsManager.subscribe('videos');
 
     return {
       videosLoading: ! videosHandle.ready(),

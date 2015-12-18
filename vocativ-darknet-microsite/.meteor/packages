@@ -36,3 +36,4 @@ cfs:standard-packages
 cfs:s3
 cfs:filesystem
 okgrow:router-autoscroll
+meteorhacks:subs-manager
