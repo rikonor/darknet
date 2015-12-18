@@ -10,7 +10,7 @@ EpisodeLoader = React.createClass({
 
     return {
       episodeLoading: ! episodeHandle.ready(),
-      episode: Episodes.findOne({title: this.props.episodeName})
+      episode: Episodes.findOne({title: this.props.episodeName}, {reactive: false})
     };
   },
 

@@ -43,7 +43,7 @@ HomeLoader = React.createClass({
 
     return {
       videosLoading: ! videosHandle.ready(),
-      trailer: Videos.findOne('u8pENopLu89THthqj')
+      trailer: Videos.findOne('u8pENopLu89THthqj', {reactive: false})
     };
   },
 
@@ -61,7 +61,7 @@ HomeLoader = React.createClass({
 Home = React.createClass({
   render() {
     // Prepare nextPage object [first episode]
-    let episode = Episodes.findOne({}, {sort: {airingAt: 1}});
+    let episode = Episodes.findOne({}, {sort: {airingAt: 1}, reactive: false});
     let nextPage = episode && episode.isViewable() && {
       title: episode.title,
       href: episode.path()
