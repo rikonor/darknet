@@ -6,7 +6,7 @@ NotFound = React.createClass({
   },
 
   getQuote() {
-    let quoteText = '"It cannot be seen, cannot be felt,\nCannot be heard, cannot be smelt,\nIt lies behind stars and under hills,\nAnd empty holes it fills,\nIt comes first and follows after,\nEnds life, kills laughter."';
+    let quoteText = 'It cannot be seen, cannot be felt,\nCannot be heard, cannot be smelt,\nIt lies behind stars and under hills,\nAnd empty holes it fills,\nIt comes first and follows after,\nEnds life, kills laughter.';
     let quoteSource = 'J.R.R. Tolkien, The Hobbit';
 
     return {

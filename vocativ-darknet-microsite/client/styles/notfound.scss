@@ -35,7 +35,18 @@
 
     .text {
       margin-bottom: 1em;
+
+      &:before {
+        content: '"';
+        position: absolute;
+        margin-left: -.4em;
+      }
+
+      &:after {
+        content: '"';
+      }
     }
+
 
     .source {
       font-size: 0.7em;
