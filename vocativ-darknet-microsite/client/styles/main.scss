@@ -20,6 +20,8 @@ $textColor: $WHITE;
     color: $textColor;
 
     width: 100vw;
+    display: flex;
+    align-items: center;
 
     .main-content {
       max-width: $maxContentWidth;

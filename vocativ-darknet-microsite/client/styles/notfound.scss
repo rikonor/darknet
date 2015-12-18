@@ -1,0 +1,55 @@
+@import "shared";
+
+.not-found .background-image {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.not-found {
+  @include bp-options(font-size, (
+    default: 1em,
+    375px: 1.2em,
+    512px: 1.5em,
+    medium: 1.8em
+  ));
+
+  line-height: 1.2em;
+  text-shadow: 4px 4px 3px $BLACK;
+
+  @include respond-to(medium) {
+    width: 500px;
+    margin: auto;
+  }
+
+  .quote {
+    margin-bottom: 1em;
+
+    .text {
+      margin-bottom: 1em;
+    }
+
+    .source {
+      font-size: 0.7em;
+    }
+  }
+
+  .link-home {
+    a {
+      border-bottom: 1px solid $WHITE;
+    }
+  }
+
+  .section {
+    @include reset-section-height;
+    @include flex-center;
+  }
+}

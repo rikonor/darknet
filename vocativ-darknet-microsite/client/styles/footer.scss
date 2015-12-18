@@ -8,6 +8,7 @@ $textColor: $GRAY;
   color: $textColor;
   box-shadow: 0 1px 20px rgba($backgroundColor, 0.8);
   width: 100%;
+  z-index: $footerZIndex;
 
   .footer {
     max-width: $maxContentWidth;
