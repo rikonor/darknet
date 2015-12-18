@@ -9,7 +9,7 @@
 }
 
 @mixin bp-under($width) {
-  @media only screen and (max-width: $width) {
+  @media only screen and (max-width: $width - 1) {
     @content;
   }
 }

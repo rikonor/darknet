@@ -4,7 +4,12 @@ $headerDividerColor: $DARKISHGRAY;
 
 .episodes-library {
   .header {
-    @include bottom-divider($headerDividerColor, 1.5rem);
+    @include bp-under(breakpoint(medium)) {
+      margin-bottom: 1rem;
+    }
+    @include respond-to(medium) {
+      @include bottom-divider($headerDividerColor, 1.5rem);
+    }
   }
 
   .episodes {
@@ -22,6 +27,13 @@ $headerDividerColor: $DARKISHGRAY;
         img {
           @include fill-parent;
           object-fit: cover;
+
+          // on mobile, stretch to full screen width
+          @include bp-under(breakpoint(medium)) {
+            position: relative;
+            width: 100vw !important;
+            left: -1em;
+          }
         }
 
         .coming-soon-text {

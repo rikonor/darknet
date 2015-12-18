@@ -32,6 +32,10 @@
     margin: auto;
   }
 
+  @include bp-under(breakpoint(medium)) {
+    max-width: 100% !important;
+  }
+
   &.three-per-row {
     .grid-item.two-column {
       // Figure out what to do with dataviz

@@ -37,6 +37,8 @@ img {
   background-image: url("/images/vocativ-video-icon.svg");
   background-size: 78px;
   @include square(100%);
+
+  z-index: 1;
 }
 
 // Sections
