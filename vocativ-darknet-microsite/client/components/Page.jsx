@@ -160,7 +160,9 @@ var NavArrow = React.createClass({
   render() {
     let nextPage;
     if (this.props.next) {
-      nextPage = <div className="next-page">Next: {this.props.next.title}</div>;
+      nextPage = (
+        <div className="next-page">Next: <span className="upper">{this.props.next.title}</span></div>
+      );
     }
 
     return (

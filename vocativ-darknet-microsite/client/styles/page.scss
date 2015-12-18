@@ -41,9 +41,13 @@ $navArrowShadow: $BLACK;
 
     @include respond-to(medium) {
       &.right .next-page {
-        @include flex-center;
-        margin-right: 1rem;
         @include fadein(0.75s);
+        @include flex-center;
+
+        margin-right: 1rem;
+        .upper {
+          margin-left: 0.3em;
+        }
       }
     }
   }
