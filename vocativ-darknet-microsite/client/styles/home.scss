@@ -1,5 +1,7 @@
 @import "shared";
+@import "utils/glitch";
 
+$backgroundColor: $DARKGRAY;
 $introHeaderDividerColor: $DARKISHGRAY;
 
 .home {
@@ -33,7 +35,12 @@ $introHeaderDividerColor: $DARKISHGRAY;
       font-size: 5vw;
       text-align: center;
 
-      .header { font-size: 3.5em; }
+      .header {
+        font-size: 3.5em;
+        .header-text {
+          @include textGlitch("curtain-header", 17, white, $backgroundColor, $DARKISHGRAY, $LIGHTGRAY, 768, 56);
+        }
+      }
       .subheader { font-size: 1.2em; }
     }
 

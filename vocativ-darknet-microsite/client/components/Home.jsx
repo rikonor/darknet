@@ -95,7 +95,9 @@ var HomeIntro = React.createClass({
     return (
       <div className="intro">
         <div className="intro-header">
-          <div className="header">DARK NET</div>
+          <div className="header">
+            <span className="header-text" data-text="DARK NET">DARK NET</span>
+          </div>
           <div className="subheader">from SHOWTIME + VOCATIV</div>
         </div>
         <div className="intro-description">
