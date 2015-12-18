@@ -28,6 +28,7 @@ $curtainTextVerticalGradient: radial-gradient(ellipse,
 
   .curtain-image img {
     height: 100vh;
+    object-fit: cover;
   }
 
   .curtain-text {
