@@ -45,7 +45,7 @@ img {
 
 .section {
   position: relative;
-  padding-bottom: 1em;
+  margin-bottom: 3em;
 
   @include bp-under(breakpoint(medium)) {
     padding-left: 1rem;

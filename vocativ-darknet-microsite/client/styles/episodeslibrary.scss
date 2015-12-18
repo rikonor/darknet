@@ -9,6 +9,7 @@ $headerDividerColor: $DARKISHGRAY;
     }
     @include respond-to(medium) {
       @include bottom-divider($headerDividerColor, 1.5rem);
+      margin-bottom: 2rem;
     }
   }
 

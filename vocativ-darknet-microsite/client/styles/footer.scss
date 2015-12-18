@@ -23,7 +23,7 @@ $textColor: $GRAY;
       @include bp-options(font-size, (
         default: 0.75rem,
         375px: 0.95rem,
-        512px: 1.5rem
+        512px: 1.3rem
       ));
       font-weight: 600;
       margin-bottom: 1.5rem;
