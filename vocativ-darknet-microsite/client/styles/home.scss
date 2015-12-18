@@ -7,6 +7,18 @@ $introHeaderDividerColor: $DARKISHGRAY;
     @include reset-section-height;
   }
 
+  .hero {
+    @include respond-to(medium) {
+      display: none;
+    }
+
+    .section {
+      padding: 0;
+      position: relative;
+      top: -1em;
+    }
+  }
+
   // This is only shown on mobile
   .intro {
     margin: 1rem 0;

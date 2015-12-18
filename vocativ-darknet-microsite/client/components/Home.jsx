@@ -63,6 +63,12 @@ Home = React.createClass({
     return (
       <div className="home">
         <Page>
+          <div className="hero">
+            <Section>
+              <Image imageUrl="/images/curtain.jpg" />
+            </Section>
+          </div>
+
           <Section>
             <HomeIntro />
             <Grid itemsPerRow={2}>
