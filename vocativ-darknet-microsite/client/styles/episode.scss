@@ -49,7 +49,7 @@
     }
   }
 
-  .page .nav-arrow {
+  .page .nav-arrow-container {
     // Position nav-arrow right above the episodes gallery
     @each $bp, $episodesGalleryHeight in $episodesGalleryHeights {
       @include respond-to($bp) {

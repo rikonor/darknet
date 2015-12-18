@@ -22,7 +22,7 @@ Episodes.helpers({
       }
     };
 
-    return Episodes.findOne(dbQuery);
+    return Episodes.findOne(dbQuery, {sort: {airingAt: 1}});
   },
   imageUrl: function() {
     var imageId = this.image;

@@ -4,30 +4,47 @@ $navArrowSize: 4rem;
 $navArrowShadow: $BLACK;
 
 .page {
-  .nav-arrow {
-    font-size: $navArrowSize;
+  .nav-arrow-container {
     cursor: pointer;
+    text-shadow: 1px 0px 3px rgba($navArrowShadow, 0.5);
 
-    width: 0.65em;
     position: fixed;
     bottom: 20px;
     right: 50px;
 
     @include bp-under(breakpoint(medium)) {
-      font-size: 2.5rem;
       margin-right: -0.325em;
-      right: 50%;
       bottom: 10px;
+      right: 50%;
     }
 
-    text-shadow: 1px 0px 3px rgba($navArrowShadow, 0.5);
-
-    // Transitions
-    transition: all 0.75s ease-in-out;
-    &.down { transform: rotate(0deg); }
-    &.up { transform: rotate(-180deg); }
-    &.right { transform: rotate(-90deg); }
-
     &.up, &.right { position: absolute; }
+
+    &.down  .nav-arrow { transform: rotate(0deg); }
+    &.up    .nav-arrow { transform: rotate(-180deg); }
+    &.right .nav-arrow { transform: rotate(-90deg); }
+
+    .nav-arrow {
+      font-size: $navArrowSize;
+      width: 0.65em;
+      @include bp-under(breakpoint(medium)) {
+        font-size: 2.5rem;
+      }
+      transition: all 0.75s ease-in-out;
+    }
+
+    display: flex;
+
+    .next-page {
+      display: none;
+    }
+
+    @include respond-to(medium) {
+      &.right .next-page {
+        @include flex-center;
+        margin-right: 1rem;
+        @include fadein(0.75s);
+      }
+    }
   }
 }

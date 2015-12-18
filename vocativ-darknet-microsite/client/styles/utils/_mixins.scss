@@ -88,3 +88,14 @@
 	// So this will make the next section come immediately after
 	min-height: initial;
 }
+
+@mixin fadein($duration: 1s) {
+	animation: fadein $duration;
+
+	@at-root {
+		@keyframes fadein {
+		  from { opacity: 0; }
+		  to   { opacity: 1; }
+		}
+	}
+}

@@ -130,17 +130,17 @@ var NavArrow = React.createClass({
 
   changeStateRight() {
     this.setState({arrowState: "right"});
-    $(".nav-arrow").addClass("right").removeClass("down up");
+    $(".nav-arrow-container").addClass("right").removeClass("down up");
   },
 
   changeStateDown() {
     this.setState({arrowState: "down"});
-    $(".nav-arrow").addClass("down").removeClass("up right");
+    $(".nav-arrow-container").addClass("down").removeClass("up right");
   },
 
   changeStateUp() {
     this.setState({arrowState: "up"});
-    $(".nav-arrow").addClass("up").removeClass("down right");
+    $(".nav-arrow-container").addClass("up").removeClass("down right");
   },
 
   updateArrowState() {
@@ -160,12 +160,15 @@ var NavArrow = React.createClass({
   render() {
     let nextPage;
     if (this.props.next) {
-      nextPage = <div>Next: {this.props.next.title}</div>;
+      nextPage = <div className="next-page">Next: {this.props.next.title}</div>;
     }
 
     return (
-      <div className="nav-arrow" onClick={this.handleClick}>
-        <i className="fa fa-angle-double-down"></i>
+      <div className="nav-arrow-container" onClick={this.handleClick}>
+        {nextPage}
+        <div className="nav-arrow">
+          <i className="fa fa-angle-double-down"></i>
+        </div>
       </div>
     );
   }
