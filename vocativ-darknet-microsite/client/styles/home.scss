@@ -3,24 +3,9 @@
 $introHeaderDividerColor: $DARKISHGRAY;
 
 .home {
-  // .video-embed {
-  //   height: 35vh;
-  //
-  //   @include bp-under(breakpoint(medium)) {
-  //     position: relative;
-  //     width: 100vw;
-  //     top: -1rem;
-  //     left: -1rem;
-  //   }
-  //
-  //   @include bp-above(breakpoint(medium)) {
-  //     @each $bp, $navHeight in $navHeights {
-  //       @include respond-to($bp) {
-  //         height: calc(100vh - #{$navHeight} - 30px);
-  //       }
-  //     }
-  //   }
-  // }
+  .section {
+    @include reset-section-height;
+  }
 
   // This is only shown on mobile
   .intro {

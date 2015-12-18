@@ -80,3 +80,11 @@
   margin-bottom: $margin;
   border-bottom: 1px solid $color;
 }
+
+// section
+
+@mixin reset-section-height {
+	// sections by default have a minimum height of (100vh - nav)
+	// So this will make the next section come immediately after
+	min-height: initial;
+}
