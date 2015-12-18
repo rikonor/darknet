@@ -27,7 +27,7 @@
 
 @include respond-to(medium) {
   .grid.two-per-row {
-    .grid-item.two-column {
+    .grid-item.two-column, .grid-item.one-column:first-child:nth-last-child(1) {
       .card .image {
         height: 2 * $gridImageHeight !important;
       }

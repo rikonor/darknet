@@ -27,6 +27,11 @@ Grid = React.createClass({
     let numOfChildren = React.Children.count(this.props.children);
     let numOfItemsPerRow = this.numOfItemsPerRow(numOfChildren);
 
+    if (numOfChildren === 1) {
+      // When grid has one child, it should be two columns wide
+      return 'two-per-row';
+    }
+
     switch(numOfItemsPerRow) {
       case 1:
         return 'one-per-row';

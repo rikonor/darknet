@@ -71,6 +71,9 @@ Home = React.createClass({
 
           <Section>
             <HomeIntro />
+          </Section>
+
+          <Section>
             <Grid itemsPerRow={2}>
               <GridItem width={2}>
                 <VideoCard video={this.props.trailer} />

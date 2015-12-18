@@ -36,17 +36,11 @@
     max-width: 100% !important;
   }
 
-  &.three-per-row {
-    .grid-item.two-column {
-      // Figure out what to do with dataviz
-    }
-  }
-
   &.two-per-row {
     max-width: $gridTwoPerRowWidth;
     margin: auto;
 
-    .grid-item.two-column {
+    .grid-item.two-column, .grid-item.one-column:first-child:nth-last-child(1) {
       max-width: 100%;
     }
   }

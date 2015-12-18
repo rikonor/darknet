@@ -20,6 +20,11 @@
         .grid-item.one-column {
           max-width: 48%;
         }
+
+        .grid-item.one-column:first-child:nth-last-child(1) {
+          max-width: $gridTwoPerRowWidth;
+          margin: auto;
+        }
       }
     }
   }
