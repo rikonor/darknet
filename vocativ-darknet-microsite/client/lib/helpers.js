@@ -48,3 +48,31 @@ isElementInView = function(el) {
 
   return elTop <= screenBottomPosition;
 };
+
+/*
+  getSectionType - Example
+
+  Input: An episode section content
+  Output: if content is uniform, then video/article/dataviz, otherwise "varied"
+*/
+
+getSectionType = function(section) {
+  if (content && content.length === 0) {
+    console.log("Section content cannot be zero length.");
+    return undefined;
+  }
+
+  let content = section.content;
+
+  let typesFound = {};
+  content.forEach((item) => {
+    typesFound[item.type] = true;
+  });
+
+  typesFound = Object.keys(typesFound);
+  if (typesFound.length === 1) {
+    return typesFound[0];
+  }
+
+  return "varied";
+};

@@ -10,6 +10,20 @@
 }
 
 .episode {
+  // Special rule only for dataviz
+  // When there are 2 - have them be 3 coulmns wide but span ~50% of the grid
+  .section.dataviz {
+    .grid.two-per-row {
+      max-width: 100%;
+
+      .grid-item.one-column {
+        max-width: 48%;
+      }
+    }
+  }
+}
+
+.episode {
   .episode-info {
     @include bp-under(breakpoint(medium)) {
       text-align: center;
@@ -25,21 +39,6 @@
     .description {
       font-size: 1.3em;
       line-height: 1.3em;
-    }
-  }
-
-  .episode-articles, .episode-videos {
-    .articles-list, .videos-list {
-      .embedded-article, .embedded-video {
-        // Grid settings
-        @include respond-to(medium) {
-          flex: 1 0 calc(#{percentage(1/3)} - 1em);
-          margin-right: 1em;
-          &:nth-child(3n) {
-            margin-right: 0;
-          }
-        }
-      }
     }
   }
 

@@ -58,7 +58,7 @@ Episode = React.createClass({
     );
 
     return (
-      <Section key={i}>
+      <Section key={i} type={getSectionType(section)}>
         <Grid>
           {_.map(section.content, this.renderSectionItem)}
         </Grid>
