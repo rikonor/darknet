@@ -17,7 +17,7 @@ Lightbox = React.createClass({
     return (
       <div className="lightbox-container" onClick={this.handleClose}>
         <div className="close" onClick={this.handleClose}>
-          <i className="fa fa-times"></i>
+          <i className="btl bt-times"></i>
         </div>
 
         <div className="lightbox">

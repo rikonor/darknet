@@ -169,7 +169,7 @@ var NavArrow = React.createClass({
       <div className="nav-arrow-container" onClick={this.handleClick}>
         {nextPage}
         <div className="nav-arrow">
-          <i className="fa fa-angle-double-down"></i>
+          <i className="btl bt-angles-down"></i>
         </div>
       </div>
     );

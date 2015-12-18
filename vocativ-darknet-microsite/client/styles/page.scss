@@ -1,6 +1,5 @@
 @import "shared";
 
-$navArrowSize: 4rem;
 $navArrowShadow: $BLACK;
 
 .page {
@@ -13,7 +12,7 @@ $navArrowShadow: $BLACK;
     right: 50px;
 
     @include bp-under(breakpoint(medium)) {
-      margin-right: -0.325em;
+      margin-right: -1em;
       bottom: 10px;
       right: 50%;
     }
@@ -25,11 +24,10 @@ $navArrowShadow: $BLACK;
     &.right .nav-arrow { transform: rotate(-90deg); }
 
     .nav-arrow {
-      font-size: $navArrowSize;
-      width: 0.65em;
-      @include bp-under(breakpoint(medium)) {
-        font-size: 2.5rem;
-      }
+      @include bp-options(font-size, (
+        default: 2rem,
+        medium: 2.5rem
+      ));
       transition: all 0.75s ease-in-out;
     }
 
