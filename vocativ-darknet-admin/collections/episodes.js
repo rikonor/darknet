@@ -8,22 +8,6 @@ Schemas.Episodes = new SimpleSchema({
   airingAt: Schemas.date("Airing Date", "When does the episode air?"),
   visibleAt: Schemas.date("Visible Date", "When should the episode become visible to visitors?"),
   image: Schemas.image("Episode Cover Image"),
-  trailer: {
-    type: String,
-    optional: true,
-    label: "Trailer [Optional]",
-    autoform: {
-      type: "select2",
-      options: function () {
-        return _.map(Videos.find().fetch(), function(video) {
-          return {
-            label: video.title,
-            value: video._id
-          };
-        });
-      }
-    }
-  },
   sections: {
     type: Array,
     optional: true,
