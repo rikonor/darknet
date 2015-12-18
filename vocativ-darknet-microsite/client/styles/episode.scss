@@ -9,15 +9,17 @@
   @include bp-options(padding-bottom, $episodesGalleryHeights)
 }
 
-.episode {
-  // Special rule only for dataviz
-  // When there are 2 - have them be 3 coulmns wide but span ~50% of the grid
-  .section.dataviz {
-    .grid.two-per-row {
-      max-width: 100%;
+@include respond-to(medium) {
+  .episode {
+    // Special rule only for dataviz
+    // When there are 2 - have them be 3 coulmns wide but span ~50% of the grid
+    .section.dataviz {
+      .grid.two-per-row {
+        max-width: 100%;
 
-      .grid-item.one-column {
-        max-width: 48%;
+        .grid-item.one-column {
+          max-width: 48%;
+        }
       }
     }
   }
