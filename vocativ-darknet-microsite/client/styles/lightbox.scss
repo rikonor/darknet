@@ -25,7 +25,7 @@ $closeColor: $WHITE;
     position: relative;
     background: $backgroundColor;
 
-    @include dim(80%, 90%);
+    @include dim(80%, 80%);
     box-shadow: 0 1px 20px rgba($shadowColor, 0.8);
 
     // On mobile
