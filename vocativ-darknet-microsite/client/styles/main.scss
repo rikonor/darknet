@@ -27,6 +27,10 @@ $textColor: $WHITE;
       max-width: $maxContentWidth;
       margin: 0 auto;
       padding: 1rem 0;
+
+      @include respond-to(medium) {
+        padding: 1rem;
+      }
     }
   }
 }
