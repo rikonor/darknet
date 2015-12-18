@@ -45,7 +45,7 @@ $introHeaderDividerColor: $DARKISHGRAY;
     }
 
     .intro-description {
-      font-size: 1em;
+      font-size: 1.2em;
       line-height: 1.3em;
 
       display: flex;
@@ -86,7 +86,7 @@ $introHeaderDividerColor: $DARKISHGRAY;
 
       .intro-description .description-header {
         display: block;
-        font-size: 2em;
+        font-size: 2rem;
         font-weight: bold;
       }
     }

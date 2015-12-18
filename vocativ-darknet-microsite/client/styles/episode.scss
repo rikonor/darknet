@@ -32,11 +32,6 @@
 
 .episode {
   .episode-info {
-    @include bp-under(breakpoint(medium)) {
-      text-align: center;
-      font-size: 3.8vw;
-    }
-
     .title {
       font-size: 2em;
       .title-actual { text-transform: uppercase; }
@@ -44,7 +39,7 @@
     }
 
     .description {
-      font-size: 1.3em;
+      font-size: 1.2em;
       line-height: 1.3em;
     }
   }
