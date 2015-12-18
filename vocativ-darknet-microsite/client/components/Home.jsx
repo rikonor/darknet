@@ -60,9 +60,16 @@ HomeLoader = React.createClass({
 
 Home = React.createClass({
   render() {
+    // Prepare nextPage object [first episode]
+    let episode = Episodes.findOne({}, {sort: {airingAt: 1}});
+    let nextPage = episode && episode.isViewable() && {
+      title: episode.title,
+      href: episode.path()
+    };
+
     return (
       <div className="home">
-        <Page>
+        <Page nextPage={nextPage}>
           <div className="hero">
             <Section>
               <Image imageUrl="/images/curtain.jpg" />

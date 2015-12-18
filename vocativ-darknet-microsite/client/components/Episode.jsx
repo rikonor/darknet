@@ -73,7 +73,7 @@ Episode = React.createClass({
 
   render() {
     let nextEpisode = this.props.episode.getNext();
-    let nextPage = nextEpisode && nextEpisode.hasAired() && {
+    let nextPage = nextEpisode && nextEpisode.isViewable() && {
       title: nextEpisode.title,
       href: nextEpisode.path()
     };
