@@ -12,6 +12,11 @@ $introHeaderDividerColor: $DARKISHGRAY;
       display: none;
     }
 
+    // Hide the hero on mobile landscape because it takes up the whole screen
+    @include landscape {
+      display: none;
+    }
+
     .section {
       padding: 0;
       position: relative;
