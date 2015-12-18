@@ -46,5 +46,7 @@ ImagesAdminOptions = {
   icon: 'image',
   tableColumns: [
     { label: 'Name', name: 'name' }
-  ]
+  ],
+  showInSideBar: false,
+  showWidget: false
 };

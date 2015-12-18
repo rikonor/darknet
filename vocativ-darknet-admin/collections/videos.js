@@ -22,5 +22,7 @@ VideosAdminOptions = {
   tableColumns: [
     { label: 'Title', name: 'title' }
   ],
-  routes: adminRoutesWaitOnOptions(['images'])
+  routes: adminRoutesWaitOnOptions(['images']),
+  showInSideBar: false,
+  showWidget: false
 };
