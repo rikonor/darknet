@@ -119,6 +119,10 @@ EpisodesGallery = React.createClass({
 });
 
 var GalleryEpisode = React.createClass({
+  trackClick() {
+    GAnalytics.event("Navigation", "Episode Mini Gallery Click", this.props.episode.title);
+  },
+
   render() {
     let galleryEpisodeClasses = classNames({
       'gallery-episode': true,
@@ -127,7 +131,7 @@ var GalleryEpisode = React.createClass({
 
     return (
       <div className={galleryEpisodeClasses}>
-        <a href={this.props.episode.path()}>
+        <a href={this.props.episode.path()} onClick={this.trackClick}>
           <div className="image">
             <img src={this.props.episode.imageUrl()}></img>
             <div className="coming-soon-text"><span>COMING SOON</span></div>

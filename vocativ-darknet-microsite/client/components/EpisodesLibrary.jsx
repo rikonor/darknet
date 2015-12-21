@@ -49,7 +49,7 @@ EpisodesLibrary = React.createClass({
 
 var LibraryEpisode = React.createClass({
   trackClick() {
-    GAnalytics.event("Navigation", "Episode Library Click", this.props.episode.title, this.props.episode.path());
+    GAnalytics.event("Navigation", "Episode Library Click", this.props.episode.title);
   },
 
   handleClick() {
