@@ -32,7 +32,7 @@ $textColor: $GRAY;
 
       .menu-item {
         @include flex-vertical-center;
-        margin: 0 1.3rem;
+        margin: 0 1.3em;
 
         a {
           text-align: center;
