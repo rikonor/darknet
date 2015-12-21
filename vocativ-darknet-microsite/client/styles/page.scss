@@ -7,6 +7,7 @@ $navArrowShadow: $BLACK;
     cursor: pointer;
     text-shadow: 1px 0px 3px rgba($navArrowShadow, 0.5);
 
+    z-index: $navArrowZIndex;
     position: fixed;
     bottom: 20px;
     right: 50px;

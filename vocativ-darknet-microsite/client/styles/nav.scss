@@ -11,7 +11,7 @@ $textColor: $BEIGE;
 
   position: fixed;
   width: 100%;
-  z-index: $navZIndex;;
+  z-index: $navZIndex;
   @include bp-options(height, $navHeights);
 
   .nav {
