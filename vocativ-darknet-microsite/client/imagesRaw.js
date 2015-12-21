@@ -4,4 +4,4 @@ ImagesRaw = new FS.Collection("imagesRaw", {
   stores: [imageStore]
 });
 
-Meteor.subscribe("imagesRaw");
+subsManager.subscribe("imagesRaw");
