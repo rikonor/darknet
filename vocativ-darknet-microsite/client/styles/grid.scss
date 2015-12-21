@@ -12,10 +12,8 @@
   justify-content: space-between;
 
   .grid-item {
-    width: 100%;
-
     @include respond-to(medium) {
-      max-width: $gridImageWidth;
+      width: $gridImageWidth;
     }
 
     @include all-but-last {
@@ -41,7 +39,7 @@
     margin: auto;
 
     .grid-item.two-column, .grid-item.one-column:first-child:nth-last-child(1) {
-      max-width: 100%;
+      width: 100%;
     }
   }
 
