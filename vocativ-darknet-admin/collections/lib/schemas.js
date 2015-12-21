@@ -77,6 +77,23 @@ Schemas.createdAt = {
   }
 };
 
+Schemas.relatedEpisodeId = {
+  type: String,
+  optional: true,
+  label: "Related to episode",
+  autoform: {
+    type: "select2",
+    options: function() {
+      return _.map(Episodes.find().fetch(), (episode) => {
+        return {
+          label: episode.title,
+          value: episode._id
+        };
+      });
+    },
+  }
+};
+
 // Section stuff
 
 validateSection = function() {

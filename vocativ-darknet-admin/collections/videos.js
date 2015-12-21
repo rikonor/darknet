@@ -11,7 +11,8 @@ Schemas.Videos = new SimpleSchema({
   },
   title: Schemas.title("Video Title"),
   description: Schemas.description("Video Description"),
-  image: Schemas.image("Video Cover Image")
+  image: Schemas.image("Video Cover Image"),
+  relatedEpisodeId: Schemas.relatedEpisodeId
 });
 
 Videos.attachSchema(Schemas.Videos);
@@ -20,9 +21,13 @@ Videos.attachSchema(Schemas.Videos);
 VideosAdminOptions = {
   icon: 'video-camera',
   tableColumns: [
-    { label: 'Title', name: 'title' }
+    { label: 'Title', name: 'title' },
+    { label: 'Related to', name: 'relatedEpisodeId', template: 'episodeLink'}
   ],
-  routes: adminRoutesWaitOnOptions(['images']),
+  routes: adminRoutesWaitOnOptions([
+    'episodes',
+    'images'
+  ]),
   showInSideBar: false,
   showWidget: false
 };
