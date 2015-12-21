@@ -122,8 +122,10 @@ var NavArrow = React.createClass({
     if (this.state.arrowState === "up")
       return this.scrollToTop();
 
-    if (this.state.arrowState === "right")
+    if (this.state.arrowState === "right") {
+      GAnalytics.event("Navigation", "nav-arrow-next-page", this.props.next.title, this.props.next.href);
       return FlowRouter.go(this.props.next.href);
+    }
   },
 
   // Arrow direction and location (fixed/absolute)

@@ -34,8 +34,6 @@ EpisodesLibrary = React.createClass({
   },
 
   render() {
-    // Notice the grid filler
-
     return (
       <div className="episodes-library">
         <div className="header"><h1>Episodes</h1></div>
@@ -50,6 +48,15 @@ EpisodesLibrary = React.createClass({
 });
 
 var LibraryEpisode = React.createClass({
+  trackClick() {
+    GAnalytics.event("Navigation", "Episode Library Click", this.props.episode.title, this.props.episode.path());
+  },
+
+  handleClick() {
+    this.trackClick();
+    FlowRouter.go(this.props.episode.path());
+  },
+
   render() {
     let libraryEpisodeClasses = classNames({
       'library-episode': true,
@@ -58,13 +65,15 @@ var LibraryEpisode = React.createClass({
 
     return (
       <div className={libraryEpisodeClasses}>
-        <div className="image" onClick={this.handleImageClick}>
-          <a href={this.props.episode.path()}>
+        <div className="image">
+          <a onClick={this.handleClick}>
             <img src={this.props.episode.imageUrl()}></img>
             <div className="coming-soon-text"><span>COMING SOON</span></div>
           </a>
         </div>
-        <div className="name"><a href={this.props.episode.path()}>{this.props.episode.title}</a></div>
+        <div className="name">
+          <a onClick={this.handleClick}>{this.props.episode.title}</a>
+        </div>
         <div className="synopsis">{this.props.episode.shortDescription}</div>
       </div>
     );

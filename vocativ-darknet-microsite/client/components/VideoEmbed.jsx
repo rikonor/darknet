@@ -22,6 +22,7 @@ VideoEmbed = React.createClass({
 
   handleClick() {
     this.openLightbox();
+    GAnalytics.event("Videos", "play", this.props.video.title);
   },
 
   render() {
