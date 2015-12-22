@@ -37,3 +37,4 @@ cfs:filesystem
 okgrow:router-autoscroll
 meteorhacks:subs-manager
 seba:minifiers-autoprefixer
+momentjs:moment

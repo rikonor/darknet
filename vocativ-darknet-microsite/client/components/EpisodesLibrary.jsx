@@ -57,6 +57,16 @@ var LibraryEpisode = React.createClass({
     FlowRouter.go(this.props.episode.path());
   },
 
+  airDate() {
+    let episodeAirDate = this.props.episode.airingAt;
+
+    if (! episodeAirDate) {
+      return "";
+    }
+
+    return moment(episodeAirDate).format("MMMM D");
+  },
+
   render() {
     let libraryEpisodeClasses = classNames({
       'library-episode': true,
@@ -75,6 +85,7 @@ var LibraryEpisode = React.createClass({
           <a onClick={this.handleClick}>{this.props.episode.title}</a>
         </div>
         <div className="synopsis">{this.props.episode.shortDescription}</div>
+        <div className="air-date">{this.airDate()}</div>
       </div>
     );
   }

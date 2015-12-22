@@ -50,6 +50,11 @@ $headerDividerColor: $DARKISHGRAY;
 
       .synopsis {
         line-height: 1.4rem;
+        margin-bottom: 1rem;
+      }
+
+      .air-date {
+        @include upper;
       }
 
       // Coming soon overlay text
