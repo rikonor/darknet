@@ -139,6 +139,13 @@ fetchSectionOptions = function() {
   return _.map(options, function(option) {
     let capType = strCapitalize(option.type);
 
+    // Get related episode
+    let relatedEpisode = '';
+    if (option.value.relatedEpisodeId) {
+      let episode = Episodes.findOne(option.value.relatedEpisodeId, {reactive: false});
+      relatedEpisode = `[${episode.title}]`;
+    }
+
     // The select box can only accept strings
     // So convert whatever value you want to a string
     let value = {
@@ -149,7 +156,7 @@ fetchSectionOptions = function() {
     value = JSON.stringify(value);
 
     return {
-      label: `[${capType}] ${option.value.title}`,
+      label: `[${capType}]${relatedEpisode} ${option.value.title}`,
       value: value
     };
   });

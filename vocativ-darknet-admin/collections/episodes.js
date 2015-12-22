@@ -59,6 +59,7 @@ EpisodesAdminOptions = {
     { label: 'Visible Date', name: 'visibleAt' }
   ],
   routes: adminRoutesWaitOnOptions([
+    'episodes',
     'articles',
     'videos',
     'dataviz',
