@@ -4,7 +4,7 @@ Meteor.methods
 		if Roles.userIsInRole this.userId, ['admin']
 			this.unblock()
 			result = adminCollectionObject(collection).insert doc
-				
+
 			return result
 
 	adminUpdateDoc: (modifier,collection,_id)->
@@ -45,6 +45,9 @@ Meteor.methods
 
 				if not doc.sendPassword
 					Accounts.sendEnrollmentEmail _id
+
+				# Set new users as 'admin'
+				Roles.addUsersToRoles _id, ['admin'], Roles.GLOBAL_GROUP
 
 	adminUpdateUser: (modifier,_id)->
 		check arguments, [Match.Any]
