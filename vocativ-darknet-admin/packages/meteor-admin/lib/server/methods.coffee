@@ -31,20 +31,9 @@ Meteor.methods
 			_.each emails, (email)->
 				user = {}
 				user.email = email
-				unless doc.chooseOwnPassword
-					user.password = doc.password
+				user.password = doc.password
 
 				_id = Accounts.createUser user
-
-				if doc.sendPassword and AdminConfig.fromEmail?
-					Email.send
-						to: user.email
-						from: AdminConfig.fromEmail
-						subject: 'Your account has been created'
-						html: 'You\'ve just had an account created for ' + Meteor.absoluteUrl() + ' with password ' + doc.password
-
-				if not doc.sendPassword
-					Accounts.sendEnrollmentEmail _id
 
 				# Set new users as 'admin'
 				Roles.addUsersToRoles _id, ['admin'], Roles.GLOBAL_GROUP
