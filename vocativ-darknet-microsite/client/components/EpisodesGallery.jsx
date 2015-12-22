@@ -120,7 +120,7 @@ EpisodesGallery = React.createClass({
 
 var GalleryEpisode = React.createClass({
   trackClick() {
-    GAnalytics.event("Navigation", "Episode Mini Gallery Click", this.props.episode.title);
+    GAnalytics.event("Navigation", "Episode Carousel on EP", this.props.episode.title);
   },
 
   render() {
