@@ -4,7 +4,8 @@ trackMap = {
   'facebook-nav-btn': { category: "Navigation", action: "Top Nav Click", label: "facebook" },
   'terms-of-use-footer-btn': { category: "Navigation", action: "Footer Nav Click", label: "terms of use" },
   'privacy-policy-footer-btn': { category: "Navigation", action: "Footer Nav Click", label: "privacy policy" },
-  'showtime-home-btn': { category: "Navigation", action: "Top Nav Click", label: "showtime" }
+  'showtime-home-btn': { category: "Navigation", action: "Top Nav Click", label: "showtime" },
+  'newsletter-signup-footer': { category: "Newsletter", action: "Signup", label: "darknet" }
 };
 
 // Call GA.event with the associated event data

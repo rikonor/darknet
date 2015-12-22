@@ -21,15 +21,19 @@ Footer = React.createClass({
 });
 
 var NewsletterSignup = React.createClass({
+  getCurrentTimestamp() {
+    return (new Date()).getTime();
+  },
+
   getInitialState() {
     return {
-      submitted: false
+      timestamp: this.getCurrentTimestamp()
     };
   },
 
   handleSubmit() {
-    console.log("reached");
-    this.setState({submitted: true});
+    this.setState({timestamp: this.getCurrentTimestamp()});
+    trackEvent('newsletter-signup-footer');
   },
 
   render() {
@@ -38,26 +42,17 @@ var NewsletterSignup = React.createClass({
       left: '-5000px'
     };
 
-    if (! this.state.submitted) {
-      return (
-        <div className="signup-form">
-          <form action="//vocativ.us3.list-manage.com/subscribe/post?u=4ffa741e7ab8a14a6212cbd45&amp;id=a5ec73e244" method="post" target="_blank" onSubmit={this.handleSubmit}>
-            <input type="text" name="EMAIL" id="mce-EMAIL" placeholder="Email Address" />
-            <button>Sign Up</button>
+    return (
+      <div className="signup-form" key={this.state.timestamp}>
+        <form action="//vocativ.us3.list-manage.com/subscribe/post?u=4ffa741e7ab8a14a6212cbd45&amp;id=a5ec73e244" method="post" target="_blank" onSubmit={this.handleSubmit}>
+          <input type="text" name="EMAIL" id="mce-EMAIL" placeholder="Email Address" />
+          <button>Sign Up</button>
 
-            <div style={tmpStyles} aria-hidden="true">
-              <input type="text" name="b_4ffa741e7ab8a14a6212cbd45_a5ec73e244" tabIndex="-1" value="" />
-            </div>
-          </form>
-        </div>
-      );
-    }
-    else {
-      return (
-        <div className="signup-form">
-          Thank you for submitting me!
-        </div>
-      );
-    }
+          <div style={tmpStyles} aria-hidden="true">
+            <input type="text" name="b_4ffa741e7ab8a14a6212cbd45_a5ec73e244" tabIndex="-1" value="" />
+          </div>
+        </form>
+      </div>
+    );
   }
 });
