@@ -46,6 +46,22 @@
     }
   }
 
+  .section {
+    .section-top-text {
+      margin-bottom: 1.5rem;
+
+      .header {
+        font-size: 2em;
+        margin: 0.5em 0;
+      }
+
+      .description {
+        font-size: 1.2em;
+        line-height: 1.3em;
+      }
+    }
+  }
+
   .page .nav-arrow-container {
     // Position nav-arrow right above the episodes gallery
     @each $bp, $episodesGalleryHeight in $episodesGalleryHeights {

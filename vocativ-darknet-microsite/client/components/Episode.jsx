@@ -51,7 +51,7 @@ Episode = React.createClass({
   renderSection(section, i) {
     // Temporarily taken out of the section
     let sectionTop = (
-      <div>
+      <div className="section-top-text">
         <div className="header">{section.header}</div>
         <div className="description">{section.description}</div>
       </div>
@@ -59,6 +59,7 @@ Episode = React.createClass({
 
     return (
       <Section key={i} type={getSectionType(section)}>
+        {sectionTop}
         <Grid>
           {_.map(section.content, this.renderSectionItem)}
         </Grid>
