@@ -45,8 +45,10 @@ Images.helpers({
 ImagesAdminOptions = {
   icon: 'image',
   tableColumns: [
+    { label: 'Image', name: '_id', template: 'tableImage' },
     { label: 'Name', name: 'name' }
   ],
+  routes: adminRoutesWaitOnOptions(['images']),
   showInSideBar: false,
   showWidget: false
 };

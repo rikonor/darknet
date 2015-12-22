@@ -1,0 +1,15 @@
+$tableImageAspectRatio: 4 / 3;
+
+$tableImageWidth: 90px;
+$tableImageHeight: $tableImageWidth / $tableImageAspectRatio;
+
+.table-image {
+  width: $tableImageWidth;
+  height: $tableImageHeight;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
