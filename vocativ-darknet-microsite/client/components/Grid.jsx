@@ -5,17 +5,17 @@ Grid = React.createClass({
     let itemsPerRow = this.props.itemsPerRow;
 
     // Allowed values are [2, 3]
-    if (itemsPerRow && [2, 3].includes(itemsPerRow)) {
+    if (itemsPerRow && [2, 3].indexOf(itemsPerRow) !== -1) {
       return itemsPerRow;
     }
 
     // If it's just 1, then 1 per row
-    if ([1].includes(numOfChildren)) {
+    if ([1].indexOf(numOfChildren) !== -1) {
       return 1;
     }
 
     // If there are 2 or 4, then 2 per row
-    if ([2, 4].includes(numOfChildren)) {
+    if ([2, 4].indexOf(numOfChildren) !== -1) {
       return 2;
     }
 
