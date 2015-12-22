@@ -13,13 +13,17 @@ $textColor: $BEIGE;
   width: 100%;
   z-index: $navZIndex;
   @include bp-options(height, $navHeights);
+  @include respond-to(medium) {
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
 
   .nav {
     max-width: $maxContentWidth;
     margin: 0 auto;
     @include bp-options(padding, (
       default: 0.5rem 0.5rem,
-      medium: 0.5rem 1rem
+      medium: 0.5rem 0
     ));
     height: 100%;
     box-sizing: border-box;
