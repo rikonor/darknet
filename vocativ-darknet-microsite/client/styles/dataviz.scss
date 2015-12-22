@@ -1,0 +1,16 @@
+.dataviz {
+  .lightbox-container {
+    .lightbox {
+      width: initial;
+
+      .image {
+        height: 100%;
+
+        img {
+          height: 100%;
+          width: auto;
+        }
+      }
+    }
+  }
+}
