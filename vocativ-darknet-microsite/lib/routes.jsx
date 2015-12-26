@@ -24,10 +24,3 @@ FlowRouter.notFound = {
     ReactLayout.render(MainLayout, { content: <NotFound /> });
   }
 };
-
-// Load Testing route
-FlowRouter.route('/loaderio-bab6f42f5f859e952303c7af3e056799', {
-  action() {
-    ReactLayout.render(LoadTest);
-  }
-});
