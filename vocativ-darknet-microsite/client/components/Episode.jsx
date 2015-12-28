@@ -86,6 +86,11 @@ Episode = React.createClass({
   },
 
   render() {
+    // Redirect to home page if episode is not released yet
+    if (! this.props.episode.isViewable()) {
+      FlowRouter.redirect("/");
+    }
+
     let nextEpisode = this.props.episode.getNext();
     let nextPage = nextEpisode && nextEpisode.isViewable() && {
       title: nextEpisode.title,

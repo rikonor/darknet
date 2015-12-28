@@ -129,9 +129,14 @@ var GalleryEpisode = React.createClass({
       'coming-soon': ! this.props.episode.isViewable()
     });
 
+    let linkClassModifier = classNames({
+      'episode-link': true,
+      'coming-soon': ! this.props.episode.isViewable()
+    });
+
     return (
       <div className={galleryEpisodeClasses}>
-        <a href={this.props.episode.path()} onClick={this.trackClick}>
+        <a className={linkClassModifier} href={this.props.episode.path()} onClick={this.trackClick}>
           <div className="image">
             <img src={this.props.episode.imageUrl()}></img>
             <div className="coming-soon-text"><span>COMING SOON</span></div>

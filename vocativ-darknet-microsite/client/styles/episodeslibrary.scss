@@ -58,7 +58,7 @@ $headerDividerColor: $DARKISHGRAY;
       }
 
       .episode-link.coming-soon {
-        cursor: auto;
+        pointer-events: none;
       }
 
       // Coming soon overlay text
