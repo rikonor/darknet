@@ -13,9 +13,10 @@ $navArrowShadow: $BLACK;
     right: 50px;
 
     @include bp-under(breakpoint(medium)) {
-      margin-right: -1em;
       bottom: 15px;
       right: 50%;
+      margin-right: -1em;
+      &.right { margin-right: -5em; }
     }
 
     &.up, &.right { position: absolute; }
@@ -38,15 +39,13 @@ $navArrowShadow: $BLACK;
       display: none;
     }
 
-    @include respond-to(medium) {
-      &.right .next-page {
-        @include fadein(0.75s);
-        @include flex-center;
+    &.right .next-page {
+      @include fadein(0.75s);
+      @include flex-center;
 
-        margin-right: 1rem;
-        .upper {
-          margin-left: 0.3em;
-        }
+      margin-right: 1rem;
+      .upper {
+        margin-left: 0.3em;
       }
     }
   }
