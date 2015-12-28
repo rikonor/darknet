@@ -99,3 +99,14 @@
 		}
 	}
 }
+
+@mixin kenburns($duration: 30s) {
+	animation: kenburns $duration linear infinite;
+
+	@at-root {
+		@keyframes kenburns {
+			from { transform: scale(1.0); }
+			to { transform: scale(1.5); }
+		}
+	}
+}
