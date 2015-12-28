@@ -38,7 +38,13 @@ Schemas.Episodes = new SimpleSchema({
       afFieldInput: { multiple: true },
       options: fetchSectionOptions,
     }
-  }
+  },
+  "sections.$.discussionInviteText": {
+    type: String,
+    max: 300,
+    optional: true,
+    label: "Discussion Invite Text [Optional]"
+  },
 });
 
 // Custom error messages

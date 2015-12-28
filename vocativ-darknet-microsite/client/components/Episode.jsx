@@ -49,7 +49,6 @@ Episode = React.createClass({
   },
 
   renderSection(section, i) {
-    // Temporarily taken out of the section
     let sectionTop = (
       <div className="section-top-text">
         <div className="header">{section.header}</div>
@@ -57,12 +56,26 @@ Episode = React.createClass({
       </div>
     );
 
+    let sectionDiscussionInvite = null;
+    if (section.discussionInviteText) {
+      sectionDiscussionInvite = (
+        <div className="discussion-invite-container">
+          <div className="discussion-invite">
+            <div className="header">What do you think?</div>
+            <div className="text">{section.discussionInviteText}</div>
+            <a href="https://www.facebook.com/vocativ" target="_blank"><div className="button">Add to the conversation</div></a>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <Section key={i} type={getSectionType(section)}>
         {sectionTop}
         <Grid>
           {_.map(section.content, this.renderSectionItem)}
         </Grid>
+        {sectionDiscussionInvite}
       </Section>
     );
   },
