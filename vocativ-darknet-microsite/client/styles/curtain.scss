@@ -26,11 +26,15 @@ $curtainTextVerticalGradient: radial-gradient(ellipse,
     display: none;
   }
 
-  .curtain-image img {
-    height: 100vh;
-    object-fit: cover;
+  .curtain-image {
+    overflow: hidden;
 
-    @include kenburns;
+    img {
+      height: 100vh;
+      object-fit: cover;
+
+      @include kenburns;
+    }
   }
 
   .curtain-text {
