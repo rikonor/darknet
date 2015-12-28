@@ -24,8 +24,10 @@ $introHeaderDividerColor: $DARKISHGRAY;
       position: relative;
       top: -1em;
 
-      img {
-        @include kenburns;
+      .image {
+        overflow: hidden;
+
+        img { @include kenburns; }
       }
     }
   }
