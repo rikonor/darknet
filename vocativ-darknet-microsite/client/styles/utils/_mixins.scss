@@ -101,7 +101,7 @@
 }
 
 @mixin kenburns($duration: 30s) {
-	animation: kenburns $duration linear infinite;
+	animation: kenburns $duration ease-in-out infinite alternate;
 
 	@at-root {
 		@keyframes kenburns {
