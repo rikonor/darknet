@@ -23,6 +23,10 @@ $introHeaderDividerColor: $DARKISHGRAY;
       padding: 0;
       position: relative;
       top: -1em;
+
+      img {
+        @include kenburns;
+      }
     }
   }
 
