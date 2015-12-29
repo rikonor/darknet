@@ -63,7 +63,7 @@ Episode = React.createClass({
           <div className="discussion-invite">
             <div className="header">What do you think?</div>
             <div className="text">{section.discussionInviteText}</div>
-            <a href="https://www.facebook.com/vocativ" target="_blank"><div className="button">Add to the conversation</div></a>
+            <a href={section.discussionInviteLink} target="_blank"><div className="button">Add to the conversation</div></a>
           </div>
         </div>
       );
