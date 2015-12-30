@@ -106,7 +106,8 @@ var HomeIntro = React.createClass({
       <div className="intro">
         <div className="intro-header">
           <div className="header">
-            <span className="header-text" data-text="DARK NET">DARK NET</span>
+            <span className="glitch" data-text="DARK">DARK</span>
+            <span className="glitch" data-text="NET">NET</span>
           </div>
           <div className="subheader">from SHOWTIME + VOCATIV</div>
         </div>

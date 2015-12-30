@@ -43,8 +43,11 @@ $introHeaderDividerColor: $DARKISHGRAY;
 
       .header {
         font-size: 3.5em;
-        .header-text {
+        .glitch {
           @include textGlitch("home-header", 17, white, $backgroundColor, $DARKGRAY, $DARKGRAY, 768, 56);
+          &:first-child {
+            margin-right: 0.25em;
+          }
         }
       }
       .subheader { font-size: 1.2em; }
