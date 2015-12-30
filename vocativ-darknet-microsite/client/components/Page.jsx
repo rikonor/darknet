@@ -102,7 +102,7 @@ var NavArrow = React.createClass({
 
     let nextTarget = _.find(targets, (t) => {
       let targetScrollPosition = $(t).offset().top;
-      let graceMargin = 10; // Allow margin of error to next target
+      let graceMargin = 40; // Allow margin of error to next target
       return currentScroll < (targetScrollPosition + this.scrollData.topOffset - graceMargin);
     });
 
