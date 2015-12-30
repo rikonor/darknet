@@ -1,0 +1,8 @@
+{
+	"AWSEBDockerrunVersion": "1",
+	"Authentication": {
+		"Bucket": "elasticbeanstalk-us-east-1-648895988959",
+		"Key": "resources/environments/.dockercfg"
+	},
+	"Logging": "/var/log/nginx"
+}
