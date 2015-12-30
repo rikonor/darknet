@@ -59,7 +59,7 @@ $curtainTextVerticalGradient: radial-gradient(ellipse,
     .header {
       font-size: 8rem;
       .header-text {
-        @include textGlitch("curtain-header", 17, white, rgba($curtainTextBackgroundColor, 1), red, blue, 600, 128);
+        @include textGlitch("curtain-header", 17, white, rgba($curtainTextBackgroundColor, 1), red, red, 600, 128);
       }
     }
 

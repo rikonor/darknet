@@ -44,7 +44,7 @@ $introHeaderDividerColor: $DARKISHGRAY;
       .header {
         font-size: 3.5em;
         .header-text {
-          @include textGlitch("curtain-header", 17, white, $backgroundColor, $DARKISHGRAY, $LIGHTGRAY, 768, 56);
+          @include textGlitch("home-header", 17, white, $backgroundColor, $DARKGRAY, $DARKGRAY, 768, 56);
         }
       }
       .subheader { font-size: 1.2em; }
