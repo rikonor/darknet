@@ -1,0 +1,5 @@
+awscli
+awacs
+aws-shell
+boto3
+troposphere

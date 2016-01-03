@@ -3,11 +3,18 @@
 main() {
 	brew install \
 		awscli \
-		aws-elasticbeanstalk \
 		git \
 		docker \
 		docker-machine \
-		docker-compose
+		docker-compose \
+		jq \
+		python3 \
+		tomologic/tap/wrench
+
+	pyvenv .venv
+	source .venv/bin/activate
+
+	pip install --upgrade -r requirements.txt
 
 	if ! which meteor > /dev/null; then
 		curl https://install.meteor.com/ | sh
