@@ -61,6 +61,12 @@ $headerDividerColor: $DARKISHGRAY;
         pointer-events: none;
       }
 
+      &.coming-soon {
+        .name, .synopsis, .air-date {
+          color: $GRAY;
+        }
+      }
+
       // Coming soon overlay text
       &.coming-soon {
         .image {

@@ -105,6 +105,7 @@ routepolicy@1.0.6
 seba:minifiers-autoprefixer@0.0.1
 service-configuration@1.0.5
 session@1.1.1
+simple:json-routes@1.0.4
 spacebars@1.0.7
 spacebars-compiler@1.0.7
 templating@1.1.5

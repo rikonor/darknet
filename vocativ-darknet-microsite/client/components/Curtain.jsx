@@ -29,7 +29,8 @@ Curtain = React.createClass({
         </div>
         <div className="curtain-text">
           <div className="header">
-            <span className="header-text" data-text="DARK NET">DARK NET</span>
+            <span className="glitch" data-text="DARK">DARK</span>
+            <span className="glitch" data-text="NET">NET</span>
           </div>
           <div className="subheader">from SHOWTIME + VOCATIV FILMS</div>
         </div>

@@ -9,6 +9,8 @@
 MONGO_URL=mongodb://<user>:<pass>@<host>:<port>/<db>
 AWS_KEY=<KEY>
 AWS_SECRET=<SECRET>
+PORT=3000
+ROOT_URL=http://localhost
 
 # etc...
 ```

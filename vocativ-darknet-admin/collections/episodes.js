@@ -45,6 +45,20 @@ Schemas.Episodes = new SimpleSchema({
     optional: true,
     label: "Discussion Invite Text [Optional]"
   },
+  "sections.$.discussionInviteLink": {
+    type: String,
+    max: 100,
+    optional: true,
+    label: "Discussion Invite Link [Optional]",
+    autoValue: function () {
+      if (! this.isSet) {
+        return "https://www.facebook.com/vocativ";
+      }
+    },
+    autoform: {
+      placeholder: "Defaults to www.facebook.com/vocativ..."
+    }
+  },
 });
 
 // Custom error messages
