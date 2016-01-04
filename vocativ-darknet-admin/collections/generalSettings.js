@@ -25,6 +25,7 @@ GeneralSettings.attachSchema(Schemas.GeneralSettings);
 // Admin Panel options
 
 GeneralSettingsAdminOptions = {
+  label: 'Home Page Trailer',
   icon: 'bar-chart',
   tableColumns: [
     { label: 'Last Updated', name: 'updatedAt' }
