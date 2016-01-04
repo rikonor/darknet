@@ -150,6 +150,15 @@ var GalleryEpisode = React.createClass({
     GAnalytics.event("Navigation", "Episode Carousel on EP", this.props.episode.title);
   },
 
+  handleClick() {
+    this.trackClick();
+
+    // When navigating to a new episode the plugin router-autoscroll will autoscroll to the top
+    // But when clicking the episode you're already on - we still want to scroll to the top
+    // So we have to do this manually (because there's no path change)
+    $("body").velocity("scroll");
+  },
+
   render() {
     let galleryEpisodeClasses = classNames({
       'gallery-episode': true,
@@ -163,7 +172,7 @@ var GalleryEpisode = React.createClass({
 
     return (
       <div className={galleryEpisodeClasses}>
-        <a className={linkClassModifier} href={this.props.episode.path()} onClick={this.trackClick}>
+        <a className={linkClassModifier} href={this.props.episode.path()} onClick={this.handleClick}>
           <div className="image">
             <img src={this.props.episode.imageUrl()}></img>
             <div className="coming-soon-text"><span>COMING SOON</span></div>
