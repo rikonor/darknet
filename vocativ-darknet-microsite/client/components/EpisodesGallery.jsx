@@ -127,12 +127,17 @@ EpisodesGallery = React.createClass({
       scrollClasses += " hidden";
     }
 
+    let episodesClasses = "episodes";
+    if (this.state.widerThenChildren) {
+      episodesClasses += " centered";
+    }
+
     return (
       <div className="episodes-mini-gallery">
         <div className={scrollClasses + " left"} onMouseEnter={this.scroll.bind(this, LEFT)} onMouseLeave={this.scrollStop}><i className="fa fa-angle-left"></i></div>
         <div className={scrollClasses + " right"} onMouseEnter={this.scroll.bind(this, RIGHT)} onMouseLeave={this.scrollStop}><i className="fa fa-angle-right"></i></div>
 
-        <div className="episodes" ref="episodes">
+        <div className={episodesClasses} ref="episodes">
           {this.renderEpisodes()}
         </div>
       </div>
