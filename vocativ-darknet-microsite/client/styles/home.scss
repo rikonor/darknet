@@ -38,6 +38,7 @@ $introHeaderDividerColor: $DARKISHGRAY;
 
     .intro-header {
       @include bottom-divider($introHeaderDividerColor, 1em);
+      margin-bottom: 3rem;
       font-size: 5vw;
       text-align: center;
 
