@@ -71,3 +71,7 @@ img {
 .upper {
   @include upper;
 }
+
+.hidden {
+  display: none !important;
+}

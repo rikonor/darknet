@@ -26,6 +26,12 @@ EpisodesGalleryLoader = React.createClass({
 });
 
 EpisodesGallery = React.createClass({
+  getInitialState() {
+    return {
+      widerThenChildren: false
+    };
+  },
+
   initScrollData() {
     this.scrollData = {};
 
@@ -43,12 +49,21 @@ EpisodesGallery = React.createClass({
     this.scrollData.targetWidth = this.scrollData.tFirst.width();
   },
 
+  checkDisabledScrollArrows() {
+    // If the screen is so wide that all gallery elements fit without
+    // the need for scrolling, then don't show the scroll arrows
+    this.setState({widerThenChildren: this.scrollData.tLast.position().left + this.scrollData.tLast.width() < this.scrollData.scrollParent.width()});
+  },
+
   componentDidMount() {
     this.initScrollData();
 
     // Need a reference to the throttled function
     this.scrollData.funcRefs = { updateGalleryState: _.throttle(this.updateGalleryState, 100) };
     window.addEventListener('scroll', this.scrollData.funcRefs.updateGalleryState);
+
+    // Is screen wide? should hide scroll arrows?
+    this.checkDisabledScrollArrows();
   },
 
   scroll(dir) {
@@ -105,10 +120,15 @@ EpisodesGallery = React.createClass({
   },
 
   render() {
+    let scrollClasses = "scroll";
+    if (this.state.widerThenChildren) {
+      scrollClasses += " hidden";
+    }
+
     return (
       <div className="episodes-mini-gallery">
-        <div className="scroll left" onMouseEnter={this.scroll.bind(this, LEFT)} onMouseLeave={this.scrollStop}><i className="fa fa-angle-left"></i></div>
-        <div className="scroll right" onMouseEnter={this.scroll.bind(this, RIGHT)} onMouseLeave={this.scrollStop}><i className="fa fa-angle-right"></i></div>
+        <div className={scrollClasses + " left"} onMouseEnter={this.scroll.bind(this, LEFT)} onMouseLeave={this.scrollStop}><i className="fa fa-angle-left"></i></div>
+        <div className={scrollClasses + " right"} onMouseEnter={this.scroll.bind(this, RIGHT)} onMouseLeave={this.scrollStop}><i className="fa fa-angle-right"></i></div>
 
         <div className="episodes" ref="episodes">
           {this.renderEpisodes()}
