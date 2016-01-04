@@ -83,6 +83,12 @@ Episode = React.createClass({
   },
 
   render() {
+    // Redirects to not found if episode is not found
+    if (! this.props.episode) {
+      FlowRouter.redirect("/404");
+      return null;
+    }
+
     // Redirect to home page if episode is not released yet
     if (! this.props.episode.isViewable()) {
       FlowRouter.redirect("/");
