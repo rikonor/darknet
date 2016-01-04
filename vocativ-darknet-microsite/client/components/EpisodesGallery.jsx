@@ -64,6 +64,8 @@ EpisodesGallery = React.createClass({
 
     // Is screen wide? should hide scroll arrows?
     this.checkDisabledScrollArrows();
+    window.addEventListener('resize', this.checkDisabledScrollArrows);
+    window.addEventListener('resize', this.initScrollData);
   },
 
   scroll(dir) {
