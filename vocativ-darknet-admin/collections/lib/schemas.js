@@ -88,17 +88,17 @@ Schemas.updatedAt = {
   }
 };
 
-Schemas.relatedEpisodeId = {
+Schemas.relatedEpisode = {
   type: String,
   optional: true,
   label: "Related to episode",
   autoform: {
     type: "select2",
     options: function() {
-      return _.map(Episodes.find().fetch(), (episode) => {
+      return _.map(Episodes.find({}, {sort: { title: 1}}).fetch(), (episode) => {
         return {
           label: episode.title,
-          value: episode._id
+          value: episode.title
         };
       });
     },
@@ -152,9 +152,8 @@ fetchSectionOptions = function() {
 
     // Get related episode
     let relatedEpisode = '';
-    if (option.value.relatedEpisodeId) {
-      let episode = Episodes.findOne(option.value.relatedEpisodeId, {reactive: false});
-      relatedEpisode = `[${episode.title}]`;
+    if (option.value.relatedEpisode) {
+      relatedEpisode = `[${option.value.relatedEpisode}]`;
     }
 
     // The select box can only accept strings

@@ -6,7 +6,7 @@ Schemas.Articles = new SimpleSchema({
   title: Schemas.title("Article Title"),
   description: Schemas.description("Article Description"),
   image: Schemas.image("Article Cover Image"),
-  relatedEpisodeId: Schemas.relatedEpisodeId
+  relatedEpisode: Schemas.relatedEpisode
 });
 
 Articles.attachSchema(Schemas.Articles);
@@ -17,7 +17,7 @@ ArticlesAdminOptions = {
   icon: 'newspaper-o',
   tableColumns: [
     { label: 'Title', name: 'title' },
-    { label: 'Related to', name: 'relatedEpisodeId', template: 'episodeLink'}
+    { label: 'Related to', name: 'relatedEpisode' }
   ],
   routes: adminRoutesWaitOnOptions([
     'episodes',
