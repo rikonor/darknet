@@ -40,20 +40,22 @@ HomeLoader = React.createClass({
 
   getMeteorData() {
     let videosHandle = subsManager.subscribe('videos');
+    let generalSettingsHandle = subsManager.subscribe('generalSettings');
 
     return {
       videosLoading: ! videosHandle.ready(),
-      trailer: Videos.findOne('u8pENopLu89THthqj', {reactive: false})
+      generalSettingsLoading: ! generalSettingsHandle.ready(),
+      generalSettings: GeneralSettings.findOne({}, {reactive: false})
     };
   },
 
   render() {
-    if (this.data.videosLoading) {
+    if (this.data.videosLoading && this.data.generalSettingsLoading) {
       return <div>Loading</div>;
     }
 
     return (
-      <Home trailer={this.data.trailer} />
+      <Home generalSettings={this.data.generalSettings} />
     );
   }
 });
@@ -66,6 +68,9 @@ Home = React.createClass({
       title: episode.title,
       href: episode.path()
     };
+
+    // get trailer
+    let trailer = Videos.findOne(this.props.generalSettings.trailerId, {reactive: false});
 
     return (
       <div className="home">
@@ -83,7 +88,7 @@ Home = React.createClass({
           <Section>
             <Grid itemsPerRow={2}>
               <GridItem width={2}>
-                <VideoCard video={this.props.trailer} />
+                <VideoCard video={trailer} />
               </GridItem>
             </Grid>
           </Section>

@@ -77,6 +77,17 @@ Schemas.createdAt = {
   }
 };
 
+Schemas.updatedAt = {
+  type: Date,
+  label: 'Date',
+  autoValue: function () {
+    return new Date();
+  },
+  autoform: {
+    type: "hidden"
+  }
+};
+
 Schemas.relatedEpisodeId = {
   type: String,
   optional: true,

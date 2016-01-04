@@ -6,7 +6,8 @@ AdminConfig = {
     Videos: VideosAdminOptions,
     Articles: ArticlesAdminOptions,
     DataViz: DataVizAdminOptions,
-    Images: ImagesAdminOptions
+    Images: ImagesAdminOptions,
+    GeneralSettings: GeneralSettingsAdminOptions
   }
 };
 
