@@ -37,7 +37,7 @@
     .title {
       font-size: 2em;
       .title-actual { text-transform: uppercase; }
-      margin: 0.5em 0;
+      margin: 0.5em 0 1em;
     }
 
     .description {
@@ -62,7 +62,7 @@
     }
 
     .discussion-invite-container {
-      margin-top: 1.5rem;
+      margin-top: 3rem;
       padding: 1.5rem 0;
 
       border-top: 1px solid $GRAY;
