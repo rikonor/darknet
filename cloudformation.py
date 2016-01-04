@@ -234,6 +234,11 @@ ENVIRONMENT_VARIABLES['Production'] = [
         OptionName='AWS_SECRET_ACCESS_KEY',
         Value='9D216FHT54foJgL5UFbI0uQp7pRvVF9WY+XWu+eY'
     ),
+    elasticbeanstalk.OptionSettings(
+        Namespace='aws:elasticbeanstalk:application:environment',
+        OptionName='S3_IMAGES_BUCKET',
+        Value='vocativ-darknet-images-bucket'
+    ),
 
     elasticbeanstalk.OptionSettings(
         Namespace='aws:elasticbeanstalk:application:environment',
