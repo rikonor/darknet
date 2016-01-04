@@ -25,7 +25,7 @@ $signupWidth: 444px;
     .menu {
       @include bp-options(font-size, (
         default: 0.75rem,
-        375px: 0.88rem,
+        375px: 0.8rem,
         530px: 1.3rem
       ));
       font-weight: 600;
