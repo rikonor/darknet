@@ -59,13 +59,10 @@ Episode = React.createClass({
     let sectionDiscussionInvite = null;
     if (section.discussionInviteText) {
       sectionDiscussionInvite = (
-        <div className="discussion-invite-container">
-          <div className="discussion-invite">
-            <div className="header">What do you think?</div>
-            <div className="text">{section.discussionInviteText}</div>
-            <a href={section.discussionInviteLink} target="_blank"><div className="button">Add to the conversation</div></a>
-          </div>
-        </div>
+        <DiscussionInvite
+          episode={this.props.episode}
+          discussionInviteText={section.discussionInviteText}
+          discussionInviteLink={section.discussionInviteLink} />
       );
     }
 
@@ -111,6 +108,25 @@ Episode = React.createClass({
 
           <EpisodesGalleryLoader />
         </Page>
+      </div>
+    );
+  }
+});
+
+let DiscussionInvite = React.createClass({
+  trackClick() {
+    let discussionMetaData = `[${this.props.episode.title}] ${this.props.discussionInviteText}`;
+    GAnalytics.event("Navigation", "Join the discussion", discussionMetaData, this.props.discussionInviteLink);
+  },
+
+  render() {
+    return (
+      <div className="discussion-invite-container">
+        <div className="discussion-invite">
+          <div className="header">What do you think?</div>
+          <div className="text">{this.props.discussionInviteText}</div>
+          <a href={this.props.discussionInviteLink} target="_blank" onClick={this.trackClick}><div className="button">Add to the conversation</div></a>
+        </div>
       </div>
     );
   }
