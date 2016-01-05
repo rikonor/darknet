@@ -34,6 +34,11 @@ Episodes.helpers({
     return this.airingAt <= (new Date());
   },
   isViewable: function() {
+    // Admins can view regardless
+    if (isAdmin()) {
+      return true;
+    }
+
     return this.visibleAt <= (new Date());
   },
   sectionsContent: function() {
