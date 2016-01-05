@@ -1,0 +1,46 @@
+@import "shared";
+
+// This file has really shitty sass. Don't use it as a reference for anything.
+
+.admin-view, .admin-login {
+  .main-header {
+    @include bp-options(font-size, (
+      default: 1em,
+      small: 1.5em
+    ));
+    margin-bottom: 0.5em;
+  }
+
+  .subheader {
+    margin-bottom: 0.5em;
+  }
+
+  .admin-logout {
+    .logout-notice {
+      margin-bottom: 0.5em;
+    }
+
+    .logout-btn {
+
+    }
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 20em;
+    margin: auto;
+
+    input {
+      width: 15em;
+      margin: auto;
+      margin-bottom: 1em;
+    }
+
+    button {
+      width: 5em;
+      margin: auto;
+    }
+  }
+}

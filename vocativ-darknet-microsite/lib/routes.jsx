@@ -24,3 +24,11 @@ FlowRouter.notFound = {
     ReactLayout.render(MainLayout, { content: <NotFound /> });
   }
 };
+
+// Admin routes
+
+FlowRouter.route('/admin', {
+  action() {
+    ReactLayout.render(MainLayout, { content: <AdminPanel /> });
+  }
+});
