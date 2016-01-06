@@ -9,6 +9,7 @@ main() {
 		docker-compose \
 		jq \
 		python3 \
+		rename \
 		tomologic/tap/wrench
 
 	pyvenv .venv

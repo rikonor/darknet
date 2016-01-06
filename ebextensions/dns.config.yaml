@@ -1,0 +1,19 @@
+Resources:
+  AliasDNSRecord:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      HostedZoneName: {"Fn::Join": [".", [{"Fn::GetOptionSetting": {"OptionName": "HostedZoneName", "DefaultValue": ""}}, ""]]}
+      Name: {"Fn::GetOptionSetting": {"OptionName": "EnvironmentHostname", "DefaultValue": ""}}
+      Type: A
+      AliasTarget:
+        DNSName: {"Fn::GetAtt": ["AWSEBLoadBalancer", "CanonicalHostedZoneName"]}
+        HostedZoneId: {"Fn::GetAtt": ["AWSEBLoadBalancer", "CanonicalHostedZoneNameID"]}
+  LoaderDNSRecord:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      HostedZoneName: {"Fn::Join": [".", [{"Fn::GetOptionSetting": {"OptionName": "HostedZoneName", "DefaultValue": ""}}, ""]]}
+      Name: {"Fn::Join": [".", [{"Fn::GetOptionSetting": {"OptionName": "EnvironmentHostname", "DefaultValue": ""}}, ""]]}
+      Type: TXT
+      TTL: 300
+      ResourceRecords:
+        - {"Fn::Join": ["", ["\"", {"Fn::GetOptionSetting": {"OptionName": "LoaderToken", "DefaultValue": ""}}, "\""]]}

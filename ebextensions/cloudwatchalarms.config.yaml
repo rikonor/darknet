@@ -1,0 +1,96 @@
+Resources:
+  ELBAlarmTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      Subscription:
+        - Endpoint: {"Fn::GetOptionSetting": {"OptionName": "ELBAlarmEmail", "DefaultValue": "devops@vocativ.com"}}
+          Protocol: email
+
+  ELBHealthyHostCountAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: {"Fn::Join": ["", [{"Ref": "AWSEBEnvironmentName"}, ": ELB Healthy hosts."]]}
+      Namespace: AWS/ELB
+      MetricName: HealthyHostCount
+      Dimensions:
+        - Name: LoadBalancerName
+          Value: {"Ref": "AWSEBLoadBalancer"}
+      Statistic: Average
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: {"Fn::GetOptionSetting": {"OptionName": "ELBHealthyHostCount", "DefaultValue": 1}}
+      ComparisonOperator: LessThanThreshold
+      AlarmActions: [{"Ref": "ELBAlarmTopic"}]
+      InsufficientDataActions: [{"Ref": "ELBAlarmTopic"}]
+      OKActions: [{"Ref": "ELBAlarmTopic"}]
+
+  ELBUnHealthyHostCountAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: {"Fn::Join": ["", [{"Ref": "AWSEBEnvironmentName"}, ": ELB UnHealthy hosts."]]}
+      Namespace: AWS/ELB
+      MetricName: UnHealthyHostCount
+      Dimensions:
+        - Name: LoadBalancerName
+          Value: {"Ref": "AWSEBLoadBalancer"}
+      Statistic: Average
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: {"Fn::GetOptionSetting": {"OptionName": "ELBUnHealthyHostCount", "DefaultValue": 0}}
+      ComparisonOperator: GreaterThanThreshold
+      AlarmActions: [{"Ref": "ELBAlarmTopic"}]
+      InsufficientDataActions: [{"Ref": "ELBAlarmTopic"}]
+      OKActions: [{"Ref": "ELBAlarmTopic"}]
+
+  ELBLatency:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: {"Fn::Join": ["", [{"Ref": "AWSEBEnvironmentName"}, ": ELB Latency."]]}
+      Namespace: AWS/ELB
+      MetricName: Latency
+      Dimensions:
+        - Name: LoadBalancerName
+          Value: {"Ref": "AWSEBLoadBalancer"}
+      Statistic: Average
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: {"Fn::GetOptionSetting": {"OptionName": "Latency", "DefaultValue": 5}}
+      ComparisonOperator: GreaterThanThreshold
+      AlarmActions: [{"Ref": "ELBAlarmTopic"}]
+      OKActions: [{"Ref": "ELBAlarmTopic"}]
+
+  ASGCPUUtilization:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: {"Fn::Join": ["", [{"Ref": "AWSEBEnvironmentName"}, ": ASG CPU Utilization."]]}
+      Namespace: AWS/EC2
+      MetricName: CPUUtilization
+      Dimensions:
+        - Name: AutoScalingGroupName
+          Value: {"Ref": "AWSEBAutoScalingGroup"}
+      Statistic: Average
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: {"Fn::GetOptionSetting": {"OptionName": "CPUUtilization", "DefaultValue": 60}}
+      ComparisonOperator: GreaterThanThreshold
+      AlarmActions: [{"Ref": "ELBAlarmTopic"}]
+      InsufficientDataActions: [{"Ref": "ELBAlarmTopic"}]
+      OKActions: [{"Ref": "ELBAlarmTopic"}]
+
+  ASGMemoryUtilization:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: {"Fn::Join": ["", [{"Ref": "AWSEBEnvironmentName"}, ": Sys Memory Utilization."]]}
+      Namespace: System/Linux
+      MetricName: MemoryUtilization
+      Dimensions:
+        - Name: AutoScalingGroupName
+          Value: {"Ref": "AWSEBAutoScalingGroup"}
+      Statistic: Average
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: {"Fn::GetOptionSetting": {"OptionName": "MemoryUtilization", "DefaultValue": 75}}
+      ComparisonOperator: GreaterThanThreshold
+      AlarmActions: [{"Ref": "ELBAlarmTopic"}]
+      InsufficientDataActions: [{"Ref": "ELBAlarmTopic"}]
+      OKActions: [{"Ref": "ELBAlarmTopic"}]

@@ -2,4 +2,6 @@ awscli
 awacs
 aws-shell
 boto3
+click
 troposphere
+yapf
