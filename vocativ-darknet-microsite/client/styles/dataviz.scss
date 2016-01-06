@@ -6,6 +6,11 @@
       width: initial;
       height: 70%;
 
+      // dataviz sometimes have weird shapes, so remove background and box-shadow
+      // (like bottom-right corner removed from image, etc)
+      background: transparent;
+      box-shadow: none;
+
       .image {
         height: 100%;
 

@@ -1,6 +1,7 @@
 @import "shared";
 
 $containerBackgroundColor: $GRAY;
+$backgroundColor: $BLACK;
 $shadowColor: $BLACK;
 $closeColor: $WHITE;
 
@@ -22,8 +23,10 @@ $closeColor: $WHITE;
 
   .lightbox {
     position: relative;
+    background: $backgroundColor;
 
     @include dim(80%, 80%);
+    box-shadow: 0 1px 20px rgba($shadowColor, 0.8);
 
     // On mobile
     @include bp-under(breakpoint(medium)) {
