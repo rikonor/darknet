@@ -29,6 +29,9 @@ VideoEmbed = React.createClass({
     let youtubeId = this.props.video.youtubeId;
     let videoEmbedUrl = 'https://www.youtube.com/embed/' + youtubeId;
 
+    // Disable related content
+    videoEmbedUrl += "?rel=0";
+
     let youtubeEmbed = null;
     if (this.state.state === PLAYING) {
       youtubeEmbed = (
