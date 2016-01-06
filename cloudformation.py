@@ -18,10 +18,34 @@ from troposphere import Join
 from troposphere import Output
 from troposphere import Parameter
 from troposphere import Ref
+from troposphere import Tags
 from troposphere import Template
+from troposphere.route53 import RecordSet
+from troposphere.route53 import RecordSetGroup
 
-APPLICATIONS = ['Microsite', 'Admin']
-ENVIRONMENTS = ['Production', 'Test']
+LINUX_AMI_VERSION = '2015.09'
+NODEJS_VERSION = '0.10.41'
+NODEJS_AMI_VERSION = '2.0.5'
+
+APPLICATION_SITE = 'Site'
+APPLICATION_ADMIN = 'Admin'
+
+ENVIRONMENT_PRODUCTION = 'Production'
+ENVIRONMENT_TEST = 'Test'
+
+APPLICATIONS = [APPLICATION_SITE, APPLICATION_ADMIN]
+ENVIRONMENTS = [ENVIRONMENT_PRODUCTION, ENVIRONMENT_TEST]
+
+LOADER_VERIFICIATION = {
+    APPLICATION_SITE: {
+        ENVIRONMENT_PRODUCTION: 'loaderio=8d6ffdb90b8cbe0f446700357319d686',
+        ENVIRONMENT_TEST: 'loaderio=8b5ba421c0b82c5018d4149766aac4d4',
+    },
+    APPLICATION_ADMIN: {
+        ENVIRONMENT_PRODUCTION: 'loaderio=6696d9d9a31d3a9f9a848597dc12c33e',
+        ENVIRONMENT_TEST: 'loaderio=18f71dfedb2c2e7e0fe34e88a7984e02',
+    },
+}
 
 t = Template()
 t.add_version()
@@ -32,9 +56,17 @@ keyname = Parameter(
     Description="Name of an existing EC2 KeyPair to enable SSH access to "
                 "the AWS Elastic Beanstalk instance",
     Type='AWS::EC2::KeyPair::KeyName',
-    ConstraintDescription="must be the name of an existing EC2 KeyPair."
+    ConstraintDescription="must be the name of an existing EC2 KeyPair.",
 )
-keyname = t.add_parameter(keyname)
+t.add_parameter(keyname)
+
+hostedzone = Parameter(
+    'HostedZone',
+    Default='vocativ.com',
+    Description="The DNS name of an existing Amazon Route 53 hosted zone",
+    Type='String',
+)
+t.add_parameter(hostedzone)
 
 serviceRole = iam.Role(
     'ServiceRole',
@@ -47,7 +79,7 @@ serviceRole = iam.Role(
                 Action=[sts.AssumeRole],
                 Condition=Condition([
                     StringEquals('sts:ExternalId', 'elasticbeanstalk'),
-                ])
+                ]),
             )
         ]
     ),
@@ -77,11 +109,11 @@ serviceRolePolicies = iam.PolicyType(
                     autoscaling.DescribeScalingActivities,
                     autoscaling.DescribeNotificationConfigurations,
                 ],
-                Resource=['*']
+                Resource=['*'],
             )
         ]
     ),
-    Roles=[Ref(serviceRole.title)]
+    Roles=[Ref(serviceRole.title)],
 )
 t.add_resource(serviceRolePolicies)
 
@@ -151,7 +183,7 @@ ELB_OPTIONS = [
         Namespace='aws:elb:loadbalancer',
         OptionName='CrossZone',
         Value='true'
-    )
+    ),
 ]
 
 ASG_OPTIONS = [
@@ -199,7 +231,7 @@ NODEJS_OPTIONS = [
     elasticbeanstalk.OptionSettings(
         Namespace='aws:elasticbeanstalk:container:nodejs',
         OptionName='NodeVersion',
-        Value='0.10.41'
+        Value=NODEJS_VERSION
     ),
     elasticbeanstalk.OptionSettings(
         Namespace='aws:elasticbeanstalk:container:nodejs',
@@ -216,8 +248,12 @@ SSH_ACCESS = [
     ),
 ]
 
+APPLICATION_VARIABLES = {}
+APPLICATION_VARIABLES[APPLICATION_SITE] = []
+APPLICATION_VARIABLES[APPLICATION_ADMIN] = []
+
 ENVIRONMENT_VARIABLES = {}
-ENVIRONMENT_VARIABLES['Production'] = [
+ENVIRONMENT_VARIABLES[ENVIRONMENT_PRODUCTION] = [
     elasticbeanstalk.OptionSettings(
         Namespace='aws:elasticbeanstalk:application:environment',
         OptionName='ROOT_URL',
@@ -262,27 +298,43 @@ ENVIRONMENT_VARIABLES['Production'] = [
         Value='8be42b29-0043-4c01-9b7e-e6108d317736'
     ),
 ]
-ENVIRONMENT_VARIABLES['Test'] = ENVIRONMENT_VARIABLES['Production']
+ENVIRONMENT_VARIABLES[ENVIRONMENT_TEST] = ENVIRONMENT_VARIABLES[ENVIRONMENT_PRODUCTION]
 
 apps = {}
 appVersions = {}
+appVersionParameters = {}
 appConfigurationTemplates = {}
 appEnvironments = {}
 appEnvironmentURLs = {}
 for app in APPLICATIONS:
     apps[app] = elasticbeanstalk.Application(
         '%sApplication' % app,
-        Description='Darknet %s Application' % app,
+        Description="Darknet %s Application" % app,
     )
     t.add_resource(apps[app])
+
+    appVersionParameters[app] = Parameter(
+        '%sVersion' % app,
+        Description="Darknet %s Version Number" % app,
+        Type='String',
+    )
+    t.add_parameter(appVersionParameters[app])
 
     appVersions[app] = elasticbeanstalk.ApplicationVersion(
         '%sApplicationVersion' % app,
         ApplicationName=Ref(apps[app].title),
-        Description='Darknet %s Application Version' % app,
+        Description="Darknet %s Application Version" % app,
         SourceBundle=elasticbeanstalk.SourceBundle(
             S3Bucket='vocativ',
-            S3Key='darknet/darknet-%s-v0.1.0.zip' % app.lower(),
+            S3Key=Join('-', [
+                'darknet/darknet',
+                app.lower(),
+                Join('', [
+                    'v',
+                    Ref(appVersionParameters[app].title),
+                    '.zip',
+                ]),
+            ])
         )
     )
     t.add_resource(appVersions[app])
@@ -290,29 +342,49 @@ for app in APPLICATIONS:
     appConfigurationTemplates[app] = elasticbeanstalk.ConfigurationTemplate(
         '%sConfigurationTemplate' % app,
         ApplicationName=Ref(apps[app].title),
-        Description='Darknet %s Application Configuration Template' % app,
+        Description="Darknet %s Application Configuration Template" % app,
         OptionSettings=ENHANCED_MONITORING + SSH_ACCESS + HEALTH_CHECK + ELB_OPTIONS + ASG_OPTIONS + ROLLING_UPDATES_OPTIONS + NODEJS_OPTIONS,
-        SolutionStackName='64bit Amazon Linux 2015.09 v2.0.5 running Node.js',
+        SolutionStackName='64bit Amazon Linux %s v%s running Node.js' % (LINUX_AMI_VERSION, NODEJS_AMI_VERSION),
     )
     t.add_resource(appConfigurationTemplates[app])
 
     appEnvironments[app] = {}
     appEnvironmentURLs[app] = {}
     for env in ENVIRONMENTS:
+        environment_id = Join('-', [Ref('AWS::StackName'), app.lower(), env.lower()])
+        url = Join('.', [environment_id, Ref(hostedzone)])
+
         appEnvironments[app][env] = elasticbeanstalk.Environment(
             '%s%sEnvironment' % (app, env),
             ApplicationName=Ref(apps[app].title),
-            Description='Darknet %s %s Environment' % (app, env),
+            Description="Darknet %s %s Environment" % (app, env),
             TemplateName=Ref(appConfigurationTemplates[app].title),
-            OptionSettings=ENVIRONMENT_VARIABLES[env],
+            OptionSettings=APPLICATION_VARIABLES[app] + ENVIRONMENT_VARIABLES[env] + [
+                elasticbeanstalk.OptionSettings(
+                    Namespace='aws:elasticbeanstalk:customoption',
+                    OptionName='HostedZoneName',
+                    Value=Ref(hostedzone.title)
+                ),
+                elasticbeanstalk.OptionSettings(
+                    Namespace='aws:elasticbeanstalk:customoption',
+                    OptionName='EnvironmentHostname',
+                    Value=url
+                ),
+                elasticbeanstalk.OptionSettings(
+                    Namespace='aws:elasticbeanstalk:customoption',
+                    OptionName='LoaderToken',
+                    Value=LOADER_VERIFICIATION[app][env]
+                ),
+            ],
             VersionLabel=Ref(appVersions[app]),
+            Tags=Tags(Name=environment_id),
         )
         t.add_resource(appEnvironments[app][env])
 
         appEnvironmentURLs[app][env] = Output(
             '%s%sURL' % (app, env),
             Description="%s %s URL" % (app, env),
-            Value=Join('', ['http://', GetAtt(appEnvironments[app][env], 'EndpointURL')])
+            Value=Join('', ['http://', url]),
         )
         t.add_output(appEnvironmentURLs[app][env])
 
