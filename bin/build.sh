@@ -8,7 +8,7 @@ get_app_dir() {
 		site)
 			result='vocativ-darknet-microsite' ;;
 		admin)
-			result='vocativ-darknet-microsite' ;;
+			result='vocativ-darknet-admin' ;;
 		*)
 			exit 1 ;;
 	esac
