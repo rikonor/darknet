@@ -117,7 +117,6 @@ var HomeIntro = React.createClass({
           <div className="subheader">from SHOWTIME + VOCATIV</div>
         </div>
         <div className="intro-description">
-          <div className="description-header">This is DARK NET</div>
           <div className="description-1">{description1}</div>
           <div className="description-2">{description2}</div>
           <div className="description-airdate">

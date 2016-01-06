@@ -63,11 +63,7 @@ $introHeaderDividerColor: $DARKISHGRAY;
       display: flex;
       flex-wrap: wrap;
 
-      .description-header {
-        display: none;
-      }
-
-      .description-header, .description-1, .description-2 {
+      .description-1, .description-2 {
         margin-bottom: 1.5rem;
       }
 
@@ -94,13 +90,6 @@ $introHeaderDividerColor: $DARKISHGRAY;
     @include respond-to(medium) {
       .intro-header {
         display: none;
-      }
-
-      .intro-description .description-header {
-        display: block;
-        font-size: 2.5rem;
-        font-weight: bold;
-        margin-top: 0.5rem;
       }
     }
   }
