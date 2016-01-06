@@ -30,3 +30,8 @@ Meteor.publish('images', function() {
   if (! isAdmin(this.userId)) return this.ready();
   return Images.find();
 });
+
+Meteor.publish('generalSettings', function() {
+  if (! isAdmin(this.userId)) return this.ready();
+  return GeneralSettings.find();
+});

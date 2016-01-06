@@ -76,6 +76,13 @@ SimpleSchema.messages({
 let generalSettingsValidation = function() {
   // Make sure user is not trying to create more then one general settings
   // So if one already exists - let the users know it's not possible to have more then one
+  let isInsert = (! this.docId);
+
+  // Allow updates
+  if (! isInsert) {
+    return true;
+  }
+
   let gsCount = GeneralSettings.find().count();
   if (gsCount >= 1) {
     return "multipleGeneralSettings";
