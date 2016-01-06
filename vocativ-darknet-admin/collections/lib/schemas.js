@@ -181,7 +181,8 @@ let currentSectionIndex = 0;
 sortSectionOptions = function(options) {
   // Get the sections
   let form = AutoForm.getCurrentDataForForm();
-  if (! form.doc.sections) {
+
+  if (!form.doc || !form.doc.sections) {
     // If no sections exist, just return the options as they are
     return options;
   }
