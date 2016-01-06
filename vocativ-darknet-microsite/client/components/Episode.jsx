@@ -26,60 +26,9 @@ EpisodeLoader = React.createClass({
 });
 
 Episode = React.createClass({
-  renderSectionItem(sectionItem, i) {
-    switch(sectionItem.type) {
-      case 'video':
-        item = <VideoCard video={sectionItem.value} />;
-        break;
-
-      case 'article':
-        item = <ArticleCard article={sectionItem.value} />;
-        break;
-
-      case 'dataviz':
-        item = <DataVisualization dataviz={sectionItem.value} />;
-        break;
-    }
-
-    return (
-      <GridItem key={i}>
-        {item}
-      </GridItem>
-    );
-  },
-
-  renderSection(section, i) {
-    let sectionTop = (
-      <div className="section-top-text">
-        <div className="header">{section.header}</div>
-        <div className="description">{section.description}</div>
-      </div>
-    );
-
-    let sectionDiscussionInvite = null;
-    if (section.discussionInviteText) {
-      sectionDiscussionInvite = (
-        <DiscussionInvite
-          episode={this.props.episode}
-          discussionInviteText={section.discussionInviteText}
-          discussionInviteLink={section.discussionInviteLink} />
-      );
-    }
-
-    return (
-      <Section key={i} type={getSectionType(section)}>
-        {sectionTop}
-        <Grid>
-          {_.map(section.content, this.renderSectionItem)}
-        </Grid>
-        {sectionDiscussionInvite}
-      </Section>
-    );
-  },
-
   renderSections() {
-    let sectionsContent = this.props.episode.sectionsContent();
-    return _.map(sectionsContent, this.renderSection);
+    let sectionsContent = parseSectionsContent(this.props.episode.sections);
+    return _.map(sectionsContent, renderSection);
   },
 
   render() {
@@ -114,25 +63,6 @@ Episode = React.createClass({
 
           <EpisodesGalleryLoader />
         </Page>
-      </div>
-    );
-  }
-});
-
-let DiscussionInvite = React.createClass({
-  trackClick() {
-    let discussionMetaData = `[${this.props.episode.title}] ${this.props.discussionInviteText}`;
-    GAnalytics.event("Navigation", "Join the discussion", discussionMetaData, this.props.discussionInviteLink);
-  },
-
-  render() {
-    return (
-      <div className="discussion-invite-container">
-        <div className="discussion-invite">
-          <div className="header">What do you think?</div>
-          <div className="text">{this.props.discussionInviteText}</div>
-          <a href={this.props.discussionInviteLink} target="_blank" onClick={this.trackClick}><div className="button">Add to the conversation</div></a>
-        </div>
       </div>
     );
   }

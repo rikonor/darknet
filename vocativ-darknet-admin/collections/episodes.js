@@ -1,7 +1,5 @@
 Episodes = new Mongo.Collection("episodes");
 
-let currentSectionIndex = 0;
-
 Schemas.Episodes = new SimpleSchema({
   createdAt: Schemas.createdAt,
   title: Schemas.title("Episode Title"),
@@ -43,44 +41,11 @@ Schemas.Episodes = new SimpleSchema({
           plugins: ['drag_drop']
         }
       },
-      options: (a) => {
+      options: () => {
         let options = fetchSectionOptions();
 
-        // Get the sections
-        let form = AutoForm.getCurrentDataForForm();
-        if (! form.doc.sections) {
-          // If no sections exist, just return the options as they are
-          return options;
-        }
-
-        let sections = form.doc.sections;
-        let currentSection = sections[currentSectionIndex];
-
-        // Increment the currentSection index
-        currentSectionIndex = (currentSectionIndex + 1) % sections.length;
-
-        // NOTICE: This is a piece of very convoluted logic
-        // It's purpose is to allow reordering of the selections a user makes
-        // For this to be possible, the options provided to the select box
-        // Must be ordered according to any pre-selected values
-        // Otherwise, it will appear in whichever order fetchSectionOptions returned
-
-        // Sort the options
-        if (currentSection.content) {
-          _.each(currentSection.content, (val) => {
-            let idx = -1;
-            _.some(options, (option, i) => {
-              if (option.value === val) {
-                idx = i;
-                return true;
-              }
-            });
-
-            if (idx !== -1) {
-              // Move the option to the end
-              options.push(options.splice(idx, 1)[0]);
-            }
-          });
+        if (options) {
+          options = sortSectionOptions(options);
         }
 
         return options;
