@@ -26,19 +26,21 @@ SiteMap = React.createClass({
 
     return (
       <div className="site-map">
-        <Page>
-          <Section>
-            <div className="main-pages">
-              <div className="site-map-entry">
-                <a href="/">Home</a>
-              </div>
-            </div>
+        <div className="header">SITE MAP</div>
 
-            <div className="episode-pages">
-              {episodesSiteMapEntries}
-            </div>
-          </Section>
-        </Page>
+        <div className="main-pages">
+          <div className="site-map-entry">
+            <a href="/">Home</a>
+          </div>
+        </div>
+
+        <div className="episode-pages">
+          {episodesSiteMapEntries}
+        </div>
+
+        <div className="link-home">
+          <a href="/">Go back to DARK NET</a>
+        </div>
       </div>
     );
   }

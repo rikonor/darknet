@@ -1,0 +1,15 @@
+@import "shared";
+
+.site-map {
+  font-size: 1.5em;
+
+  .header, .site-map-entry {
+    margin-bottom: 0.5em;
+  }
+
+  .link-home {
+    a {
+      border-bottom: 1px solid $WHITE;
+    }
+  }
+}
