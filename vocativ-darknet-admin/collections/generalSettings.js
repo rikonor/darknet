@@ -68,6 +68,22 @@ Schemas.GeneralSettings = new SimpleSchema({
   }
 });
 
+// Custom error messages
+SimpleSchema.messages({
+  "multipleGeneralSettings": "Only one general settings object can exist. You can't create any more."
+});
+
+let generalSettingsValidation = function() {
+  // Make sure user is not trying to create more then one general settings
+  // So if one already exists - let the users know it's not possible to have more then one
+  let gsCount = GeneralSettings.find().count();
+  if (gsCount >= 1) {
+    return "multipleGeneralSettings";
+  }
+};
+
+Schemas.GeneralSettings.addValidator(generalSettingsValidation);
+
 GeneralSettings.attachSchema(Schemas.GeneralSettings);
 
 // Admin Panel options
