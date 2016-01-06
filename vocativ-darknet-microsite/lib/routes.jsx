@@ -32,3 +32,10 @@ FlowRouter.route('/admin', {
     ReactLayout.render(MainLayout, { content: <AdminPanel /> });
   }
 });
+
+FlowRouter.route('/sitemap', {
+  action() {
+    GAnalytics.pageview(`/sitemap`);
+    ReactLayout.render(MainLayout, { content: <SiteMap /> });
+  }
+});
