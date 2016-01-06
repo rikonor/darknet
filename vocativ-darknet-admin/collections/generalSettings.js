@@ -102,6 +102,7 @@ GeneralSettingsAdminOptions = {
     { label: 'Last Updated', name: 'updatedAt' }
   ],
   routes: adminRoutesWaitOnOptions([
+    'generalSettings',
     'articles',
     'videos',
     'dataviz'
