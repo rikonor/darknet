@@ -81,29 +81,31 @@ $curtainTextVerticalGradient: radial-gradient(ellipse,
 }
 
 // curtain rules that affect the main layout
-.main-layout.curtain-on {
-  min-height: calc(3.5 * 100vh);
+@include respond-to(medium) {
+  .main-layout.curtain-on {
+    min-height: calc(3.5 * 100vh);
 
-  .main-content-container {
-    @include pin-top-left;
-    position: fixed;
+    .main-content-container {
+      @include pin-top-left;
+      position: fixed;
+    }
+
+    .footer-container {
+      position: fixed;
+
+      // Push it down just enough so it's not visible
+      top: calc(100vh + 1px);
+    }
   }
 
-  .footer-container {
-    position: fixed;
+  .main-layout:not(.curtain-on) {
+    .main-content-container {
+      .home {
+        margin-top: 100vh;
 
-    // Push it down just enough so it's not visible
-    top: calc(100vh + 1px);
-  }
-}
-
-.main-layout:not(.curtain-on) {
-  .main-content-container {
-    .home {
-      margin-top: 100vh;
-
-      @include bp($curtainHideWidth) {
-        margin-top: 0;
+        @include bp($curtainHideWidth) {
+          margin-top: 0;
+        }
       }
     }
   }
