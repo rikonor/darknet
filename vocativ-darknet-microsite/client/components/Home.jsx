@@ -105,10 +105,14 @@ var HomeIntro = React.createClass({
       <div className="intro">
         <div className="intro-header">
           <div className="header">
-            <span className="glitch" data-text="DARK">DARK</span>
-            <span className="glitch" data-text="NET">NET</span>
+            <div className="logo darknet"><img src="/images/darknet-logo-nocircle.svg" /></div>
           </div>
-          <div className="subheader">from SHOWTIME + VOCATIV</div>
+          <div className="subheader">
+            <div className="subheader-from">FROM</div>
+            <div className="logo showtime"><img src="/images/showtime-logo-white.svg" /></div>
+            <div className="subheader-plus">+</div>
+            <div className="logo vocativ-films"><img src="/images/vocativ-films-logo-white.svg" /></div>
+          </div>
         </div>
         <div className="intro-description">
           <div className="description-1">{description1}</div>

@@ -45,15 +45,23 @@ $introHeaderDividerColor: $DARKISHGRAY;
       text-align: center;
 
       .header {
-        font-size: 3.5em;
-        .glitch {
-          @include textGlitch("home-header", 17, white, $backgroundColor, $DARKGRAY, $DARKGRAY, 768, 56);
-          &:first-child {
-            margin-right: 0.25em;
-          }
+        margin-bottom: 0.5rem;
+      }
+
+      .subheader {
+        @include flex-center;
+        font-size: 1.2em;
+        div { margin: 0 0.3rem; }
+        .logo {
+          @include bp-options(width, (
+            default: 6rem,
+            412px: 8rem,
+            600px: 10rem
+          ));
+
+          color: $WHITE;
         }
       }
-      .subheader { font-size: 1.2em; }
     }
 
     .intro-description {
