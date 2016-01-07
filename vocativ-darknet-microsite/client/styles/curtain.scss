@@ -9,11 +9,6 @@ $textColor: $BEIGE;
 $curtainTextMaxWidth: 767px;
 $curtainHideWidth: 767px;
 
-$curtainTextVerticalGradient: radial-gradient(ellipse,
-  rgba($curtainTextBackgroundColor, 1.0) 50%,
-  rgba($curtainTextBackgroundColor, 0)
-);
-
 .curtain {
   @include pin-top-left;
   @include fill-screen;
@@ -53,18 +48,12 @@ $curtainTextVerticalGradient: radial-gradient(ellipse,
     padding: 30px 0;
     color: $textColor;
 
-    background: $curtainTextVerticalGradient;
-    box-shadow: 0 1px 20px rgba($shadowColor, 0.8);
-
     .header {
-      font-size: 8rem;
-      font-weight: 900;
-      .glitch {
-        @include textGlitch("curtain-header", 17, white, rgba($curtainTextBackgroundColor, 1), red, red, 600, 128);
+      margin-bottom: 1rem;
 
-        &:first-child {
-          margin-right: 0.25em;
-        }
+      .logo {
+        width: 35em;
+        margin: auto;
       }
     }
 

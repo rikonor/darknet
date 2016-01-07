@@ -29,8 +29,7 @@ Curtain = React.createClass({
         </div>
         <div className="curtain-text">
           <div className="header">
-            <span className="glitch" data-text="DARK">DARK</span>
-            <span className="glitch" data-text="NET">NET</span>
+            <div className="logo darknet"><img src="/images/darknet-logo-nocircle.svg" /></div>
           </div>
           <div className="subheader">
             <div className="subheader-from">FROM</div>
