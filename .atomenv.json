@@ -1,0 +1,5 @@
+{
+	"env": {
+		"PATH": "$ATOM_PROJECT_PATH/.venv/bin:$PATH",
+	}
+}

@@ -3,5 +3,6 @@ awacs
 aws-shell
 boto3
 click
+flake8
 troposphere
 yapf

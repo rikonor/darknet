@@ -5,23 +5,25 @@ import awacs.ec2 as ec2
 import awacs.elasticloadbalancing as elasticloadbalancing
 import awacs.sqs as sqs
 import awacs.sts as sts
+import json
+import troposphere.elasticbeanstalk as elasticbeanstalk
+import troposphere.iam as iam
 from awacs.aws import Allow
 from awacs.aws import Condition
 from awacs.aws import Policy
 from awacs.aws import Principal
 from awacs.aws import Statement
 from awacs.aws import StringEquals
-import troposphere.elasticbeanstalk as elasticbeanstalk
-import troposphere.iam as iam
-from troposphere import GetAtt
 from troposphere import Join
 from troposphere import Output
 from troposphere import Parameter
 from troposphere import Ref
 from troposphere import Tags
 from troposphere import Template
-from troposphere.route53 import RecordSet
-from troposphere.route53 import RecordSetGroup
+
+t = Template()
+t.add_version()
+t.add_description("Vocativ Darknet")
 
 LINUX_AMI_VERSION = '2015.09'
 NODEJS_VERSION = '0.10.41'
@@ -47,27 +49,6 @@ LOADER_VERIFICIATION = {
     },
 }
 
-t = Template()
-t.add_version()
-t.add_description("Vocativ Darknet")
-
-keyname = Parameter(
-    'KeyName',
-    Description="Name of an existing EC2 KeyPair to enable SSH access to "
-                "the AWS Elastic Beanstalk instance",
-    Type='AWS::EC2::KeyPair::KeyName',
-    ConstraintDescription="must be the name of an existing EC2 KeyPair.",
-)
-t.add_parameter(keyname)
-
-hostedzone = Parameter(
-    'HostedZone',
-    Default='vocativ.com',
-    Description="The DNS name of an existing Amazon Route 53 hosted zone",
-    Type='String',
-)
-t.add_parameter(hostedzone)
-
 serviceRole = iam.Role(
     'ServiceRole',
     AssumeRolePolicyDocument=Policy(
@@ -85,37 +66,6 @@ serviceRole = iam.Role(
     ),
     Path='/',
 )
-t.add_resource(serviceRole)
-
-serviceRolePolicies = iam.PolicyType(
-    'ServiceRolePolicies',
-    PolicyName='Service',
-    PolicyDocument=Policy(
-        Statement=[
-            Statement(
-                Effect=Allow,
-                Action=[
-                    elasticloadbalancing.DescribeInstanceHealth,
-                    ec2.DescribeInstances,
-                    ec2.DescribeInstanceStatus,
-                    ec2.GetConsoleOutput,
-                    ec2.AssociateAddress,
-                    ec2.DescribeAddresses,
-                    ec2.DescribeSecurityGroups,
-                    sqs.GetQueueAttributes,
-                    sqs.GetQueueUrl,
-                    autoscaling.DescribeAutoScalingGroups,
-                    autoscaling.DescribeAutoScalingInstances,
-                    autoscaling.DescribeScalingActivities,
-                    autoscaling.DescribeNotificationConfigurations,
-                ],
-                Resource=['*'],
-            )
-        ]
-    ),
-    Roles=[Ref(serviceRole.title)],
-)
-t.add_resource(serviceRolePolicies)
 
 ENHANCED_MONITORING = [
     elasticbeanstalk.OptionSettings(
@@ -144,22 +94,22 @@ HEALTH_CHECK = [
     elasticbeanstalk.OptionSettings(
         Namespace='aws:elb:healthcheck',
         OptionName='Interval',
-        Value='10'
+        Value=json.dumps(10)
     ),
     elasticbeanstalk.OptionSettings(
         Namespace='aws:elb:healthcheck',
         OptionName='Timeout',
-        Value='5'
+        Value=json.dumps(5)
     ),
     elasticbeanstalk.OptionSettings(
         Namespace='aws:elb:healthcheck',
         OptionName='HealthyThreshold',
-        Value='3'
+        Value=json.dumps(3)
     ),
     elasticbeanstalk.OptionSettings(
         Namespace='aws:elb:healthcheck',
         OptionName='UnhealthyThreshold',
-        Value='5'
+        Value=json.dumps(5)
     ),
 ]
 
@@ -167,22 +117,22 @@ ELB_OPTIONS = [
     elasticbeanstalk.OptionSettings(
         Namespace='aws:elb:policies',
         OptionName='ConnectionDrainingEnabled',
-        Value='true'
+        Value=json.dumps(True)
     ),
     elasticbeanstalk.OptionSettings(
         Namespace='aws:elb:policies',
         OptionName='ConnectionDrainingTimeout',
-        Value='20'
+        Value=json.dumps(20)
     ),
     elasticbeanstalk.OptionSettings(
         Namespace='aws:elb:policies',
         OptionName='ConnectionSettingIdleTimeout',
-        Value='30'
+        Value=json.dumps(30)
     ),
     elasticbeanstalk.OptionSettings(
         Namespace='aws:elb:loadbalancer',
         OptionName='CrossZone',
-        Value='true'
+        Value=json.dumps(True)
     ),
 ]
 
@@ -195,17 +145,17 @@ ASG_OPTIONS = [
     elasticbeanstalk.OptionSettings(
         Namespace='aws:autoscaling:asg',
         OptionName='Cooldown',
-        Value='300'
+        Value=json.dumps(300)
     ),
     elasticbeanstalk.OptionSettings(
         Namespace='aws:autoscaling:asg',
         OptionName='MinSize',
-        Value='2'
+        Value=json.dumps(2)
     ),
     elasticbeanstalk.OptionSettings(
         Namespace='aws:autoscaling:asg',
         OptionName='MinSize',
-        Value='6'
+        Value=json.dumps(6)
     ),
 ]
 
@@ -213,7 +163,7 @@ ROLLING_UPDATES_OPTIONS = [
     elasticbeanstalk.OptionSettings(
         Namespace='aws:autoscaling:updatepolicy:rollingupdate',
         OptionName='RollingUpdateEnabled',
-        Value='true'
+        Value=json.dumps(True)
     ),
     elasticbeanstalk.OptionSettings(
         Namespace='aws:autoscaling:updatepolicy:rollingupdate',
@@ -238,6 +188,16 @@ NODEJS_OPTIONS = [
         OptionName='NodeCommand',
         Value='node main.js'
     ),
+    elasticbeanstalk.OptionSettings(
+        Namespace='aws:elasticbeanstalk:container:nodejs',
+        OptionName='GzipCompression',
+        Value=json.dumps(True)
+    ),
+    elasticbeanstalk.OptionSettings(
+        Namespace='aws:elasticbeanstalk:container:nodejs:staticfiles',
+        OptionName='/public',
+        Value='/programs/web.browser'
+    ),
 ]
 
 SSH_ACCESS = [
@@ -258,6 +218,12 @@ ENVIRONMENT_VARIABLES[ENVIRONMENT_PRODUCTION] = [
         Namespace='aws:elasticbeanstalk:application:environment',
         OptionName='ROOT_URL',
         Value='http://www.vocativ.com'
+    ),
+
+    elasticbeanstalk.OptionSettings(
+        Namespace='aws:elasticbeanstalk:application:environment',
+        OptionName='DISABLE_WEBSOCKETS',
+        Value=json.dumps(1)
     ),
 
     elasticbeanstalk.OptionSettings(
@@ -301,6 +267,56 @@ appVersionParameters = {}
 appConfigurationTemplates = {}
 appEnvironments = {}
 appEnvironmentURLs = {}
+
+keyname = Parameter(
+    'KeyName',
+    Description="Name of an existing EC2 KeyPair to enable SSH access to "
+                "the AWS Elastic Beanstalk instance",
+    Type='AWS::EC2::KeyPair::KeyName',
+    ConstraintDescription="must be the name of an existing EC2 KeyPair.",
+)
+t.add_parameter(keyname)
+
+hostedzone = Parameter(
+    'HostedZone',
+    Default='vocativ.com',
+    Description="The DNS name of an existing Amazon Route 53 hosted zone",
+    Type='String',
+)
+t.add_parameter(hostedzone)
+
+t.add_resource(serviceRole)
+
+serviceRolePolicies = iam.PolicyType(
+    'ServiceRolePolicies',
+    PolicyName='Service',
+    PolicyDocument=Policy(
+        Statement=[
+            Statement(
+                Effect=Allow,
+                Action=[
+                    elasticloadbalancing.DescribeInstanceHealth,
+                    ec2.DescribeInstances,
+                    ec2.DescribeInstanceStatus,
+                    ec2.GetConsoleOutput,
+                    ec2.AssociateAddress,
+                    ec2.DescribeAddresses,
+                    ec2.DescribeSecurityGroups,
+                    sqs.GetQueueAttributes,
+                    sqs.GetQueueUrl,
+                    autoscaling.DescribeAutoScalingGroups,
+                    autoscaling.DescribeAutoScalingInstances,
+                    autoscaling.DescribeScalingActivities,
+                    autoscaling.DescribeNotificationConfigurations,
+                ],
+                Resource=['*'],
+            )
+        ]
+    ),
+    Roles=[Ref(serviceRole.title)],
+)
+t.add_resource(serviceRolePolicies)
+
 for app in APPLICATIONS:
     apps[app] = elasticbeanstalk.Application(
         '%sApplication' % app,
