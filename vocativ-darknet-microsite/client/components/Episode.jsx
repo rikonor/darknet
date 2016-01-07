@@ -26,66 +26,18 @@ EpisodeLoader = React.createClass({
 });
 
 Episode = React.createClass({
-  renderSectionItem(sectionItem, i) {
-    switch(sectionItem.type) {
-      case 'video':
-        item = <VideoCard video={sectionItem.value} />;
-        break;
-
-      case 'article':
-        item = <ArticleCard article={sectionItem.value} />;
-        break;
-
-      case 'dataviz':
-        item = <DataVisualization dataviz={sectionItem.value} />;
-        break;
-    }
-
-    return (
-      <GridItem key={i}>
-        {item}
-      </GridItem>
-    );
-  },
-
-  renderSection(section, i) {
-    let sectionTop = (
-      <div className="section-top-text">
-        <div className="header">{section.header}</div>
-        <div className="description">{section.description}</div>
-      </div>
-    );
-
-    let sectionDiscussionInvite = null;
-    if (section.discussionInviteText) {
-      sectionDiscussionInvite = (
-        <div className="discussion-invite-container">
-          <div className="discussion-invite">
-            <div className="header">What do you think?</div>
-            <div className="text">{section.discussionInviteText}</div>
-            <a href={section.discussionInviteLink} target="_blank"><div className="button">Add to the conversation</div></a>
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <Section key={i} type={getSectionType(section)}>
-        {sectionTop}
-        <Grid>
-          {_.map(section.content, this.renderSectionItem)}
-        </Grid>
-        {sectionDiscussionInvite}
-      </Section>
-    );
-  },
-
   renderSections() {
-    let sectionsContent = this.props.episode.sectionsContent();
-    return _.map(sectionsContent, this.renderSection);
+    let sectionsContent = parseSectionsContent(this.props.episode.sections);
+    return _.map(sectionsContent, renderSection);
   },
 
   render() {
+    // Redirects to not found if episode is not found
+    if (! this.props.episode) {
+      FlowRouter.redirect("/404");
+      return null;
+    }
+
     // Redirect to home page if episode is not released yet
     if (! this.props.episode.isViewable()) {
       FlowRouter.redirect("/");

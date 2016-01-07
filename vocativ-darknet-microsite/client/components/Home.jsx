@@ -39,26 +39,31 @@ HomeLoader = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
-    let videosHandle = subsManager.subscribe('videos');
+    let generalSettingsHandle = subsManager.subscribe('generalSettings');
 
     return {
-      videosLoading: ! videosHandle.ready(),
-      trailer: Videos.findOne('u8pENopLu89THthqj', {reactive: false})
+      generalSettingsLoading: ! generalSettingsHandle.ready(),
+      generalSettings: GeneralSettings.findOne({}, {reactive: false})
     };
   },
 
   render() {
-    if (this.data.videosLoading) {
+    if (this.data.generalSettingsLoading) {
       return <div>Loading</div>;
     }
 
     return (
-      <Home trailer={this.data.trailer} />
+      <Home generalSettings={this.data.generalSettings} />
     );
   }
 });
 
 Home = React.createClass({
+  renderSections() {
+    let sectionsContent = parseSectionsContent(this.props.generalSettings.sections);
+    return _.map(sectionsContent, renderSection);
+  },
+
   render() {
     // Prepare nextPage object [first episode]
     let episode = Episodes.findOne({}, {sort: {airingAt: 1}, reactive: false});
@@ -80,13 +85,7 @@ Home = React.createClass({
             <HomeIntro />
           </Section>
 
-          <Section>
-            <Grid itemsPerRow={2}>
-              <GridItem width={2}>
-                <VideoCard video={this.props.trailer} />
-              </GridItem>
-            </Grid>
-          </Section>
+          {this.renderSections()}
 
           <Section>
             <EpisodesLibraryLoader />
@@ -112,7 +111,6 @@ var HomeIntro = React.createClass({
           <div className="subheader">from SHOWTIME + VOCATIV</div>
         </div>
         <div className="intro-description">
-          <div className="description-header">This is DARK NET</div>
           <div className="description-1">{description1}</div>
           <div className="description-2">{description2}</div>
           <div className="description-airdate">

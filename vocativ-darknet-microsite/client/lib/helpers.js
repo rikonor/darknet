@@ -76,3 +76,16 @@ getSectionType = function(section) {
 
   return "varied";
 };
+
+/*
+  isAdmin
+*/
+
+isAdmin = function(userId) {
+  // If no userId, check self
+  userId = userId || Meteor.userId();
+
+  let user = Meteor.users.findOne(userId);
+  if (! user) return false;
+  return user.roles.__global_roles__.indexOf('admin') !== -1;
+};

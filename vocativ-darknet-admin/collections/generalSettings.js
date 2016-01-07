@@ -1,13 +1,7 @@
-Episodes = new Mongo.Collection("episodes");
+GeneralSettings = new Meteor.Collection("generalSettings");
 
-Schemas.Episodes = new SimpleSchema({
-  createdAt: Schemas.createdAt,
-  title: Schemas.title("Episode Title"),
-  shortDescription: Schemas.description("Short Episode Description"),
-  longDescription: Schemas.longDescription("Long Episode Description", 800),
-  airingAt: Schemas.date("Airing Date", "When does the episode air?"),
-  visibleAt: Schemas.date("Visible Date", "When should the episode become visible to visitors?"),
-  image: Schemas.image("Episode Cover Image"),
+Schemas.GeneralSettings = new SimpleSchema({
+  updatedAt: Schemas.updatedAt,
   sections: {
     type: Array,
     optional: true,
@@ -76,26 +70,41 @@ Schemas.Episodes = new SimpleSchema({
 
 // Custom error messages
 SimpleSchema.messages({
-  "numOfItemsExceeded": "Section can't contain more then 6 items",
-  "cantMixDatavizAndOther": "Can't mix DataViz with other items"
+  "multipleGeneralSettings": "Only one general settings object can exist. You can't create any more."
 });
 
-Episodes.attachSchema(Schemas.Episodes);
+let generalSettingsValidation = function() {
+  // Make sure user is not trying to create more then one general settings
+  // So if one already exists - let the users know it's not possible to have more then one
+  let isInsert = (! this.docId);
+
+  // Allow updates
+  if (! isInsert) {
+    return true;
+  }
+
+  let gsCount = GeneralSettings.find().count();
+  if (gsCount >= 1) {
+    return "multipleGeneralSettings";
+  }
+};
+
+Schemas.GeneralSettings.addValidator(generalSettingsValidation);
+
+GeneralSettings.attachSchema(Schemas.GeneralSettings);
 
 // Admin Panel options
 
-EpisodesAdminOptions = {
-  icon: 'film',
+GeneralSettingsAdminOptions = {
+  label: 'Home Page Settings',
+  icon: 'bar-chart',
   tableColumns: [
-    { label: 'Title', name: 'title' },
-    { label: 'Airing Date', name: 'airingAt' },
-    { label: 'Visible Date', name: 'visibleAt' }
+    { label: 'Last Updated', name: 'updatedAt' }
   ],
   routes: adminRoutesWaitOnOptions([
-    'episodes',
+    'generalSettings',
     'articles',
     'videos',
-    'dataviz',
-    'images'
+    'dataviz'
   ])
 };

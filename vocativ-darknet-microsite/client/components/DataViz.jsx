@@ -22,7 +22,9 @@ DataVisualization = React.createClass({
 
   handleClick() {
     this.openLightbox();
-    GAnalytics.event("DataViz", "show", this.props.dataviz.title);
+    if (this.state.state === HIDDEN) {
+      GAnalytics.event("DataViz", "show", this.props.dataviz.title);
+    }
   },
 
   render() {

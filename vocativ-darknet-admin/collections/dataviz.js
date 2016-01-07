@@ -5,7 +5,7 @@ Schemas.DataViz = new SimpleSchema({
   title: Schemas.title("Data Visualization Title"),
   description: Schemas.description("Data Visualization Description"),
   image: Schemas.image("DataViz Image"),
-  relatedEpisodeId: Schemas.relatedEpisodeId
+  relatedEpisode: Schemas.relatedEpisode
 });
 
 DataViz.attachSchema(Schemas.DataViz);
@@ -16,7 +16,7 @@ DataVizAdminOptions = {
   icon: 'bar-chart',
   tableColumns: [
     { label: 'Title', name: 'title' },
-    { label: 'Related to', name: 'relatedEpisodeId', template: 'episodeLink'}
+    { label: 'Related to', name: 'relatedEpisode' }
   ],
   routes: adminRoutesWaitOnOptions([
     'episodes',

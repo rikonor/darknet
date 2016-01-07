@@ -26,6 +26,12 @@ EpisodesGalleryLoader = React.createClass({
 });
 
 EpisodesGallery = React.createClass({
+  getInitialState() {
+    return {
+      widerThenChildren: false
+    };
+  },
+
   initScrollData() {
     this.scrollData = {};
 
@@ -43,12 +49,23 @@ EpisodesGallery = React.createClass({
     this.scrollData.targetWidth = this.scrollData.tFirst.width();
   },
 
+  checkDisabledScrollArrows() {
+    // If the screen is so wide that all gallery elements fit without
+    // the need for scrolling, then don't show the scroll arrows
+    this.setState({widerThenChildren: this.scrollData.tLast.position().left + this.scrollData.tLast.width() < this.scrollData.scrollParent.width()});
+  },
+
   componentDidMount() {
     this.initScrollData();
 
     // Need a reference to the throttled function
     this.scrollData.funcRefs = { updateGalleryState: _.throttle(this.updateGalleryState, 100) };
     window.addEventListener('scroll', this.scrollData.funcRefs.updateGalleryState);
+
+    // Is screen wide? should hide scroll arrows?
+    this.checkDisabledScrollArrows();
+    window.addEventListener('resize', this.checkDisabledScrollArrows);
+    window.addEventListener('resize', this.initScrollData);
   },
 
   scroll(dir) {
@@ -105,12 +122,22 @@ EpisodesGallery = React.createClass({
   },
 
   render() {
+    let scrollClasses = "scroll";
+    if (this.state.widerThenChildren) {
+      scrollClasses += " hidden";
+    }
+
+    let episodesClasses = "episodes";
+    if (this.state.widerThenChildren) {
+      episodesClasses += " centered";
+    }
+
     return (
       <div className="episodes-mini-gallery">
-        <div className="scroll left" onMouseEnter={this.scroll.bind(this, LEFT)} onMouseLeave={this.scrollStop}><i className="fa fa-angle-left"></i></div>
-        <div className="scroll right" onMouseEnter={this.scroll.bind(this, RIGHT)} onMouseLeave={this.scrollStop}><i className="fa fa-angle-right"></i></div>
+        <div className={scrollClasses + " left"} onMouseEnter={this.scroll.bind(this, LEFT)} onMouseLeave={this.scrollStop}><i className="fa fa-angle-left"></i></div>
+        <div className={scrollClasses + " right"} onMouseEnter={this.scroll.bind(this, RIGHT)} onMouseLeave={this.scrollStop}><i className="fa fa-angle-right"></i></div>
 
-        <div className="episodes" ref="episodes">
+        <div className={episodesClasses} ref="episodes">
           {this.renderEpisodes()}
         </div>
       </div>
@@ -121,6 +148,15 @@ EpisodesGallery = React.createClass({
 var GalleryEpisode = React.createClass({
   trackClick() {
     GAnalytics.event("Navigation", "Episode Carousel on EP", this.props.episode.title);
+  },
+
+  handleClick() {
+    this.trackClick();
+
+    // When navigating to a new episode the plugin router-autoscroll will autoscroll to the top
+    // But when clicking the episode you're already on - we still want to scroll to the top
+    // So we have to do this manually (because there's no path change)
+    $("body").velocity("scroll");
   },
 
   render() {
@@ -136,7 +172,7 @@ var GalleryEpisode = React.createClass({
 
     return (
       <div className={galleryEpisodeClasses}>
-        <a className={linkClassModifier} href={this.props.episode.path()} onClick={this.trackClick}>
+        <a className={linkClassModifier} href={this.props.episode.path()} onClick={this.handleClick}>
           <div className="image">
             <img src={this.props.episode.imageUrl()}></img>
             <div className="coming-soon-text"><span>COMING SOON</span></div>

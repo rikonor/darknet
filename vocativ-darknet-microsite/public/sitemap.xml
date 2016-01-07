@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home Page -->
+  <url>
+    <loc>http://www.vocativ.com/darknet</loc>
+    <lastmod>2016-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Episode Pages -->
+  <url>
+    <loc>http://www.vocativ.com/darknet/episodes/Crush</loc>
+    <lastmod>2016-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>http://www.vocativ.com/darknet/episodes/Upgrade</loc>
+    <lastmod>2016-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>http://www.vocativ.com/darknet/episodes/Exploit</loc>
+    <lastmod>2016-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>http://www.vocativ.com/darknet/episodes/Ctrl</loc>
+    <lastmod>2016-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>http://www.vocativ.com/darknet/episodes/Trapped</loc>
+    <lastmod>2016-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>http://www.vocativ.com/darknet/episodes/Rewire</loc>
+    <lastmod>2016-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>http://www.vocativ.com/darknet/episodes/Provoke</loc>
+    <lastmod>2016-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>http://www.vocativ.com/darknet/episodes/Revolt</loc>
+    <lastmod>2016-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

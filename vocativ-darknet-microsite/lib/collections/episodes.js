@@ -34,31 +34,11 @@ Episodes.helpers({
     return this.airingAt <= (new Date());
   },
   isViewable: function() {
-    return this.visibleAt <= (new Date());
-  },
-  sectionsContent: function() {
-    const typeCollMap = {
-      'article': Articles,
-      'video': Videos,
-      'dataviz': DataViz
-    };
-
-    // iterate over each of the sections and process it
-    // then iterate over the section contents and retrieve the actual item
-    function processSection(section) {
-      section.content = _.map(section.content, (item) => {
-        let parsedItem = JSON.parse(item);
-        let value = typeCollMap[parsedItem.type].findOne(parsedItem._id);
-
-        return {
-          type: parsedItem.type,
-          value: value
-        };
-      });
-
-      return section;
+    // Admins can view regardless
+    if (isAdmin()) {
+      return true;
     }
 
-    return _.map(this.sections, processSection);
+    return this.visibleAt <= (new Date());
   }
 });

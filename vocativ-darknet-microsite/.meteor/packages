@@ -39,3 +39,6 @@ meteorhacks:subs-manager
 seba:minifiers-autoprefixer
 momentjs:moment
 simple:json-routes
+accounts-base
+accounts-password
+alanning:roles

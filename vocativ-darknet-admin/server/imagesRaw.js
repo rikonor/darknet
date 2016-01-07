@@ -1,5 +1,5 @@
 var imageStore = new FS.Store.S3("images", {
-  bucket: "vocativ-darknet-images-bucket",
+  bucket: process.env.S3_IMAGES_BUCKET,
   transformWrite: function(fileObj, readStream, writeStream) {
     // Simple bypass transform - prep for GraphicsMagick
     readStream.pipe(writeStream);

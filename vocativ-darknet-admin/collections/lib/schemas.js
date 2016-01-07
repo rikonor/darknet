@@ -77,17 +77,28 @@ Schemas.createdAt = {
   }
 };
 
-Schemas.relatedEpisodeId = {
+Schemas.updatedAt = {
+  type: Date,
+  label: 'Date',
+  autoValue: function () {
+    return new Date();
+  },
+  autoform: {
+    type: "hidden"
+  }
+};
+
+Schemas.relatedEpisode = {
   type: String,
   optional: true,
   label: "Related to episode",
   autoform: {
     type: "select2",
     options: function() {
-      return _.map(Episodes.find().fetch(), (episode) => {
+      return _.map(Episodes.find({}, {sort: { title: 1}}).fetch(), (episode) => {
         return {
           label: episode.title,
-          value: episode._id
+          value: episode.title
         };
       });
     },
@@ -141,9 +152,8 @@ fetchSectionOptions = function() {
 
     // Get related episode
     let relatedEpisode = '';
-    if (option.value.relatedEpisodeId) {
-      let episode = Episodes.findOne(option.value.relatedEpisodeId, {reactive: false});
-      relatedEpisode = `[${episode.title}]`;
+    if (option.value.relatedEpisode) {
+      relatedEpisode = `[${option.value.relatedEpisode}]`;
     }
 
     // The select box can only accept strings
@@ -160,4 +170,52 @@ fetchSectionOptions = function() {
       value: value
     };
   });
+};
+
+/*
+ sortSectioOptions
+*/
+
+let currentSectionIndex = 0;
+
+sortSectionOptions = function(options) {
+  // Get the sections
+  let form = AutoForm.getCurrentDataForForm();
+
+  if (!form.doc || !form.doc.sections) {
+    // If no sections exist, just return the options as they are
+    return options;
+  }
+
+  let sections = form.doc.sections;
+  let currentSection = sections[currentSectionIndex];
+
+  // Increment the currentSection index
+  currentSectionIndex = (currentSectionIndex + 1) % sections.length;
+
+  // NOTICE: This is a piece of very convoluted logic
+  // It's purpose is to allow reordering of the selections a user makes
+  // For this to be possible, the options provided to the select box
+  // Must be ordered according to any pre-selected values
+  // Otherwise, it will appear in whichever order fetchSectionOptions returned
+
+  // Sort the options
+  if (currentSection.content) {
+    _.each(currentSection.content, (val) => {
+      let idx = -1;
+      _.some(options, (option, i) => {
+        if (option.value === val) {
+          idx = i;
+          return true;
+        }
+      });
+
+      if (idx !== -1) {
+        // Move the option to the end
+        options.push(options.splice(idx, 1)[0]);
+      }
+    });
+  }
+
+  return options;
 };

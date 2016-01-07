@@ -37,3 +37,7 @@ natestrauser:select2
 tsega:bootstrap3-datetimepicker@=3.1.3_3
 aldeed:autoform-bs-datetimepicker
 aldeed:autoform-select2
+chhib:selectize-bootstrap-3
+mizzao:jquery-ui
+underscore
+comerc:autoform-selectize

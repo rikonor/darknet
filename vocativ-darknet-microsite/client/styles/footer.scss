@@ -25,8 +25,10 @@ $signupWidth: 444px;
     .menu {
       @include bp-options(font-size, (
         default: 0.75rem,
-        375px: 0.88rem,
-        530px: 1.3rem
+        375px: 0.8rem,
+        530px: 1rem,
+        medium: 1.2rem,
+        900px: 1.3rem
       ));
       font-weight: 600;
       margin-bottom: 1.5em;
@@ -35,7 +37,12 @@ $signupWidth: 444px;
 
       .menu-item {
         @include flex-vertical-center;
-        margin: 0 1.3em;
+        @include bp-options(margin, (
+          default: 0 0.5em,
+          375px: 0 0.8em,
+          412px: 0 1em,
+          512: 0 1.3em
+        ));
 
         a {
           text-align: center;
