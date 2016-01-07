@@ -34,9 +34,9 @@ Curtain = React.createClass({
           </div>
           <div className="subheader">
             <div className="subheader-from">FROM</div>
-            <div className="logo showtime"><img src="/images/showtime-logo.svg" /></div>
+            <div className="logo showtime"><img src="/images/showtime-logo-white.svg" /></div>
             <div className="subheader-plus">+</div>
-            <div className="logo vocativ-films"><img src="/images/vocativ-films-logo.svg" /></div>
+            <div className="logo vocativ-films"><img src="/images/vocativ-films-logo-white.svg" /></div>
           </div>
         </div>
       </div>
