@@ -67,6 +67,8 @@ $scrollZIndex: 2;
         img {
           @include fill-parent;
           object-fit: cover;
+
+          box-shadow: 0 1px 20px rgba($BLACK, 0.8);
         }
 
         .coming-soon-text {

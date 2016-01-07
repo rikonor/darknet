@@ -1,5 +1,7 @@
 @import "shared";
 
+$shadowColor: $BLACK;
+
 .card {
   .image {
     position: relative;
@@ -8,6 +10,8 @@
     img {
       @include fill-parent;
       object-fit: cover;
+
+      box-shadow: 0 1px 20px rgba($shadowColor, 0.8);
 
       // on mobile, stretch to full screen width
       @include bp-under(breakpoint(medium)) {
