@@ -9,8 +9,14 @@ Schemas.Videos = new SimpleSchema({
       placeholder: "YouTube ID"
     }
   },
-  title: Schemas.title("Video Title"),
-  description: Schemas.description("Video Description"),
+  title: {
+    type: String,
+    max: 200,
+    label: "Visible Description",
+    autoform: {
+      placeholder: "Visible Description"
+    }
+  },
   image: Schemas.image("Video Cover Image"),
   relatedEpisode: Schemas.relatedEpisode
 });
@@ -21,7 +27,7 @@ Videos.attachSchema(Schemas.Videos);
 VideosAdminOptions = {
   icon: 'video-camera',
   tableColumns: [
-    { label: 'Title', name: 'title' },
+    { label: 'Visible Description', name: 'title' },
     { label: 'Related to', name: 'relatedEpisode' }
   ],
   routes: adminRoutesWaitOnOptions([

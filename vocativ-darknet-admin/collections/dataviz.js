@@ -2,8 +2,14 @@ DataViz = new Meteor.Collection("dataviz");
 
 Schemas.DataViz = new SimpleSchema({
   createdAt: Schemas.createdAt,
-  title: Schemas.title("Data Visualization Title"),
-  description: Schemas.description("Data Visualization Description"),
+  title: {
+    type: String,
+    max: 200,
+    label: "Visible Description",
+    autoform: {
+      placeholder: "Visible Description"
+    }
+  },
   image: Schemas.image("DataViz Image"),
   relatedEpisode: Schemas.relatedEpisode
 });
@@ -15,7 +21,7 @@ DataViz.attachSchema(Schemas.DataViz);
 DataVizAdminOptions = {
   icon: 'bar-chart',
   tableColumns: [
-    { label: 'Title', name: 'title' },
+    { label: 'Visible Description', name: 'title' },
     { label: 'Related to', name: 'relatedEpisode' }
   ],
   routes: adminRoutesWaitOnOptions([
