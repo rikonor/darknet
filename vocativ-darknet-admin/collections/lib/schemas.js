@@ -3,7 +3,7 @@ Schemas = {};
 Schemas.title = function(placeholder) {
   return {
     type: String,
-    max: 43,
+    max: 200,
     autoform: {
       placeholder: placeholder
     }
@@ -13,7 +13,7 @@ Schemas.title = function(placeholder) {
 Schemas.description = function(placeholder) {
   return {
     type: String,
-    max: 90,
+    max: 200,
     autoform: {
       placeholder: placeholder
     }
