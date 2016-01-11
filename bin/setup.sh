@@ -7,15 +7,7 @@ main() {
 		docker \
 		docker-machine \
 		docker-compose \
-		jq \
-		python3 \
-		rename \
-		tomologic/tap/wrench
-
-	pyvenv .venv
-	source .venv/bin/activate
-
-	pip install --upgrade -r requirements.txt
+		rename
 
 	if ! which meteor > /dev/null; then
 		curl https://install.meteor.com/ | sh

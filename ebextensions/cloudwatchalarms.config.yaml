@@ -5,7 +5,6 @@ Resources:
       Subscription:
         - Endpoint: {"Fn::GetOptionSetting": {"OptionName": "ELBAlarmEmail", "DefaultValue": "devops@vocativ.com"}}
           Protocol: email
-
   ELBHealthyHostCountAlarm:
     Type: AWS::CloudWatch::Alarm
     Properties:
@@ -23,7 +22,6 @@ Resources:
       AlarmActions: [{"Ref": "ELBAlarmTopic"}]
       InsufficientDataActions: [{"Ref": "ELBAlarmTopic"}]
       OKActions: [{"Ref": "ELBAlarmTopic"}]
-
   ELBUnHealthyHostCountAlarm:
     Type: AWS::CloudWatch::Alarm
     Properties:
@@ -41,7 +39,6 @@ Resources:
       AlarmActions: [{"Ref": "ELBAlarmTopic"}]
       InsufficientDataActions: [{"Ref": "ELBAlarmTopic"}]
       OKActions: [{"Ref": "ELBAlarmTopic"}]
-
   ELBLatency:
     Type: AWS::CloudWatch::Alarm
     Properties:
@@ -58,7 +55,6 @@ Resources:
       ComparisonOperator: GreaterThanThreshold
       AlarmActions: [{"Ref": "ELBAlarmTopic"}]
       OKActions: [{"Ref": "ELBAlarmTopic"}]
-
   ASGCPUUtilization:
     Type: AWS::CloudWatch::Alarm
     Properties:
@@ -76,7 +72,6 @@ Resources:
       AlarmActions: [{"Ref": "ELBAlarmTopic"}]
       InsufficientDataActions: [{"Ref": "ELBAlarmTopic"}]
       OKActions: [{"Ref": "ELBAlarmTopic"}]
-
   ASGMemoryUtilization:
     Type: AWS::CloudWatch::Alarm
     Properties:
