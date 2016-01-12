@@ -15,5 +15,4 @@ Resources:
       Name: {"Fn::Join": [".", [{"Fn::GetOptionSetting": {"OptionName": "EnvironmentHostname", "DefaultValue": ""}}, ""]]}
       Type: TXT
       TTL: 300
-      ResourceRecords:
-        - {"Fn::Join": ["", ["\"", {"Fn::GetOptionSetting": {"OptionName": "LoaderToken", "DefaultValue": ""}}, "\""]]}
+      ResourceRecords: [{"Fn::Join": ["", ["\"", {"Fn::GetOptionSetting": {"OptionName": "LoaderToken", "DefaultValue": ""}}, "\""]]}]
