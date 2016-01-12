@@ -11,20 +11,6 @@ Schemas.Images = new SimpleSchema({
   },
   image: {
     type: String,
-    autoform: {
-      type: 'fileUpload',
-      collection: 'ImagesRaw',
-      accept: 'image/*',
-      label: 'Choose file',
-      onBeforeInsert: function(fileObj) {
-        // TODO: Sanitize filename, use whichever filename you want, etc
-        // fileObj.name = ""
-        return fileObj;
-      }
-    }
-  },
-  ssImage: {
-    type: String,
     optional:true,
     autoform: {
       type: 'slingshotFileUpload',
@@ -40,13 +26,7 @@ Images.attachSchema(Schemas.Images);
 // Helpers
 Images.helpers({
   url: function() {
-    // Get the actual image url from the rawImage
-    // (We need this because Images is a wrapper of ImagesRaw)
-
-    var rawImageId = this.image;
-    var rawImage = ImagesRaw.findOne(rawImageId);
-
-    return rawImage.url();
+    return this.image;
   }
 });
 
