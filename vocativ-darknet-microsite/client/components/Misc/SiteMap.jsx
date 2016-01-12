@@ -19,7 +19,7 @@ SiteMap = React.createClass({
     let episodesSiteMapEntries = _.map(viewableEpisodes, (ep) => {
       return (
         <div className="site-map-entry" key={ep._id}>
-          <a href={ep.path()}>{ep.title}</a>
+          <a href={"/darknet" + ep.path()}>{ep.title}</a>
         </div>
       );
     });
@@ -30,7 +30,7 @@ SiteMap = React.createClass({
 
         <div className="main-pages">
           <div className="site-map-entry">
-            <a href="/">Home</a>
+            <a href="/darknet">Home</a>
           </div>
         </div>
 
@@ -39,7 +39,7 @@ SiteMap = React.createClass({
         </div>
 
         <div className="link-home">
-          <a href="/">Go back to DARK NET</a>
+          <a href="/darknet">Go back to DARK NET</a>
         </div>
       </div>
     );

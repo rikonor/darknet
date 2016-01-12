@@ -172,7 +172,7 @@ var GalleryEpisode = React.createClass({
 
     return (
       <div className={galleryEpisodeClasses}>
-        <a className={linkClassModifier} href={this.props.episode.path()} onClick={this.handleClick}>
+        <a className={linkClassModifier} href={"/darknet" + this.props.episode.path()} onClick={this.handleClick}>
           <div className="image">
             <img src={this.props.episode.imageUrl()}></img>
             <div className="coming-soon-text"><span>COMING SOON</span></div>

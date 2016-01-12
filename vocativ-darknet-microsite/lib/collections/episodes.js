@@ -12,7 +12,7 @@ if (Meteor.isClient) {
 
 Episodes.helpers({
   path: function() {
-    let pathBase = "/darknet/episodes";
+    let pathBase = "/episodes";
     return pathBase + "/" + this.title;
   },
   getNext() {
