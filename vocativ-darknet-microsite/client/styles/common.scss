@@ -36,7 +36,7 @@ img {
 .voc-video-overlay {
   @include pin-top-left; // Assumes parent has position: relative
   @include bgimage;
-  background-image: url("/images/vocativ-video-icon.svg");
+  background-image: url("/darknet/images/vocativ-video-icon.svg");
   opacity: 0.5;
   background-size: 78px;
   @include square(100%);

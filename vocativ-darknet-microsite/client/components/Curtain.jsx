@@ -1,7 +1,7 @@
 Curtain = React.createClass({
   getDefaultProps() {
     return {
-      bgImage: "/images/curtain.jpg"
+      bgImage: "/darknet/images/curtain.jpg"
     };
   },
 
@@ -29,13 +29,13 @@ Curtain = React.createClass({
         </div>
         <div className="curtain-text">
           <div className="header">
-            <div className="logo darknet"><img src="/images/darknet-logo-nocircle.svg" /></div>
+            <div className="logo darknet"><img src="/darknet/images/darknet-logo-nocircle.svg" /></div>
           </div>
           <div className="subheader">
             <div className="subheader-from">FROM</div>
-            <div className="logo showtime"><img src="/images/showtime-logo-white.svg" /></div>
+            <div className="logo showtime"><img src="/darknet/images/showtime-logo-white.svg" /></div>
             <div className="subheader-plus">+</div>
-            <div className="logo vocativ-films"><img src="/images/vocativ-films-logo-white.svg" /></div>
+            <div className="logo vocativ-films"><img src="/darknet/images/vocativ-films-logo-white.svg" /></div>
           </div>
         </div>
       </div>

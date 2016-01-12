@@ -11,8 +11,8 @@
 @import url("//hello.myfonts.net/count/2fdb66"); // This is required for the font to work (I think)
 @font-face {
   font-family: 'FF DIN Pro Light';
-  src: url('fonts/din-pro/2FDB66_0_0.eot');
-  src: url('fonts/din-pro/2FDB66_0_0.eot?#iefix') format('embedded-opentype'),url('fonts/din-pro/2FDB66_0_0.woff2') format('woff2'),url('fonts/din-pro/2FDB66_0_0.woff') format('woff'),url('fonts/din-pro/2FDB66_0_0.ttf') format('truetype');
+  src: url('/darknet/fonts/din-pro/2FDB66_0_0.eot');
+  src: url('/darknet/fonts/din-pro/2FDB66_0_0.eot?#iefix') format('embedded-opentype'),url('/darknet/fonts/din-pro/2FDB66_0_0.woff2') format('woff2'),url('/darknet/fonts/din-pro/2FDB66_0_0.woff') format('woff'),url('/darknet/fonts/din-pro/2FDB66_0_0.ttf') format('truetype');
 }
 
 $font-stack: 'FF DIN PRO Light', 'Open Sans';

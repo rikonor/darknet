@@ -1,7 +1,7 @@
 NotFound = React.createClass({
   getDefaultProps() {
     return {
-      bgImage: "/images/curtain.jpg"
+      bgImage: "/darknet/images/curtain.jpg"
     };
   },
 
