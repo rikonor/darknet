@@ -21,11 +21,6 @@ Meteor.publish('dataviz', function() {
   return DataViz.find();
 });
 
-Meteor.publish('imagesRaw', function() {
-  if (! isAdmin(this.userId)) return this.ready();
-  return ImagesRaw.find();
-});
-
 Meteor.publish('images', function() {
   if (! isAdmin(this.userId)) return this.ready();
   return Images.find();

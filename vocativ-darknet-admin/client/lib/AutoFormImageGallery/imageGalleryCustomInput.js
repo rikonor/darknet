@@ -98,9 +98,6 @@ Template.afImageGallery.helpers({
       images = [preSelectedImage].concat(images);
     }
 
-    var rawImages = getAssociatedEntities(images, 'image', ImagesRaw);
-    images = embedChildrenInParents(images, 'image', rawImages, 'rawImage');
-
     return images;
   }
 });
@@ -162,7 +159,7 @@ Template.afImageGalleryImage.helpers({
   },
 
   imageUrl: function() {
-    return Template.instance().data.rawImage.url();
+    return Template.instance().data.url();
   }
 });
 
