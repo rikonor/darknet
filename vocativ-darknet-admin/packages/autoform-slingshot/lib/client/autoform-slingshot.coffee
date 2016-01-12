@@ -78,6 +78,7 @@ AutoForm.addHooks null,
 
 destroyed = () ->
   name = @data.name
+  clearFilesFromCache()
 
 Template.afSlingshot.destroyed = destroyed
 
@@ -172,7 +173,6 @@ helpers =
 
   fileUpload: ->
     t = Template.instance()
-    console.log t, @atts;
     select =
       field: @atts.name
     # Allow selection of the directive for the thumbnail by key.
