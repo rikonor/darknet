@@ -67,9 +67,9 @@ getCollection = (context) ->
 getTemplate = (filename, parentView) ->
   if filename
     filename = filename.toLowerCase()
-    template = 'fileThumbIcon' + (if parentView.name.indexOf('_ionic') > -1 then '_ionic' else '')
-    if filename.indexOf('.jpg') > -1 || filename.indexOf('.png') > -1 || filename.indexOf('.gif') > -1
-      template = 'fileThumbImg' + (if parentView.name.indexOf('_ionic') > -1 then '_ionic' else '')
+    template = 'fileThumbIcon'
+    if filename.indexOf('.jpg') > -1 || filename.indexOf('.jpeg') > -1 || filename.indexOf('.png') > -1 || filename.indexOf('.gif') > -1
+      template = 'fileThumbImg'
     template
 
 AutoForm.addHooks null,
@@ -80,7 +80,6 @@ destroyed = () ->
   name = @data.name
 
 Template.afSlingshot.destroyed = destroyed
-Template.afSlingshot_ionic.destroyed = destroyed
 
 uploadWith = (directive, files, name, key) ->
   if typeof directive == 'string'
@@ -160,7 +159,6 @@ events =
     SlingshotAutoformFileCache.remove({field: name});
 
 Template.afSlingshot.events events
-Template.afSlingshot_ionic.events events
 
 helpers =
   label: ->
@@ -186,7 +184,6 @@ helpers =
       template: getTemplate file.filename or file.src, t.view
 
 Template.afSlingshot.helpers helpers
-Template.afSlingshot_ionic.helpers helpers
 
 Template.fileThumbIcon.helpers
   icon: ->
@@ -210,50 +207,3 @@ Template.fileThumbIcon.helpers
       else if file.indexOf('http://') > -1 || file.indexOf('https://') > -1
         icon = 'link'
       icon
-
-Template.fileThumbIcon_ionic.helpers
-  filename: ->
-    if @filename
-      filename = @filename
-      if filename.length > 25
-        filename = filename.slice(0, 25) + '...'
-      filename
-    else if @src
-      filename = @src.replace(/^.*[\\\/]/, '');
-      if filename.length > 25
-        filename = filename.slice(0, 25) + '...'
-      filename
-  icon: ->
-    if @filename
-      file = @filename.toLowerCase()
-      icon = 'file-o'
-      if file.indexOf('youtube.com') > -1
-        icon = 'social-youtube'
-      else if file.indexOf('vimeo.com') > -1
-        icon = 'social-vimeo'
-      else if file.indexOf('.pdf') > -1
-        icon = 'document-text'
-      else if file.indexOf('.doc') > -1 || file.indexOf('.docx') > -1
-        icon = 'document-text'
-      else if file.indexOf('.ppt') > -1
-        icon = 'document'
-      else if file.indexOf('.avi') > -1 || file.indexOf('.mov') > -1 || file.indexOf('.mp4') > -1
-        icon = 'ios-videocam-outline'
-      else if file.indexOf('.png') > -1 || file.indexOf('.jpg') > -1 || file.indexOf('.gif') > -1 || file.indexOf('.bmp') > -1
-        icon = 'image'
-      else if file.indexOf('http://') > -1 || file.indexOf('https://') > -1
-        icon = 'link'
-      icon
-
-Template.fileThumbImg_ionic.events(
-  'click [data-action=showActionSheet]': (event) ->
-    IonActionSheet.show(
-      buttons: []
-      destructiveText: 'Delete'
-      cancelText: 'Cancel'
-      destructiveButtonClicked: (()->
-        SlingshotAutoformFileCache.remove({field: this.field});
-        true
-      ).bind(this)
-    )
-)
