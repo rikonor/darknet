@@ -37,7 +37,7 @@ img {
   @include pin-top-left; // Assumes parent has position: relative
   @include bgimage;
   background-image: url("/images/vocativ-video-icon.svg");
-  opacity: 0.9;
+  opacity: 0.8;
   background-size: 78px;
   @include square(100%);
 
