@@ -14,7 +14,7 @@ Slingshot.createDirective("imageUploads", Slingshot.S3Storage, {
     return true;
   },
   key: function (file) {
-    return file.name;
+    return Random.id() + '_' + file.name;
   }
 });
 
