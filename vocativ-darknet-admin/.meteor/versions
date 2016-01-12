@@ -43,6 +43,7 @@ check@1.1.0
 chhib:selectize-bootstrap-3@0.0.1
 coffeescript@1.0.11
 comerc:autoform-selectize@2.2.4
+cosmos:browserify@0.4.0
 dburles:collection-helpers@1.0.4
 ddp@1.2.2
 ddp-client@1.2.1
@@ -53,6 +54,7 @@ deps@1.0.9
 diff-sequence@1.0.1
 ecmascript@0.1.6
 ecmascript-runtime@0.2.6
+edgee:slingshot@0.7.1
 ejson@1.0.7
 email@1.0.8
 es5-shim@4.1.14
@@ -127,6 +129,7 @@ underscore@1.0.4
 url@1.0.5
 vocativ:admin@1.2.3
 vocativ:autoform-file@0.3.0
+vocativ:autoform-slingshot@1.0.0
 webapp@1.2.3
 webapp-hashing@1.0.5
 zimme:active-route@2.3.2

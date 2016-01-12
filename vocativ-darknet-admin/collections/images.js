@@ -22,6 +22,16 @@ Schemas.Images = new SimpleSchema({
         return fileObj;
       }
     }
+  },
+  ssImage: {
+    type: String,
+    optional:true,
+    autoform: {
+      type: 'slingshotFileUpload',
+      afFieldInput:{
+        slingshotdirective: 'imageUploads'
+      }
+    }
   }
 });
 
