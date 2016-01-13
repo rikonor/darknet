@@ -79,6 +79,10 @@ $introHeaderDividerColor: $DARKISHGRAY;
         @include bp-under(breakpoint(medium)) {
           width: 100%;
         }
+
+        .showtime-link:hover {
+          border-bottom: 1px solid $WHITE;
+        }
       }
 
       .logo {

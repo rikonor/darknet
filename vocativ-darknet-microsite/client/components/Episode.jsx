@@ -49,6 +49,13 @@ Episode = React.createClass({
       href: nextEpisode.path()
     };
 
+    let episodeUrl = this.props.episode.url;
+    let episodeLink = episodeUrl && (
+      <div className="episode-link">
+        <a href={episodeUrl} target="_blank">Watch the full episode of <span className="upper">{this.props.episode.title}</span> on SHOWTIME</a>
+      </div>
+    );
+
     return (
       <div className="episode">
         <Page nextPage={nextPage}>
@@ -56,6 +63,7 @@ Episode = React.createClass({
             <div className="episode-info">
               <div className="title"><span className="title-actual">{this.props.episode.title}</span></div>
               <div className="description">{this.props.episode.longDescription}</div>
+              {episodeLink}
             </div>
           </Section>
 
