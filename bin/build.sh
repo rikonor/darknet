@@ -26,8 +26,12 @@ main() {
 	echo "Building ${app_src_dir}..."
 
 	pushd "${app_src_dir}"
+	local -r build_dir="../.build/${app}"
+	rm -rf \
+		.meteor/local \
+		"${build_dir}"
 	meteor build \
-		--directory ../.build/${app} \
+		--directory "${build_dir}" \
 		--architecture os.linux.x86_64
 	popd
 
