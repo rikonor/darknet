@@ -32,7 +32,7 @@ var testApp = function() {
   return res;
 };
 
-JsonRoutes.add("get", "/health", function (req, res, next) {
+JsonRoutes.add("get", "/darknet/health", function (req, res, next) {
   var appHealth = testApp();
   var appHealthStatusCode = appHealth.health === "OK" ? 200 : 500;
   JsonRoutes.sendResult(res, appHealthStatusCode, appHealth);
