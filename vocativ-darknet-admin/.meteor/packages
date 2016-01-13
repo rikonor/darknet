@@ -27,7 +27,6 @@ twbs:bootstrap
 fortawesome:fontawesome
 aldeed:autoform
 vocativ:admin
-vocativ:autoform-file
 fourseven:scss
 reactive-var
 natestrauser:select2
