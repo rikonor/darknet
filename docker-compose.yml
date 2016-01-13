@@ -15,5 +15,5 @@ admin:
   volumes:
     - ./vocativ-darknet-admin:/app
   working_dir: /app
-  env_file: ./env_files/prod.env
+  env_file: ./env_files/prod-admin.env
   command: meteor run

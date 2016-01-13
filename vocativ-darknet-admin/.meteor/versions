@@ -20,11 +20,6 @@ boilerplate-generator@1.0.4
 caching-compiler@1.0.0
 caching-html-compiler@1.0.2
 callback-hook@1.0.4
-cfs:base-package@0.0.30
-cfs:data-man@0.0.6
-cfs:file@0.1.15
-cfs:storage-adapter@0.1.1
-cfs:ui@0.0.1
 check@1.1.0
 chhib:selectize-bootstrap-3@0.0.1
 coffeescript@1.0.11
