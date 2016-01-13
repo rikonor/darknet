@@ -35,7 +35,7 @@ okgrow:router-autoscroll
 meteorhacks:subs-manager
 seba:minifiers-autoprefixer
 momentjs:moment
-simple:json-routes
 accounts-base
 accounts-password
 alanning:roles
+simple:json-routes@1.0.4
