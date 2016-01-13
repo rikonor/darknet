@@ -31,9 +31,6 @@ meteorhacks:fast-render
 meteorhacks:kadira
 meteorhacks:zones
 dburles:collection-helpers
-cfs:standard-packages
-cfs:s3
-cfs:filesystem
 okgrow:router-autoscroll
 meteorhacks:subs-manager
 seba:minifiers-autoprefixer
