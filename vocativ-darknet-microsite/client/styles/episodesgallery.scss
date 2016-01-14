@@ -58,6 +58,7 @@ $scrollZIndex: 2;
       flex-direction: column;
 
       .image {
+        @include dim-on-hover;
         position: relative;
 
         $mgImageMrgBottom: 0.5rem;

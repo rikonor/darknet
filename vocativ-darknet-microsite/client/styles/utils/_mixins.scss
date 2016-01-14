@@ -110,3 +110,10 @@
 		}
 	}
 }
+
+@mixin dim-on-hover($opacity: 0.7, $delay: 0.15s) {
+	&:hover {
+		opacity: $opacity;
+		transition: all $delay ease-in;
+	}
+}

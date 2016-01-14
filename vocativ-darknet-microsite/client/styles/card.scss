@@ -4,6 +4,7 @@ $shadowColor: $BLACK;
 
 .card {
   .image {
+    @include dim-on-hover;
     position: relative;
     height: $gridImageHeight !important;
 

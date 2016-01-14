@@ -21,6 +21,7 @@ $shadowColor: $BLACK;
       flex-direction: column;
 
       .image {
+        @include dim-on-hover;
         position: relative;
         height: $gridImageHeight;
 
