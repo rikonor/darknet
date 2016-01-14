@@ -4,6 +4,7 @@
   position: relative;
 
   .image {
+    cursor: pointer;
     @include dim(100%);
 
     img {
