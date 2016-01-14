@@ -28,8 +28,11 @@
     .episode-link {
       font-size: 1.5em;
 
-      a:hover {
-        border-bottom: 1px solid $WHITE;
+      a {
+        &:hover { border-bottom: 1px solid $WHITE; }
+        @include bp-under(breakpoint(medium)) {
+          line-height: 1.5em;
+        }
       }
     }
   }

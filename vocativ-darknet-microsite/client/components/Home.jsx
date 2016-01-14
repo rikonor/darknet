@@ -119,9 +119,9 @@ var HomeIntro = React.createClass({
           <div className="description-2">{description2}</div>
           <div className="description-airdate">
             <p>Episodes air on Thursdays at 11 pm ET</p>
-            <p><a className="showtime-link" href="http://www.sho.com" target="_blank">Watch full episodes on SHOWTIME</a></p>
+            <p><a className="showtime-link" href="http://www.showtime.com" target="_blank" onClick={createEventTracker('showtime-home-btn')}>Watch full episodes on SHOWTIME</a></p>
+            <p><a className="showtime-link" href="http://www.sho.com/sho/dark-net/home" target="_blank" onClick={createEventTracker('showtime-home-btn')}>More information on the series</a></p>
           </div>
-          <div className="logo showtime"><a href="http://www.sho.com/" target="_blank" onClick={createEventTracker('showtime-home-btn')}><img src="/darknet/images/showtime-logo.svg" /></a></div>
         </div>
       </div>
     );
