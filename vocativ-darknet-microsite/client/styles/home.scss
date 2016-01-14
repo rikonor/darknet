@@ -80,6 +80,20 @@ $introHeaderDividerColor: $DARKISHGRAY;
           width: 100%;
         }
 
+        @include bp-options(font-size, (
+          default: 0.8em,
+          375px: 1em
+        ));
+
+        p {
+          @include all-but-first {
+            @include bp-options(margin-top, (
+              default: 0.5em,
+              medium: 0.8em
+            ));
+          }
+        }
+
         .showtime-link:hover {
           border-bottom: 1px solid $WHITE;
         }
