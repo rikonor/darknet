@@ -1,6 +1,9 @@
+@import "shared";
+
 .dataviz {
 
-  .image {
+  & > .image {
+    @include dim-on-hover;
     cursor: pointer;
   }
 
