@@ -92,6 +92,16 @@ $introHeaderDividerColor: $DARKISHGRAY;
               medium: 0.8em
             ));
           }
+
+          a {
+            border-bottom: 1px solid $WHITE;
+            font-style: italic;
+
+            @include respond-to(medium) {
+              border-bottom: initial;
+              font-weight: 900;
+            }
+          }
         }
 
         .showtime-link:hover {
