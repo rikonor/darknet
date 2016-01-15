@@ -21,7 +21,10 @@ AdminPanel = React.createClass({
 
 var AdminView = React.createClass({
   logout() {
-    Meteor.logout();
+    Meteor.reconnect();
+    Meteor.logout(function() {
+      Meteor.disconnect();
+    });
   },
 
   render() {
@@ -48,7 +51,10 @@ var AdminLogin = React.createClass({
 
     event.target.reset();
 
-    Meteor.loginWithPassword(email, password);
+    Meteor.reconnect();
+    Meteor.loginWithPassword(email, password, function() {
+      Meteor.disconnect();
+    });
   },
 
   render() {
