@@ -29,8 +29,10 @@
       font-size: 1.5em;
 
       a {
+        font-style: italic;
         &:hover { border-bottom: 1px solid $WHITE; }
         @include bp-under(breakpoint(medium)) {
+          border-bottom: 1px solid $WHITE;
           line-height: 1.5em;
         }
       }
