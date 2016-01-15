@@ -11,6 +11,7 @@
     .lightbox {
       width: initial;
       height: 70%;
+      @include flex-center;
 
       // dataviz sometimes have weird shapes, so remove background and box-shadow
       // (like bottom-right corner removed from image, etc)
@@ -18,11 +19,18 @@
       box-shadow: none;
 
       .image {
+        @include flex-center;
         height: 100%;
 
         img {
-          height: 100%;
-          width: auto;
+          @include portrait {
+            width: 90%;
+            height: auto;
+          }
+          @include landscape {
+            width: auto;
+            height: 100%;
+          }
         }
       }
     }
