@@ -4,7 +4,8 @@ const HIDDEN = "hidden";
 DataVisualization = React.createClass({
   getInitialState() {
     return {
-      state: HIDDEN
+      state: HIDDEN,
+      adaptiveHeight: '0px'
     };
   },
 
@@ -27,6 +28,31 @@ DataVisualization = React.createClass({
     }
   },
 
+  getUnderlyingImage() {
+    // Get the img element inside of the dataviz (notice: not lightbox img)
+    let imageDOMNode = ReactDOM.findDOMNode(this.refs.image);
+    let imageJQuery = $(imageDOMNode);
+    let img = imageJQuery.children("img");
+    return img;
+  },
+
+  adaptHeight() {
+    // Notice this functionality is only desired on small screens
+    let img = this.getUnderlyingImage();
+    // Get the img height and set it as the Image height
+    let height = img.height();
+    this.setState({adaptiveHeight: height + 'px'});
+  },
+
+  componentDidMount() {
+    this.getUnderlyingImage().load(this.adaptHeight);
+    window.addEventListener("resize", this.adaptHeight);
+  },
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.adaptHeight);
+  },
+
   render() {
     let datavizLightbox = null;
     if (this.state.state === ACTIVE) {
@@ -39,7 +65,7 @@ DataVisualization = React.createClass({
 
     return (
       <div className="dataviz" onClick={this.handleClick}>
-        <Image imageUrl={this.props.dataviz.imageUrl()} />
+        <Image imageUrl={this.props.dataviz.imageUrl()} ref="image" height={this.state.adaptiveHeight} />
         {datavizLightbox}
       </div>
     );

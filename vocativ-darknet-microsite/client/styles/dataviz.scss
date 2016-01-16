@@ -5,6 +5,16 @@
   & > .image {
     @include dim-on-hover;
     cursor: pointer;
+    position: relative;
+
+    img {
+      // on mobile, stretch to full screen width
+      @include bp-under(breakpoint(medium)) {
+        position: absolute;
+        width: 100vw !important;
+        left: -1rem;
+      }
+    }
   }
 
   .lightbox-container {
