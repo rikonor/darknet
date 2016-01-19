@@ -118,7 +118,7 @@ var HomeIntro = React.createClass({
           <div className="description-1">{description1}</div>
           <div className="description-2">{description2}</div>
           <div className="description-airdate">
-            <p>Episodes air on Thursdays at 11pm ET</p>
+            <p>Episodes air on Thursdays at 11pm ET / PT</p>
             <p><a className="showtime-link" href="http://www.showtime.com" target="_blank" onClick={createEventTracker('showtime-home-btn')}>Watch full episodes on SHOWTIME here</a></p>
             <p><a className="showtime-link" href="http://www.sho.com/sho/dark-net/home" target="_blank" onClick={createEventTracker('showtime-home-btn')}>More information on the series here</a></p>
           </div>
