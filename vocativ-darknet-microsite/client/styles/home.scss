@@ -82,7 +82,7 @@ $introHeaderDividerColor: $DARKISHGRAY;
 
         @include bp-options(font-size, (
           default: 0.8em,
-          375px: 1em
+          375px: 0.95em
         ));
 
         p {
