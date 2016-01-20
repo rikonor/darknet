@@ -16,6 +16,7 @@ Schemas.Episodes = new SimpleSchema({
   },
   "sections.$": {
     type: Object,
+    custom: validateSectionInvite
   },
   "sections.$.header": {
     type: String,
@@ -72,13 +73,19 @@ Schemas.Episodes = new SimpleSchema({
     autoform: {
       placeholder: "Defaults to www.facebook.com/vocativ..."
     }
+  },
+  "sections.$.newsletterInviteLink": {
+    type: Boolean,
+    optional: true,
+    label: "Newsletter Invite"
   }
 });
 
 // Custom error messages
 SimpleSchema.messages({
   "numOfItemsExceeded": "Section can't contain more then 6 items",
-  "cantMixDatavizAndOther": "Can't mix DataViz with other items"
+  "cantMixDatavizAndOther": "Can't mix DataViz with other items",
+  "cantMixDiscussionInviteAndNewsletterInvite": "Can't mix discussion invite with newsletter invite"
 });
 
 Episodes.attachSchema(Schemas.Episodes);

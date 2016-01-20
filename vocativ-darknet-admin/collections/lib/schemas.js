@@ -133,6 +133,15 @@ validateSection = function() {
   }
 };
 
+validateSectionInvite = function() {
+  var sectionContent = this.value;
+
+  // A section can have either a discussion invite or a newsletter invite but not both
+  if (sectionContent.discussionInviteText && sectionContent.newsletterInviteLink) {
+    return "cantMixDiscussionInviteAndNewsletterInvite";
+  }
+};
+
 fetchSectionOptions = function() {
   function adjust(coll, type) {
     return _.map(coll.find().fetch(), function(value) {
