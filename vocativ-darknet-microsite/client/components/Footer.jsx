@@ -21,7 +21,7 @@ Footer = React.createClass({
   }
 });
 
-var NewsletterSignup = React.createClass({
+NewsletterSignup = React.createClass({
   getCurrentTimestamp() {
     return (new Date()).getTime();
   },

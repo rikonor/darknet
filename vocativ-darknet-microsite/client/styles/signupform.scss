@@ -1,0 +1,72 @@
+@import "shared";
+
+$signupColor: $LIGHTGRAY;
+$signupWidth: 444px;
+
+.signup-form {
+  width: 100%;
+  margin-bottom: 1.5em;
+
+  form {
+    display: flex;
+
+    max-width: $signupWidth;
+    margin: auto;
+    @include respond-to(medium) {
+      margin: 0;
+    }
+
+    input {
+      flex: 1;
+      margin-right: 1.5em;
+
+      border: none;
+      background: $signupColor;
+      color: rgba(68, 77, 82, 0.8);
+      padding: 0.8rem;
+      font-size: 0.8em;
+      letter-spacing: 0.1em;
+      font-weight: 200;
+      @include upper;
+
+      box-sizing: border-box;
+      height: 43px;
+
+      /* for iOS */
+      -webkit-appearance: none;
+      -webkit-border-radius: 0;
+
+      &:focus { outline: none; }
+      &::-webkit-input-placeholder {
+        color: rgba(68, 77, 82, 0.8);
+        font-weight: 200;
+      }
+    }
+
+    button {
+      background: transparent;
+      border: 2px solid $signupColor;
+      color: $signupColor;
+      font-size: 0.8em;
+      letter-spacing: 0.1em;
+
+      height: 43px;
+      padding: 0 1.5em;
+
+      @include upper;
+
+      &:focus { outline: none; }
+    }
+  }
+}
+
+/*
+  Signup form should be centered when in a Section
+*/
+.section .signup-form {
+  margin-bottom: 0;
+
+  form {
+    margin: auto;
+  }
+}

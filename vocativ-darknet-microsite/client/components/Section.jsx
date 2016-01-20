@@ -47,6 +47,11 @@ renderSection = function(section, i) {
     );
   }
 
+  let sectionNewsletterInvite = null;
+  if (section.newsletterInviteLink) {
+    sectionNewsletterInvite = <NewsletterInvite />;
+  }
+
   return (
     <Section key={i} type={getSectionType(section)}>
       {sectionTop}
@@ -54,6 +59,7 @@ renderSection = function(section, i) {
         {_.map(section.content, renderSectionItem)}
       </Grid>
       {sectionDiscussionInvite}
+      {sectionNewsletterInvite}
     </Section>
   );
 };
@@ -110,6 +116,20 @@ DiscussionInvite = React.createClass({
           <div className="header">What do you think?</div>
           <div className="text">{this.props.discussionInviteText}</div>
           <a href={this.props.discussionInviteLink} target="_blank" onClick={this.trackClick}><div className="button">Add to the conversation</div></a>
+        </div>
+      </div>
+    );
+  }
+});
+
+NewsletterInvite = React.createClass({
+  render() {
+    return (
+      <div className="discussion-invite-container">
+        <div className="discussion-invite">
+          <div className="header">Want more?</div>
+          <div className="text">Sign up to our email newsletter for exclusive DARK NET content.</div>
+          <NewsletterSignup />
         </div>
       </div>
     );
