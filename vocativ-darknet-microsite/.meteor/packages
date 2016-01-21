@@ -37,3 +37,4 @@ accounts-base
 accounts-password
 alanning:roles
 simple:json-routes@1.0.4
+spiderable
