@@ -1,0 +1,45 @@
+@import "shared";
+
+.press {
+  .header {
+    font-size: 2em;
+    margin: 0.5em 0 1.5em;
+    @include upper;
+  }
+
+  .grid {
+    .grid-item {
+      @include respond-to(medium) {
+        min-height: 230px;
+      }
+
+      .card-press-release {
+        border-top: 1px solid $WHITE;
+        padding-top: 1em;
+
+        .logo {
+          margin-bottom: 0.5em;
+
+          img {
+            height: 50px;
+            width: initial;
+
+            @include bp-options(max-width, (
+              default: 100%,
+              medium: 300px
+            ));
+          }
+        }
+
+        .description {
+          margin-bottom: 0.5em;
+          line-height: 1.2em;
+        }
+
+        .date {
+
+        }
+      }
+    }
+  }
+}
