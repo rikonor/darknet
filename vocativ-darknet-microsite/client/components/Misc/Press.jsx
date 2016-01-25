@@ -2,8 +2,8 @@ let logosMap = {
   "newyorktimes": "images/newssites-logos/nyt-logo.svg",
   "hollywoodreporter": "images/newssites-logos/hollywood-reporter-logo.svg",
   "fastcompany": "images/newssites-logos/fast-company-logo.svg",
-  "adweek": "images/newssites-logos/adweek-logo.png",
-  "adage": "images/newssites-logos/adage-logo.png",
+  "adweek": "images/newssites-logos/adweek-logo.svg",
+  "adage": "images/newssites-logos/ad-age-logo.svg",
   "digitalreview": "images/newssites-logos/digitalreviewco-logo.png",
   "maxim": "images/newssites-logos/maxim-logo.jpg",
   "digiday": "images/newssites-logos/digiday-logo.png"
