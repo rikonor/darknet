@@ -51,9 +51,6 @@ var LibraryEpisode = React.createClass({
 
   handleClick() {
     this.trackClick();
-    if (this.props.episode.isViewable()) {
-      FlowRouter.go(this.props.episode.path());
-    }
   },
 
   airDate() {
@@ -80,13 +77,13 @@ var LibraryEpisode = React.createClass({
     return (
       <div className={libraryEpisodeClasses}>
         <div className="image">
-          <a className={linkClassModifier} onClick={this.handleClick}>
+          <a className={linkClassModifier} href={"/darknet" + this.props.episode.path()} onClick={this.handleClick}>
             <img src={this.props.episode.imageUrl()}></img>
             <div className="coming-soon-text"><span>COMING SOON</span></div>
           </a>
         </div>
         <div className="name">
-          <a className={linkClassModifier} onClick={this.handleClick}>{this.props.episode.title}</a>
+          <a className={linkClassModifier} href={"/darknet" + this.props.episode.path()} onClick={this.handleClick}>{this.props.episode.title}</a>
         </div>
         <div className="synopsis">{this.props.episode.shortDescription}</div>
         <div className="air-date">{this.airDate()}</div>
