@@ -24,7 +24,7 @@ let pressReleases = [
   },
   {
     source: "fastcompany",
-    description: "UNMASKING THE \"DARK NET\" WITH VOCATIV'S MATI KOCHAVI",
+    description: "Unmasking the \"Dark Net\" with Vocativ's Mati Kochavi",
     url: "http://www.fastcocreate.com/3055605/unmasking-the-dark-net-with-vocativs-mati-kochavi",
     date: "January 21, 2016"
   },

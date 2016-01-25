@@ -31,6 +31,12 @@
         .description {
           margin-bottom: 1em;
           line-height: 1.2em;
+
+          @include respond-to(medium) {
+            &:hover {
+              text-decoration: underline;
+            }
+          }
         }
 
         .date {
