@@ -1,6 +1,7 @@
 FlowRouter.route('/', {
   action() {
     GAnalytics.pageview("/");
+    DocHead.setTitle('Vocativ - DARK NET');
     ReactLayout.render(HomeLayout, { content: <HomeLoader /> });
   }
 });
@@ -8,14 +9,8 @@ FlowRouter.route('/', {
 FlowRouter.route('/episodes/:episodeName', {
   action(params, queryParams) {
     GAnalytics.pageview(`/episodes/${params.episodeName}`);
+    DocHead.setTitle(`Vocativ - DARK NET - ${params.episodeName}`);
     ReactLayout.render(MainLayout, { content: <EpisodeLoader episodeName={params.episodeName}/> });
-  }
-});
-
-FlowRouter.route('/about', {
-  action() {
-    GAnalytics.pageview("/about");
-    ReactLayout.render(MainLayout, { content: <About /> });
   }
 });
 
