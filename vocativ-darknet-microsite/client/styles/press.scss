@@ -9,30 +9,27 @@
 
   .grid {
     .grid-item {
-      @include respond-to(medium) {
-        min-height: 230px;
-      }
+      @include bp-options(min-height, (
+        default: 180px,
+        medium: 230px
+      ));
 
       .card-press-release {
         border-top: 1px solid $WHITE;
         padding-top: 1em;
 
         .logo {
-          margin-bottom: 0.5em;
+          margin-bottom: 1em;
 
           img {
             height: 50px;
             width: initial;
-
-            @include bp-options(max-width, (
-              default: 100%,
-              medium: 300px
-            ));
+            max-width: 250px;
           }
         }
 
         .description {
-          margin-bottom: 0.5em;
+          margin-bottom: 1em;
           line-height: 1.2em;
         }
 
