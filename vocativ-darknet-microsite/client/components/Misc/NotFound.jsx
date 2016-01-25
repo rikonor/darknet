@@ -37,7 +37,7 @@ NotFound = React.createClass({
               <div className="source">&mdash; {quote.source}</div>
             </div>
             <div className="link-home">
-              <a href="/">Go back to DARK NET</a>
+              <a href="/darknet">Go back to DARK NET</a>
             </div>
           </div>
         </Section>
