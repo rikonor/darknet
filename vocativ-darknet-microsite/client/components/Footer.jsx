@@ -10,6 +10,7 @@ Footer = React.createClass({
           <NewsletterSignup />
           <div className="menu">
             <span className="menu-item"><a href="/darknet">Home</a></span>
+            <span className="menu-item"><a href="/darknet/press">Press</a></span>
             <span className="menu-item"><a href="http://www.vocativ.com/about/terms-use/" target="_blank" onClick={createEventTracker('terms-of-use-footer-btn')}>Terms of Service</a></span>
             <span className="menu-item"><a href="http://www.vocativ.com/legal/" target="_blank" onClick={createEventTracker('privacy-policy-footer-btn')}>Privacy Policy</a></span>
             <span className="menu-item"><a href="/darknet/sitemap">Sitemap</a></span>
