@@ -1,4 +1,8 @@
 MainLayout = React.createClass({
+  componentDidMount() {
+    window.prerenderReady = true;
+  },
+
   render() {
     return (
       <div className="main-layout">

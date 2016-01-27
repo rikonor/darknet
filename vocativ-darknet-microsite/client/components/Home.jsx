@@ -6,6 +6,10 @@ HomeLayout = React.createClass({
     };
   },
 
+  componentDidMount() {
+    window.prerenderReady = true;
+  },
+
   curtainOn() {
     if (!this.state.curtainActive) this.setState({curtainActive: true});
   },

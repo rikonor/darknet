@@ -12,4 +12,10 @@ Meteor.startup(function() {
       Meteor.disconnect();
     }
   });
+
+  /*
+    For Prerender.io, set up window.prerenderReady = false;
+    Then after HomeLayout / MainLayout finished rendering - set it back to true
+  */
+  window.prerenderReady = false;
 });

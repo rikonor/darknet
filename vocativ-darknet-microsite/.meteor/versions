@@ -82,6 +82,7 @@ reactive-dict@1.1.3
 reactive-var@1.0.6
 reload@1.1.4
 retry@1.0.4
+rikonor:prerender@2.1.0_2
 routepolicy@1.0.6
 seba:minifiers-autoprefixer@0.0.1
 service-configuration@1.0.5
