@@ -57,12 +57,6 @@ let pressReleases = [
     description: "Meet Your New Robot Overlords",
     url: "http://www.maxim.com/entertainment/daily-heat-index-new-info-xmen-apocalypse-2016-1",
     date: "January 21, 2016"
-  },
-  {
-    source: "digiday",
-    description: "Vocativ uses its data-mining software to create a TV show",
-    url: "http://digiday.com/publishers/vocativ-uses-data-mining-software-create-tv-show/",
-    date: "January 19, 2016"
   }
 ];
 
