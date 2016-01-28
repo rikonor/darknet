@@ -8,9 +8,11 @@ EpisodeLoader = React.createClass({
   getMeteorData() {
     let episodeHandle = subsManager.subscribe('episodes');
 
+    let episodeTitleRegex = new RegExp(`^${this.props.episodeName}$`, 'i');
+
     return {
       episodeLoading: ! episodeHandle.ready(),
-      episode: Episodes.findOne({title: this.props.episodeName}, {reactive: false})
+      episode: Episodes.findOne({title: episodeTitleRegex}, {reactive: false})
     };
   },
 
