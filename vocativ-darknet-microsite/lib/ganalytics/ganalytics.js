@@ -24,7 +24,7 @@ load = function(i,s,o,g,r,a,m) {
 // Hard-coded Google Analytics UA value (tracking id)
 
 (function init() {
-  return;
+  if (Meteor.isServer) return;
 
   load(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 

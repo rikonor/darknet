@@ -7,6 +7,10 @@ EpisodeLoader = React.createClass({
 
   getMeteorData() {
     let episodeHandle = subsManager.subscribe('episodes');
+    subsManager.subscribe('articles');
+    subsManager.subscribe('videos');
+    subsManager.subscribe('dataviz');
+    subsManager.subscribe('images');
 
     let episodeTitleRegex = new RegExp(`^${this.props.episodeName}$`, 'i');
 
@@ -36,6 +40,7 @@ Episode = React.createClass({
   render() {
     // Redirects to not found if episode is not found
     if (! this.props.episode) {
+      console.log("About to redirect", FlowRouter);
       FlowRouter.redirect("/404");
       return null;
     }
