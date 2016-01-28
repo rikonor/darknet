@@ -19,10 +19,8 @@ HomeLayout = React.createClass({
   },
 
   render() {
-    let mainLayoutClasses = classNames({
-      'main-layout': true,
-      'curtain-on': this.state.curtainActive
-    });
+    let mainLayoutClasses = 'main-layout';
+    if (this.state.curtainActive) mainLayoutClasses += ' curtain-on';
 
     return (
       <div className={mainLayoutClasses}>
@@ -43,6 +41,11 @@ HomeLoader = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
+    subsManager.subscribe('episodes');
+    subsManager.subscribe('articles');
+    subsManager.subscribe('videos');
+    subsManager.subscribe('dataviz');
+    subsManager.subscribe('images');
     let generalSettingsHandle = subsManager.subscribe('generalSettings');
 
     return {

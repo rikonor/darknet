@@ -1,6 +1,5 @@
 FlowRouter.route('/', {
   action() {
-    GAnalytics.pageview("/");
     DocHead.setTitle('Vocativ - DARK NET');
     ReactLayout.render(HomeLayout, { content: <HomeLoader /> });
   }

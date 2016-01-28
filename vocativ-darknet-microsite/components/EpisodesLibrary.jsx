@@ -64,15 +64,11 @@ var LibraryEpisode = React.createClass({
   },
 
   render() {
-    let libraryEpisodeClasses = classNames({
-      'library-episode': true,
-      'coming-soon': ! this.props.episode.isViewable()
-    });
+    let libraryEpisodeClasses = 'library-episode';
+    if (! this.props.episode.isViewable()) libraryEpisodeClasses += ' coming-soon';
 
-    let linkClassModifier = classNames({
-      'episode-link': true,
-      'coming-soon': ! this.props.episode.isViewable()
-    });
+    let linkClassModifier = 'episode-link';
+    if (! this.props.episode.isViewable()) linkClassModifier += ' coming-soon';
 
     return (
       <div className={libraryEpisodeClasses}>

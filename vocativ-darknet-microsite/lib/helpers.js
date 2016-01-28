@@ -87,5 +87,6 @@ isAdmin = function(userId) {
 
   let user = Meteor.users.findOne(userId);
   if (! user) return false;
+  if (! user.roles || ! user.roles.__global_roles__) return false;
   return user.roles.__global_roles__.indexOf('admin') !== -1;
 };

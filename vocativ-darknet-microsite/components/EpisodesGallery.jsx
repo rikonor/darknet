@@ -160,15 +160,11 @@ var GalleryEpisode = React.createClass({
   },
 
   render() {
-    let galleryEpisodeClasses = classNames({
-      'gallery-episode': true,
-      'coming-soon': ! this.props.episode.isViewable()
-    });
+    let galleryEpisodeClasses = 'gallery-episode';
+    if (! this.props.episode.isViewable()) galleryEpisodeClasses += ' coming-soon';
 
-    let linkClassModifier = classNames({
-      'episode-link': true,
-      'coming-soon': ! this.props.episode.isViewable()
-    });
+    let linkClassModifier = 'episode-link';
+    if (! this.props.episode.isViewable()) linkClassModifier += ' coming-soon';
 
     return (
       <div className={galleryEpisodeClasses}>
