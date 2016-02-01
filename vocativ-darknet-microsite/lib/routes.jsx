@@ -1,3 +1,14 @@
+if(Meteor.isServer) {
+  // Set cache TTL
+  var timeInMillis = 1000 * 3600 * 1; // 1 hour
+  FlowRouter.setPageCacheTimeout(timeInMillis);
+
+  // Instruct FlowRouter SSR to defer script loading (significant load-speed boost)
+  // NOTICE: This is turned off at the moment as it causes the loading sequence
+  // to be very funky. Feel free to try it again in the future.
+  // FlowRouter.setDeferScriptLoading(true);
+}
+
 FlowRouter.route('/', {
   name: 'Home',
   action() {

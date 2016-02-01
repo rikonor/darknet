@@ -174,6 +174,10 @@ Route = class extends SharedRoute {
   _cachePage(url, data, timeout) {
     // Fix URL to include _basePath
     url = `${FlowRouter.basePath}${url}`;
+    // Trim trailing `/`
+    if (url.slice(-1) == '/') {
+      url = url.slice(0, -1);
+    }
 
     const existingInfo = this._cache[url];
     if (existingInfo) {
