@@ -28,7 +28,6 @@ npm-container
 cosmos:browserify
 meteorhacks:fast-render
 dburles:collection-helpers
-okgrow:router-autoscroll
 meteorhacks:subs-manager
 seba:minifiers-autoprefixer
 momentjs:moment
@@ -40,4 +39,5 @@ spiderable
 gadicohen:phantomjs
 kadira:dochead
 rikonor:prerender
+okgrow:router-autoscroll
 kadira:flow-router-ssr

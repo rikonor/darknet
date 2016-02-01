@@ -1,0 +1,28 @@
+{
+  "name": "router-example",
+  "version": "0.1.0",
+  "description": "Manage settings, testing, deployment of your meteor app",
+  "scripts": {
+    "start": "./runExamples.sh",
+    "pretest": "selenium-standalone install --version=2.47.1 --drivers.chrome.version=2.19 --silent",
+    "test": "./runTests.sh",
+    "deploy": "meteor deploy your-site.meteor.com",
+    "view": "open http://your-site.meteor.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/okgrow/router-autoscroll"
+  },
+  "keywords": [
+    "meteor",
+    "npm",
+    "package.json"
+  ],
+  "author": "Dean Radcliffe",
+  "license": "MIT",
+  "homepage": "https://github.com/okgrow/router-autoscroll",
+  "devDependencies": {
+    "nightwatch": "^0.8.6",
+    "selenium-standalone": "^4.7.1"
+  }
+}

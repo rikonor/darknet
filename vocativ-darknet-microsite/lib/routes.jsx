@@ -1,4 +1,5 @@
 FlowRouter.route('/', {
+  name: 'Home',
   action() {
     GAnalytics.pageview('/');
     DocHead.setTitle('Vocativ - DARK NET');
@@ -7,6 +8,7 @@ FlowRouter.route('/', {
 });
 
 FlowRouter.route('/episodes/:episodeName', {
+  name: 'Episode',
   action(params, queryParams) {
     GAnalytics.pageview(`/episodes/${params.episodeName}`);
     DocHead.setTitle(`Vocativ - DARK NET - ${params.episodeName}`);
@@ -15,18 +17,21 @@ FlowRouter.route('/episodes/:episodeName', {
 });
 
 FlowRouter.notFound = {
+  name: 'NotFound',
   action() {
     ReactLayout.render(MainLayout, { content: <NotFound /> });
   }
 };
 
 FlowRouter.route('/admin', {
+  name: 'Admin',
   action() {
     ReactLayout.render(MainLayout, { content: <AdminPanel /> });
   }
 });
 
 FlowRouter.route('/sitemap', {
+  name: 'SiteMap',
   action() {
     GAnalytics.pageview(`/sitemap`);
     ReactLayout.render(MainLayout, { content: <SiteMap /> });
@@ -34,6 +39,7 @@ FlowRouter.route('/sitemap', {
 });
 
 FlowRouter.route('/press', {
+  name: 'Press',
   action() {
     GAnalytics.pageview('/press');
     ReactLayout.render(MainLayout, { content: <Press /> });
