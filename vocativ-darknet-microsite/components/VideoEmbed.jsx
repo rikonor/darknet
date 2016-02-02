@@ -34,12 +34,14 @@ VideoEmbed = React.createClass({
     // Then open the video in a lightbox
     let showTerm = FlowRouter.getQueryParam("show");
     let videoTitle = this.props.video.title;
+    let videoId = this.props.video._id;
 
     if (! showTerm) {
       return;
     }
 
-    if (showTerm.toLowerCase().replace(' ', '') === videoTitle.toLowerCase().replace(' ', '')) {
+    if (showTerm.toLowerCase().replace(' ', '') === videoTitle.toLowerCase().replace(' ', '') ||
+        showTerm === videoId) {
       this.scrollIntoView(this.openLightbox);
     }
   },

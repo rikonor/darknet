@@ -58,12 +58,14 @@ DataVisualization = React.createClass({
     // Then open the video in a lightbox
     let showTerm = FlowRouter.getQueryParam("show");
     let dataVizTitle = this.props.dataviz.title;
+    let dataVizId = this.props.dataviz._id;
 
     if (! showTerm) {
       return;
     }
 
-    if (showTerm.toLowerCase().replace(' ', '') === dataVizTitle.toLowerCase().replace(' ', '')) {
+    if (showTerm.toLowerCase().replace(' ', '') === dataVizTitle.toLowerCase().replace(' ', '') ||
+        showTerm === dataVizId) {
       this.scrollIntoView(this.openLightbox);
     }
   },
