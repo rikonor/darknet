@@ -44,9 +44,35 @@ DataVisualization = React.createClass({
     this.setState({adaptiveHeight: height + 'px'});
   },
 
+  scrollIntoView(onComplete) {
+    // calculate offset so element is in middle of screen
+    let screenHeight = $(window).height();
+    let miniGalleryHeight = $(".episodes-mini-gallery").height();
+    let elementHeight = $(this.refs.dataViz).height();
+    let offset = (-1) * (screenHeight - miniGalleryHeight - elementHeight) / 2;
+    $(this.refs.dataViz).velocity("scroll", { offset: offset, complete: onComplete });
+  },
+
+  autoUrlOpen() {
+    // If the url contains `show` query param with video title
+    // Then open the video in a lightbox
+    let showTerm = FlowRouter.getQueryParam("show");
+    let dataVizTitle = this.props.dataviz.title;
+
+    if (! showTerm) {
+      return;
+    }
+
+    if (showTerm.toLowerCase().replace(' ', '') === dataVizTitle.toLowerCase().replace(' ', '')) {
+      this.scrollIntoView(this.openLightbox);
+    }
+  },
+
   componentDidMount() {
     this.getUnderlyingImage().load(this.adaptHeight);
     window.addEventListener("resize", this.adaptHeight);
+
+    this.autoUrlOpen();
   },
 
   componentWillUnmount() {
@@ -64,7 +90,7 @@ DataVisualization = React.createClass({
     }
 
     return (
-      <div className="dataviz" onClick={this.handleClick}>
+      <div className="dataviz" onClick={this.handleClick} ref="dataViz">
         <Image imageUrl={this.props.dataviz.imageUrl()} ref="image" height={this.state.adaptiveHeight} />
         {datavizLightbox}
       </div>

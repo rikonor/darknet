@@ -20,6 +20,34 @@ VideoEmbed = React.createClass({
     }
   },
 
+  scrollIntoView(onComplete) {
+    // calculate offset so element is in middle of screen
+    let screenHeight = $(window).height();
+    let miniGalleryHeight = $(".episodes-mini-gallery").height();
+    let elementHeight = $(this.refs.videoEmbed).height();
+    let offset = (-1) * (screenHeight - miniGalleryHeight - elementHeight) / 2;
+    $(this.refs.videoEmbed).velocity("scroll", { offset: offset, complete: onComplete });
+  },
+
+  autoUrlOpen() {
+    // If the url contains `show` query param with video title
+    // Then open the video in a lightbox
+    let showTerm = FlowRouter.getQueryParam("show");
+    let videoTitle = this.props.video.title;
+
+    if (! showTerm) {
+      return;
+    }
+
+    if (showTerm.toLowerCase().replace(' ', '') === videoTitle.toLowerCase().replace(' ', '')) {
+      this.scrollIntoView(this.openLightbox);
+    }
+  },
+
+  componentDidMount() {
+    this.autoUrlOpen();
+  },
+
   handleClick() {
     this.openLightbox();
     GAnalytics.event("Videos", "play", this.props.video.title);
@@ -46,7 +74,7 @@ VideoEmbed = React.createClass({
     }
 
     return (
-      <div className="video-embed" onClick={this.handleClick}>
+      <div className="video-embed" onClick={this.handleClick} ref="videoEmbed">
         <Image imageUrl={this.props.video.imageUrl()}>
           <div className="voc-video-overlay"></div>
         </Image>
