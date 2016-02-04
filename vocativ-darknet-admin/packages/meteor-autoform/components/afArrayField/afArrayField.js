@@ -6,6 +6,9 @@ Template.afArrayField.helpers({
   },
   innerContext: function afArrayFieldContext() {
     var c = AutoForm.Utility.getComponentContext(this, "afArrayField");
+
+    this.enableSorting = !! c.atts.enableSorting;
+
     var name = c.atts.name;
     var fieldMinCount = c.atts.minCount || 0;
     var fieldMaxCount = c.atts.maxCount || Infinity;
@@ -51,10 +54,12 @@ Template.afArrayField.rendered = function() {
     });
   }
 
-  var listGroup = $(this.find(".list-group"));
-  listGroup.sortable({
-    handle: ".autoform-drag-item",
-    cancel: ".autoform-add-item-wrap",
-    update: onSortUpdate
-  });
+  if (!! this.data.enableSorting) {
+    var listGroup = $(this.find(".list-group"));
+    listGroup.sortable({
+      handle: ".autoform-drag-item",
+      cancel: ".autoform-add-item-wrap",
+      update: onSortUpdate
+    });
+  }
 };

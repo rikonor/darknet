@@ -12,7 +12,10 @@ Schemas.Episodes = new SimpleSchema({
   sections: {
     type: Array,
     optional: true,
-    maxCount: 6
+    maxCount: 6,
+    autoform: {
+      enableSorting: true
+    }
   },
   "sections.$": {
     type: Object,
