@@ -24,3 +24,37 @@ Template.afArrayField.helpers({
     };
   }
 });
+
+Template.afArrayField.rendered = function() {
+  var self = this;
+
+  function onSortUpdate() {
+    var arrayItems = self.findAll(".autoform-array-item");
+    _.each(arrayItems, function(arrayItem, i) {
+      function fixPosition(el) {
+        var dataSchemaKey = $(el).attr("data-schema-key");
+
+        if (! dataSchemaKey) return;
+        var schemaFields = dataSchemaKey.split('.');
+
+        var mainField = schemaFields[0];
+        var subField = schemaFields[2];
+
+        dataSchemaKey = mainField + '.' + i + '.' + subField;
+
+        $(el).attr("data-schema-key", dataSchemaKey);
+        $(el).attr("name", dataSchemaKey);
+      }
+
+      _.each($(arrayItem).find("input"), fixPosition);
+      _.each($(arrayItem).find("select"), fixPosition);
+    });
+  }
+
+  var listGroup = $(this.find(".list-group"));
+  listGroup.sortable({
+    handle: ".autoform-drag-item",
+    cancel: ".autoform-add-item-wrap",
+    update: onSortUpdate
+  });
+};
