@@ -1,6 +1,6 @@
 if(Meteor.isServer) {
   // Set cache TTL
-  var timeInMillis = 1000 * 3600 * 1; // 1 hour
+  var timeInMillis = 1000 * 60; // 60 seconds
   FlowRouter.setPageCacheTimeout(timeInMillis);
 
   // Instruct FlowRouter SSR to defer script loading (significant load-speed boost)
